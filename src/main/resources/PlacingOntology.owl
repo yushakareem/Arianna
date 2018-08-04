@@ -1,0 +1,3288 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#"
+     xml:base="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:PlacingOntology="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology">
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl-time"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-04-06</terms:modified>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - adjust range of time:timeZone to time:TimeZone, moved up from the tzont ontology.  </skos:changeNote>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-04-06 - hasTime, hasXSDDuration added; Number removed; all duration elements changed to xsd:decimal</skos:changeNote>
+        <owl:priorVersion rdf:resource="http://www.w3.org/2006/time#2006"/>
+        <terms:isVersionOf rdf:resource="http://www.w3.org/TR/owl-time"/>
+        <terms:rights xml:lang="en">Copyright © 2006-2017 W3C, OGC. W3C and OGC liability, trademark and document use rules apply.</terms:rights>
+        <terms:creator rdf:resource="https://en.wikipedia.org/wiki/Jerry_Hobbs"/>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-06-15 - initial update of OWL-Time - modified to support arbitrary temporal reference systems. </skos:changeNote>
+        <skos:historyNote xml:lang="en">Update of OWL-Time ontology, extended to support general temporal reference systems. 
+
+Ontology engineering by Simon J D Cox</skos:historyNote>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
+        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
+        <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Naming Convention:
+
+For Individuals:
+A: stands for Ambient
+F: stands for Furniture
+R: stands for Room
+H: stands for Human
+I: stands for Identity
+G: stands for Gesture
+P: stands for Posture
+S: stands for Sensor
+B: stands for Brightness
+M: stands for Motion
+T: stands for Temprature
+E: stands for ElikoDevice
+W: stands for Watch
+V: stands for virtual</rdfs:comment>
+        <terms:contributor rdf:resource="mailto:chris.little@metoffice.gov.uk"/>
+        <terms:creator rdf:resource="mailto:panfeng66@gmail.com"/>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-09-27</terms:created>
+        <rdfs:label xml:lang="en">OWL-Time</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.semantic-web-journal.net/content/time-ontology-extended-non-gregorian-calendar-applications"/>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-02 - intervalIn, intervalDisjoint, monthOfYear added; TemporalUnit subclass of TemporalDuration</skos:changeNote>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#pattern -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2001/XMLSchema#pattern"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#editorialNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#editorialNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#historyNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#historyNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#scopeNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#scopeNote"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#dateTimeStamp -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#duration -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gDay -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gDay"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gMonth -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gMonth"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYearMonth -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#generalDay -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2006/time#generalDay">
+        <rdfs:comment xml:lang="en">Day of month - generalization of xsd:gDay, formulated as a text string with a pattern constraint to reproduce the same lexical form as gDay, except that values up to 99 are permitted, in order to support calendars with more than 31 days in a month. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type. </rdfs:comment>
+        <rdfs:label xml:lang="en">Generalized day</rdfs:label>
+        <skos:definition xml:lang="en">Day of month - generalization of xsd:gDay, formulated as a text string with a pattern constraint to reproduce the same lexical form as gDay, except that values up to 99 are permitted, in order to support calendars with more than 31 days in a month. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type. </skos:definition>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.w3.org/2006/time#generalMonth -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2006/time#generalMonth">
+        <rdfs:comment xml:lang="en">Month of year - generalization of xsd:gMonth, formulated as a text string with a pattern constraint to reproduce the same lexical form as gMonth, except that values up to 20 are permitted, in order to support calendars with more than 12 months in the year. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type.</rdfs:comment>
+        <rdfs:label xml:lang="en">Generalized month</rdfs:label>
+        <skos:definition xml:lang="en">Month of year - generalization of xsd:gMonth, formulated as a text string with a pattern constraint to reproduce the same lexical form as gMonth, except that values up to 20 are permitted, in order to support calendars with more than 12 months in the year. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type.</skos:definition>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.w3.org/2006/time#generalYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2006/time#generalYear"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasBeenDetectedNear -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasBeenDetectedNear">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person hasBeenDetectedNear Furniture
+(Note: No postural change, sitting or lying or something)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasFurniture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasFurniture">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isFurnitureOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Room &apos;hasFurniture&apos; Furniture</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasFurnitureTheSensor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasFurnitureTheSensor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithTheFurniture"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPersonTheSensor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPersonTheSensor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithThePerson"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#WearableSensor"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Instance_of_person isWithSensor instance_of_Elicon/Watch</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPosture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPosture">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanPosture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasRoom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasRoom">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isRoomOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Ambient"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An Ambient instance hasRoom some instance of Room</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Ambient(House) has some Room</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasRoomTheSensor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasRoomTheSensor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorInRoom"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Room hasRoomTheSensor Sensor</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isDetectedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isDetectedBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isDoingGesture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isDoingGesture">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person isDoingGesture Gesture</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isFurnitureOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isFurnitureOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Some Furniture isFurnitureOf some Room</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An instance of Person isBeingIn an instance of a Room</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Can be derived from various sensors (PIR, Elico system)</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">User isBeingIn some Room/Area</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isOccupying -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isOccupying">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An instance of a Person isOccupying some instance of Furniture</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">User Occupying a Furniture with sitting(Postural Change)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isRoomOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isRoomOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ambient is Located in Ambient</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorInRoom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorInRoom">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithTheFurniture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithTheFurniture"/>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithThePerson -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithThePerson">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Instance_of_Elicon/Watch isSensorWithThePerson Instance_Of_Person</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSpaceNearTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSpaceNearTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Area/Room isNearTo Area/Room</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isStillIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isStillIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isUtilizing -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isUtilizing">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureNotOccupiableByHuman"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#after -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#after">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#before"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">Gives directionality to time. If a temporal entity T1 is after another temporal entity T2, then the beginning of T1 is after the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">after</rdfs:label>
+        <skos:definition xml:lang="en">Gives directionality to time. If a temporal entity T1 is after another temporal entity T2, then the beginning of T1 is after the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#before -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#before">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">Gives directionality to time. If a temporal entity T1 is before another temporal entity T2, then the end of T1 is before the beginning of T2. Thus, &quot;before&quot; can be considered to be basic to instants and derived for intervals.</rdfs:comment>
+        <rdfs:label xml:lang="en">before</rdfs:label>
+        <skos:definition xml:lang="en">Gives directionality to time. If a temporal entity T1 is before another temporal entity T2, then the end of T1 is before the beginning of T2. Thus, &quot;before&quot; can be considered to be basic to instants and derived for intervals.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#dayOfWeek -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#dayOfWeek">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#DayOfWeek"/>
+        <rdfs:comment xml:lang="en">The day of week, whose value is a member of the class time:DayOfWeek</rdfs:comment>
+        <rdfs:label xml:lang="en">day of week</rdfs:label>
+        <skos:definition xml:lang="en">The day of week, whose value is a member of the class time:DayOfWeek</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasBeginning -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTime"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment xml:lang="en">Beginning of a temporal entity</rdfs:comment>
+        <rdfs:label xml:lang="en">has beginning</rdfs:label>
+        <skos:definition xml:lang="en">Beginning of a temporal entity.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasDateTimeDescription -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDateTimeDescription">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:comment xml:lang="en">Value of DateTimeInterval expressed as a structured value. The beginning and end of the interval coincide with the limits of the shortest element in the description.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Date-Time description</rdfs:label>
+        <skos:definition xml:lang="en">Value of DateTimeInterval expressed as a structured value. The beginning and end of the interval coincide with the limits of the shortest element in the description.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasDuration -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDuration">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTemporalDuration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Duration"/>
+        <rdfs:comment xml:lang="en">Duration of a temporal entity, expressed as a scaled value or nominal value</rdfs:comment>
+        <rdfs:label xml:lang="en">has duration</rdfs:label>
+        <skos:definition xml:lang="en">Duration of a temporal entity, event or activity, or thing, expressed as a scaled value</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasDurationDescription -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDurationDescription">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTemporalDuration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:comment xml:lang="en">Duration of a temporal entity, expressed using a structured description</rdfs:comment>
+        <rdfs:label xml:lang="en">has duration description</rdfs:label>
+        <skos:definition xml:lang="en">Duration of a temporal entity, expressed using a structured description</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasEnd -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTime"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment xml:lang="en">End of a temporal entity.</rdfs:comment>
+        <rdfs:label xml:lang="en">has end</rdfs:label>
+        <skos:definition xml:lang="en">End of a temporal entity.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasTRS -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTRS">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#TemporalPosition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TRS"/>
+        <rdfs:comment xml:lang="en">The temporal reference system used by a temporal position or extent description. </rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal reference system used</rdfs:label>
+        <skos:definition xml:lang="en">The temporal reference system used by a temporal position or extent description. </skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasTemporalDuration -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTemporalDuration">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+        <rdfs:comment xml:lang="en">Duration of a temporal entity.</rdfs:comment>
+        <rdfs:label xml:lang="en">has temporal duration</rdfs:label>
+        <skos:definition xml:lang="en">Duration of a temporal entity.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTime">
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">Supports the association of a temporal entity (instant or interval) to any thing</rdfs:comment>
+        <rdfs:label xml:lang="en">has time</rdfs:label>
+        <skos:definition xml:lang="en">Supports the association of a temporal entity (instant or interval) to any thing</skos:definition>
+        <skos:editorialNote xml:lang="en">Feature at risk - added in 2017 revision, and not yet widely used. </skos:editorialNote>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inDateTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inDateTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#inTemporalPosition"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:comment xml:lang="en">Position of an instant, expressed using a structured description</rdfs:comment>
+        <rdfs:label xml:lang="en">in date-time description</rdfs:label>
+        <skos:definition xml:lang="en">Position of an instant, expressed using a structured description</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inTemporalPosition -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inTemporalPosition">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
+        <rdfs:comment xml:lang="en">Position of a time instant</rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal position</rdfs:label>
+        <skos:definition xml:lang="en">Position of a time instant</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inTimePosition -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inTimePosition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#inTemporalPosition"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TimePosition"/>
+        <rdfs:comment xml:lang="en">Position of an instant, expressed as a temporal coordinate or nominal value</rdfs:comment>
+        <rdfs:label xml:lang="en">Time position</rdfs:label>
+        <skos:definition xml:lang="en">Position of a time instant expressed as a TimePosition</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inside -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inside">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Interval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment xml:lang="en">An instant that falls inside the interval. It is not intended to include beginnings and ends of intervals.</rdfs:comment>
+        <rdfs:label xml:lang="en">has time instant inside</rdfs:label>
+        <skos:definition xml:lang="en">An instant that falls inside the interval. It is not intended to include beginnings and ends of intervals.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalAfter -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalAfter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#after"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalDisjoint"/>
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalBefore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalAfter another proper interval T2, then the beginning of T1 is after the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval after</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalAfter another proper interval T2, then the beginning of T1 is after the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalBefore -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalBefore">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#before"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalDisjoint"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalBefore another proper interval T2, then the end of T1 is before the beginning of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval before</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalBefore another proper interval T2, then the end of T1 is before the beginning of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalContains -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalContains">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalDuring"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalContains another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is after the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval contains</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalContains another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is after the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalDisjoint -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalDisjoint">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalDisjoint another proper interval T2, then the beginning of T1 is after the end of T2, or the end of T1 is before the beginning of T2, i.e. the intervals do not overlap in any way, but their ordering relationship is not known.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval disjoint</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalDisjoint another proper interval T2, then the beginning of T1 is after the end of T2, or the end of T1 is before the beginning of T2, i.e. the intervals do not overlap in any way, but their ordering relationship is not known.</skos:definition>
+        <skos:note xml:lang="en">This interval relation is not included in the 13 basic relationships defined in Allen (1984), but is defined in (T.3) as the union of :intervalDuring v :intervalStarts v :intervalFinishes</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalDuring -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalDuring">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalDuring another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is before the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval during</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalDuring another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is before the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalEquals -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalEquals">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalEquals another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is coincident with the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval equals</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalEquals another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is coincident with the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalFinishedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalFinishedBy">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalFinishes"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalFinishedBy another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is coincident with the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval finished by</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalFinishedBy another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is coincident with the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalFinishes -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalFinishes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalFinishes another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is coincident with the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval finishes</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalFinishes another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is coincident with the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalIn">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalIn another proper interval T2, then the beginning of T1 is after the beginning of T2 or is coincident with the beginning of T2, and the end of T1 is before the end of T2, or is coincident with the end of T2, except that end of T1 may not be coincident with the end of T2 if the beginning of T1 is coincident with the beginning of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval in</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalIn another proper interval T2, then the beginning of T1 is after the beginning of T2 or is coincident with the beginning of T2, and the end of T1 is before the end of T2, or is coincident with the end of T2, except that end of T1 may not be coincident with the end of T2 if the beginning of T1 is coincident with the beginning of T2.</skos:definition>
+        <skos:note xml:lang="en">This interval relation is not included in the 13 basic relationships defined in Allen (1984), but is referred to as &apos;an important relationship&apos; in Allen and Ferguson (1997). It is the disjoint union of :intervalStarts v :intervalDuring v :intervalFinishes</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalMeets -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalMeets">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalMetBy"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalMeets another proper interval T2, then the end of T1 is coincident with the beginning of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval meets</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalMeets another proper interval T2, then the end of T1 is coincident with the beginning of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalMetBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalMetBy">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalMetBy another proper interval T2, then the beginning of T1 is coincident with the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval met by</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalMetBy another proper interval T2, then the beginning of T1 is coincident with the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalOverlappedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalOverlappedBy">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalOverlaps"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalOverlappedBy another proper interval T2, then the beginning of T1 is after the beginning of T2, the beginning of T1 is before the end of T2, and the end of T1 is after the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval overlapped by</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalOverlappedBy another proper interval T2, then the beginning of T1 is after the beginning of T2, the beginning of T1 is before the end of T2, and the end of T1 is after the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalOverlaps -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalOverlaps">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalOverlaps another proper interval T2, then the beginning of T1 is before the beginning of T2, the end of T1 is after the beginning of T2, and the end of T1 is before the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval overlaps</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalOverlaps another proper interval T2, then the beginning of T1 is before the beginning of T2, the end of T1 is after the beginning of T2, and the end of T1 is before the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalStartedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalStartedBy">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalStarts"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalStarted another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is after the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval started by</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalStarted another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is after the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalStarts -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalStarts">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">If a proper interval T1 is intervalStarts another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is before the end of T2.</rdfs:comment>
+        <rdfs:label xml:lang="en">interval starts</rdfs:label>
+        <skos:definition xml:lang="en">If a proper interval T1 is intervalStarts another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is before the end of T2.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#monthOfYear -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#monthOfYear">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#MonthOfYear"/>
+        <rdfs:comment xml:lang="en">The month of the year, whose value is a member of the class time:MonthOfYear</rdfs:comment>
+        <rdfs:label xml:lang="en">month of year</rdfs:label>
+        <skos:definition xml:lang="en">The month of the year, whose value is a member of the class time:MonthOfYear</skos:definition>
+        <skos:editorialNote xml:lang="en">Feature at risk - added in 2017 revision, and not yet widely used. </skos:editorialNote>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#timeZone -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#timeZone">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TimeZone"/>
+        <rdfs:comment xml:lang="en">The time zone for clock elements in the temporal position</rdfs:comment>
+        <rdfs:label xml:lang="en">in time zone</rdfs:label>
+        <skos:historyNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In the original 2006 version of OWL-Time, the range of time:timeZone was a TimeZone class in a separate namespace &quot;http://www.w3.org/2006/timezone#&quot;. 
+An alignment axiom 
+	tzont:TimeZone rdfs:subClassOf time:TimeZone . 
+allows data encoded according to the previous version to be consistent with the updated ontology. </skos:historyNote>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#unitType -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#unitType">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#Duration"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalUnit"/>
+        <rdfs:comment xml:lang="en">The temporal unit which provides the precision of a date-time value or scale of a temporal extent</rdfs:comment>
+        <rdfs:label xml:lang="en">temporal unit type</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasBrightnessIntValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasBrightnessIntValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Brightness"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasElikoAxisIntValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasElikoAxisIntValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ElikoDevice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasGestureInWatchBoolValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasGestureInWatchBoolValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasHeartRateIntValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasHeartRateIntValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasMotionBoolValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasMotionBoolValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasTempDecimalValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasTempDecimalValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Temprature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasTimeStamp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasTimeStamp">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasTimeStamp"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isOccupiableByPerson -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isOccupiableByPerson">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#day -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#day">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:comment xml:lang="en">Day position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar day from any calendar. </rdfs:comment>
+        <rdfs:label xml:lang="en">day</rdfs:label>
+        <skos:definition xml:lang="en">Day position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar day from any calendar. </skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#dayOfYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#dayOfYear">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">The number of the day within the year</rdfs:comment>
+        <rdfs:label xml:lang="en">day of year</rdfs:label>
+        <skos:definition xml:lang="en">The number of the day within the year</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#days -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#days">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">length of, or element of the length of, a temporal extent expressed in days</rdfs:comment>
+        <rdfs:label xml:lang="en">days duration</rdfs:label>
+        <skos:definition xml:lang="en">length of, or element of the length of, a temporal extent expressed in days</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasXSDDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hasXSDDuration">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+        <rdfs:comment xml:lang="en">Extent of a temporal entity, expressed using xsd:duration</rdfs:comment>
+        <rdfs:label xml:lang="en">has XSD duration</rdfs:label>
+        <skos:definition xml:lang="en">Extent of a temporal entity, expressed using xsd:duration</skos:definition>
+        <skos:editorialNote xml:lang="en">Feature at risk - added in 2017 revision, and not yet widely used. </skos:editorialNote>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hour -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hour">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Hour position in a calendar-clock system.</rdfs:comment>
+        <rdfs:label xml:lang="en">hour</rdfs:label>
+        <skos:definition xml:lang="en">Hour position in a calendar-clock system.</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hours -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hours">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">length of, or element of the length of, a temporal extent expressed in hours</rdfs:comment>
+        <rdfs:label xml:lang="en">hours duration</rdfs:label>
+        <skos:definition xml:lang="en">length of, or element of the length of, a temporal extent expressed in hours</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inXSDDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDDate">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="en">Position of an instant, expressed using xsd:date</rdfs:comment>
+        <rdfs:label xml:lang="en">in XSD date</rdfs:label>
+        <skos:definition xml:lang="en">Position of an instant, expressed using xsd:date</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inXSDDateTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDDateTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Position of an instant, expressed using xsd:dateTime</rdfs:comment>
+        <rdfs:label xml:lang="en">in XSD Date-Time</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:definition xml:lang="en">Position of an instant, expressed using xsd:dateTime</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inXSDDateTimeStamp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDDateTimeStamp">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+        <rdfs:comment xml:lang="en">Position of an instant, expressed using xsd:dateTimeStamp</rdfs:comment>
+        <rdfs:label xml:lang="en">in XSD Date-Time-Stamp</rdfs:label>
+        <skos:definition xml:lang="en">Position of an instant, expressed using xsd:dateTimeStamp</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inXSDgYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDgYear">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:comment xml:lang="en">Position of an instant, expressed using xsd:gYear</rdfs:comment>
+        <rdfs:label xml:lang="en">in XSD g-Year</rdfs:label>
+        <skos:definition xml:lang="en">Position of an instant, expressed using xsd:gYear</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inXSDgYearMonth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDgYearMonth">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
+        <rdfs:comment xml:lang="en">Position of an instant, expressed using xsd:gYearMonth</rdfs:comment>
+        <rdfs:label xml:lang="en">in XSD g-YearMonth</rdfs:label>
+        <skos:definition xml:lang="en">Position of an instant, expressed using xsd:gYearMonth</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#minute -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#minute">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Minute position in a calendar-clock system.</rdfs:comment>
+        <rdfs:label xml:lang="en">minute</rdfs:label>
+        <skos:definition xml:lang="en">Minute position in a calendar-clock system.</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#minutes -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#minutes">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">length, or element of, a temporal extent expressed in minutes</rdfs:comment>
+        <rdfs:label xml:lang="en">minutes</rdfs:label>
+        <skos:definition xml:lang="en">length, or element of, a temporal extent expressed in minutes</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#month -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#month">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:comment xml:lang="en">Month position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar month from any calendar. </rdfs:comment>
+        <rdfs:label xml:lang="en">month</rdfs:label>
+        <skos:definition xml:lang="en">Month position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar month from any calendar. </skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#months -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#months">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">length of, or element of the length of, a temporal extent expressed in months</rdfs:comment>
+        <rdfs:label xml:lang="en">months duration</rdfs:label>
+        <skos:definition xml:lang="en">length of, or element of the length of, a temporal extent expressed in months</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#nominalPosition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#nominalPosition">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TimePosition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The (nominal) value indicating temporal position in an ordinal reference system </rdfs:comment>
+        <rdfs:label xml:lang="en">Name of temporal position</rdfs:label>
+        <skos:definition xml:lang="en">The (nominal) value indicating temporal position in an ordinal reference system </skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#numericDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#numericDuration">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Duration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Value of a temporal extent expressed as a decimal number scaled by a temporal unit</rdfs:comment>
+        <rdfs:label xml:lang="en">Numeric value of temporal duration</rdfs:label>
+        <skos:definition xml:lang="en">Value of a temporal extent expressed as a decimal number scaled by a temporal unit</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#numericPosition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#numericPosition">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TimePosition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">The (numeric) value indicating position within a temporal coordinate system </rdfs:comment>
+        <rdfs:label xml:lang="en">Numeric value of temporal position</rdfs:label>
+        <skos:definition xml:lang="en">The (numeric) value indicating position within a temporal coordinate system </skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#second -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#second">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">Second position in a calendar-clock system.</rdfs:comment>
+        <rdfs:label xml:lang="en">second</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#seconds -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#seconds">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">length of, or element of the length of, a temporal extent expressed in seconds</rdfs:comment>
+        <rdfs:label xml:lang="en">seconds duration</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.bipm.org/en/publications/si-brochure/second.html"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#week -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#week">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Week number within the year.</rdfs:comment>
+        <rdfs:label xml:lang="en">week</rdfs:label>
+        <skos:note xml:lang="en">According to ISO-8601, the first Monday in the year is the start of week number 1.</skos:note>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#weeks -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#weeks">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">length of, or element of the length of, a temporal extent expressed in weeks</rdfs:comment>
+        <rdfs:label xml:lang="en">weeks duration</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#xsdDateTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#xsdDateTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Value of DateTimeInterval expressed as a compact value.</rdfs:comment>
+        <rdfs:label xml:lang="en">has XSD date-time</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#year -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#year">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:comment xml:lang="en">Year position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar year from any calendar. </rdfs:comment>
+        <rdfs:label xml:lang="en">year</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#years -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#years">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">length of, or element of the length of, a temporal extent expressed in years</rdfs:comment>
+        <rdfs:label xml:lang="en">years duration</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Ambient -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Ambient"/>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Brightness -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Brightness">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasBrightnessIntValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ElikoDevice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ElikoDevice">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasElikoAxisIntValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#WearableSensor"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Sensor"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#WearableSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Ambient"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureNotOccupiableByHuman -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureNotOccupiableByHuman">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Furniture"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human"/>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanPosture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanPosture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasMotionBoolValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Ambient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Sensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Sensor">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasTimeStamp"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasGestureInWatchBoolValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#WearableSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Temprature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Temprature">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasTempDecimalValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#WearableSensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#WearableSensor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#Resource -->
+
+    <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#dateTimeStamp -->
+
+    <owl:Class rdf:about="http://www.w3.org/2001/XMLSchema#dateTimeStamp">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DateTimeDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#DateTimeDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#day"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#gDay"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#month"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#gMonth"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#year"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Description of date and time structured with separate values for the various elements of a calendar-clock system. The temporal reference system is fixed to Gregorian Calendar, and the range of year, month, day properties restricted to corresponding XML Schema types xsd:gYear, xsd:gMonth and xsd:gDay, respectively.</rdfs:comment>
+        <rdfs:label xml:lang="en">Date-Time description</rdfs:label>
+        <skos:definition xml:lang="en">Description of date and time structured with separate values for the various elements of a calendar-clock system. The temporal reference system is fixed to Gregorian Calendar, and the range of year, month, day properties restricted to corresponding XML Schema types xsd:gYear, xsd:gMonth and xsd:gDay, respectively.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DateTimeInterval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#DateTimeInterval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">DateTimeInterval is a subclass of ProperInterval, defined using the multi-element DateTimeDescription.</rdfs:comment>
+        <rdfs:label xml:lang="en">Date-time interval</rdfs:label>
+        <skos:definition xml:lang="en">DateTimeInterval is a subclass of ProperInterval, defined using the multi-element DateTimeDescription.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DayOfWeek -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#DayOfWeek">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">The day of week</rdfs:comment>
+        <rdfs:label xml:lang="en">Day of week</rdfs:label>
+        <skos:changeNote xml:lang="en">Remove enumeration from definition, in order to allow other days to be used when required in other calendars. 
+NOTE: existing days are still present as members of the class, but the class membership is now open. 
+
+In the original OWL-Time the following constraint appeared: 
+  owl:oneOf (
+      time:Monday
+      time:Tuesday
+      time:Wednesday
+      time:Thursday
+      time:Friday
+      time:Saturday
+      time:Sunday
+    ) ;</skos:changeNote>
+        <skos:definition xml:lang="en">The day of week</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Duration -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Duration">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#unitType"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#numericDuration"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Duration of a temporal extent expressed as a number scaled by a temporal unit</rdfs:comment>
+        <rdfs:label xml:lang="en">Time duration</rdfs:label>
+        <skos:definition xml:lang="en">Duration of a temporal extent expressed as a number scaled by a temporal unit</skos:definition>
+        <skos:note xml:lang="en">Alternative to time:DurationDescription to support description of a temporal duration other than using a calendar/clock system.</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DurationDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#DurationDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#days"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hours"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#minutes"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#months"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#seconds"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#weeks"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#years"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Description of temporal extent structured with separate values for the various elements of a calendar-clock system. The temporal reference system is fixed to Gregorian Calendar, and the range of each of the numeric properties is restricted to xsd:decimal</rdfs:comment>
+        <rdfs:label xml:lang="en">Duration description</rdfs:label>
+        <skos:definition xml:lang="en">Description of temporal extent structured with separate values for the various elements of a calendar-clock system. The temporal reference system is fixed to Gregorian Calendar, and the range of each of the numeric properties is restricted to xsd:decimal</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#GeneralDateTimeDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#GeneralDateTimeDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#unitType"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#dayOfWeek"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#monthOfYear"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#timeZone"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#day"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#dayOfYear"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hour"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#minute"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#month"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#second"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#week"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#year"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Description of date and time structured with separate values for the various elements of a calendar-clock system</rdfs:comment>
+        <rdfs:label xml:lang="en">Generalized date-time description</rdfs:label>
+        <skos:definition xml:lang="en">Description of date and time structured with separate values for the various elements of a calendar-clock system</skos:definition>
+        <skos:note rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Some combinations of properties are redundant - for example, within a specified :year if :dayOfYear is provided then :day and :month can be computed, and vice versa. Individual values should be consistent with each other and the calendar, indicated through the value of the :hasTRS property.</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#GeneralDurationDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#GeneralDurationDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hasTRS"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#days"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hours"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#minutes"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#months"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#seconds"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#weeks"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#years"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Description of temporal extent structured with separate values for the various elements of a calendar-clock system.</rdfs:comment>
+        <rdfs:label xml:lang="en">Generalized duration description</rdfs:label>
+        <skos:definition xml:lang="en">Description of temporal extent structured with separate values for the various elements of a calendar-clock system.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Instant -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">A temporal entity with zero extent or duration</rdfs:comment>
+        <rdfs:label xml:lang="en">Time instant</rdfs:label>
+        <skos:definition xml:lang="en">A temporal entity with zero extent or duration</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Interval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Interval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">A temporal entity with an extent or duration</rdfs:comment>
+        <rdfs:label xml:lang="en">Time interval</rdfs:label>
+        <skos:definition xml:lang="en">A temporal entity with an extent or duration</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#January -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#January">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#DateTimeDescription"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#month"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">--01</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">January</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:historyNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This class was present in the 2006 version of OWL-Time. It was presented as an example of how DateTimeDescription could be specialized, but does not belong in the revised ontology. </skos:historyNote>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#MonthOfYear -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#MonthOfYear">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#DateTimeDescription"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#day"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hour"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#minute"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#month"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#second"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#week"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#year"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The month of the year</rdfs:comment>
+        <rdfs:label xml:lang="en">Month of year</rdfs:label>
+        <skos:definition xml:lang="en">The month of the year</skos:definition>
+        <skos:editorialNote xml:lang="en">Feature at risk - added in 2017 revision, and not yet widely used. </skos:editorialNote>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#ProperInterval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#ProperInterval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#Interval"/>
+        <rdfs:comment xml:lang="en">A temporal entity with non-zero extent or duration, i.e. for which the value of the beginning and end are different</rdfs:comment>
+        <rdfs:label xml:lang="en">Proper interval</rdfs:label>
+        <skos:definition xml:lang="en">A temporal entity with non-zero extent or duration, i.e. for which the value of the beginning and end are different</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TRS -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TRS">
+        <rdfs:comment xml:lang="en">A temporal reference system, such as a temporal coordinate system (with an origin, direction, and scale), a calendar-clock combination, or a (possibly hierarchical) ordinal system. 
+
+This is a stub class, representing the set of all temporal reference systems.</rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal Reference System</rdfs:label>
+        <skos:definition xml:lang="en">A temporal reference system, such as a temporal coordinate system (with an origin, direction, and scale), a calendar-clock combination, or a (possibly hierarchical) ordinal system. 
+
+This is a stub class, representing the set of all temporal reference systems.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalDuration -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalDuration">
+        <rdfs:comment xml:lang="en">Time extent; duration of a time interval separate from its particular start position</rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal duration</rdfs:label>
+        <skos:definition xml:lang="en">Time extent; duration of a time interval separate from its particular start position</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalEntity -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#Instant"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#Interval"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">A temporal interval or instant.</rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal entity</rdfs:label>
+        <skos:definition xml:lang="en">A temporal interval or instant.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalPosition -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalPosition">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hasTRS"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A position on a time-line</rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal position</rdfs:label>
+        <skos:definition xml:lang="en">A position on a time-line</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalUnit -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalUnit">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+        <rdfs:comment xml:lang="en">A standard duration, which provides a scale factor for a time extent, or the granularity or precision for a time position.</rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal unit</rdfs:label>
+        <skos:changeNote xml:lang="en">Remove enumeration from definition, in order to allow other units to be used when required in other coordinate systems. 
+NOTE: existing units are still present as members of the class, but the class membership is now open. 
+
+In the original OWL-Time the following constraint appeared: 
+  owl:oneOf (
+      time:unitSecond
+      time:unitMinute
+      time:unitHour
+      time:unitDay
+      time:unitWeek
+      time:unitMonth
+      time:unitYear
+    ) ;</skos:changeNote>
+        <skos:definition xml:lang="en">A standard duration, which provides a scale factor for a time extent, or the granularity or precision for a time position.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TimePosition -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TimePosition">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2006/time#nominalPosition"/>
+                        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2006/time#numericPosition"/>
+                        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A temporal position described using either a (nominal) value from an ordinal reference system, or a (numeric) value in a temporal coordinate system. </rdfs:comment>
+        <rdfs:label xml:lang="en">Time position</rdfs:label>
+        <skos:definition xml:lang="en">A temporal position described using either a (nominal) value from an ordinal reference system, or a (numeric) value in a temporal coordinate system. </skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TimeZone -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TimeZone">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A Time Zone is a geographic region that uses a clock with a specified offset from UTC. The region and offset are specified by the locally recognised governing authority. </rdfs:comment>
+        <rdfs:label xml:lang="en">Time Zone</rdfs:label>
+        <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A Time Zone is a geographic region that uses a clock with a specified offset from UTC. The region and offset are specified by the locally recognised governing authority. </skos:definition>
+        <skos:historyNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In the original 2006 version of OWL-Time, the TimeZone class, with several properties corresponding to a specific model of time-zones, was defined in a separate namespace &quot;http://www.w3.org/2006/timezone#&quot;. 
+
+In the current version a class with same local name is put into the main OWL-Time namespace, removing the dependency on the external namespace. 
+
+An alignment axiom 
+	tzont:TimeZone rdfs:subClassOf time:TimeZone . 
+allows data encoded according to the previous version to be consistent with the updated ontology. </skos:historyNote>
+        <skos:scopeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In this implementation TimeZone has no properties defined. It should be thought of as an &apos;abstract&apos; superclass of all specific timezone implementations.</skos:scopeNote>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Year -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Year">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#DurationDescription"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#days"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hours"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#minutes"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#months"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#seconds"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#weeks"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#years"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Year duration</rdfs:comment>
+        <rdfs:label xml:lang="en">Year</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Year duration</skos:definition>
+        <skos:historyNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Year was proposed in the 2006 version of OWL-Time as an example of how DurationDescription could be specialized to allow for a duration to be restricted to a number of years. 
+
+It is deprecated in this edition of OWL-Time. </skos:historyNote>
+        <skos:prefLabel xml:lang="it">Anno</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">Année (calendrier)</skos:prefLabel>
+        <skos:prefLabel xml:lang="pt">Ano</skos:prefLabel>
+        <skos:prefLabel xml:lang="es">Año</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">Jaar</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">Jahr</skos:prefLabel>
+        <skos:prefLabel xml:lang="pl">Rok</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Year</skos:prefLabel>
+        <skos:prefLabel xml:lang="ru">Год</skos:prefLabel>
+        <skos:prefLabel xml:lang="ar">سنة</skos:prefLabel>
+        <skos:prefLabel xml:lang="ja">年</skos:prefLabel>
+        <skos:prefLabel xml:lang="zh">年</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#generalYear -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#generalYear">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Bed -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Bed">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Bed"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BedRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_KitchenCabinet -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_KitchenCabinet">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureNotOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenCabinet"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Experimenting with isPartOf .. more axioms .. will they increase computation time ? 
+If yes, then probably remove this &apos;isPartOf&apos; Object property</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_KitchenSinkOrHeat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_KitchenSinkOrHeat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureNotOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenSinkOrHeat"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Experimenting with isPartOf .. more axioms .. will they increase computation time ? 
+If yes, then probably remove this &apos;isPartOf&apos; Object property</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Shower -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Shower">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Shower"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TV -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TV">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureNotOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_B_TV"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TVCouch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TVCouch">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_LivingRoom"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Table -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Table">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Table"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TableX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TableX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_TableX"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_ToiletSeat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_ToiletSeat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+        <hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_BathRoom"/>
+        <isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_House -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_House">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Ambient"/>
+        <hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom"/>
+        <hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BedRoom"/>
+        <hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea"/>
+        <hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+        <hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom"/>
+        <hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom">
+        <isSpaceNearTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BedRoom"/>
+        <time:before rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Time_Now"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isNearTo sensors and furniture and room.. need to be done ?</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BedRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BedRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSpaceNearTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen">
+        <isSpaceNearTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom">
+        <isSpaceNearTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Room"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSpaceNearTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea"/>
+        <isSpaceNearTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+        <isSpaceNearTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Drinking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Drinking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Falling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Falling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_LyingDown -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_LyingDown">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Pouring -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Pouring">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingDown -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingDown">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingUp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingUp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_StandingUp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_StandingUp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Walking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Walking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Lying -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Lying">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanPosture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Sitting -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Sitting">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanPosture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Standing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Standing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanPosture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_B_TV -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_B_TV">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Brightness"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom"/>
+        <hasBrightnessIntValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasBrightnessIntValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2018-07-10 10:35:16.114</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ElikoDevice"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Future:
+
+Can be used as x axis data (along with y) .. that locates the &apos;Person&apos; &apos;isBeingIn&apos; a particular &apos;Room&apos;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisY -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisY">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ElikoDevice"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Future:
+
+Can be used as y axis data (along with x) .. that locates the &apos;Person&apos; &apos;isBeingIn&apos; a particular &apos;Room&apos;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisZ -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisZ">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ElikoDevice"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasElikoAxisIntValue rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</hasElikoAxisIntValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">For Example:
+Value above 10 means person standing
+Value equal or below 10 means person sitting
+
+Note:
+For Couch and TableSitting its useful but not for Bed(Out of Elicon coverage Area)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_BathRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_BathRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2018-07-10 10:35:16.117</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Bed -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Bed">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BedRoom"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2018-07-10 10:35:16.116</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Kitchen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Kitchen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2018-07-10 10:35:16.113</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenCabinet -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenCabinet">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2018-07-10 10:35:16.112</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenSinkOrHeat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenSinkOrHeat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_LivingRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_LivingRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2018-07-10 10:35:16.115</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Shower -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Shower">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Table -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Table">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-03-24 13:52:20.017</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_TableX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_TableX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorInRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea"/>
+        <hasMotionBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasMotionBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-03-24 13:52:20.014</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Drinking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Drinking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasGestureInWatchBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasGestureInWatchBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_FallingDown -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_FallingDown">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasGestureInWatchBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasGestureInWatchBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_HeartRate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_HeartRate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasHeartRateIntValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</hasHeartRateIntValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_LyingDown -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_LyingDown">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasGestureInWatchBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasGestureInWatchBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">For now this individual does not have influence on Person &apos;isOccupying&apos; Furniture</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Pouring -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Pouring">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasGestureInWatchBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasGestureInWatchBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingDown -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingDown">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasGestureInWatchBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasGestureInWatchBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingUp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingUp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasGestureInWatchBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasGestureInWatchBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">For now this individual does not have influence on Person &apos;isOccupying&apos; Furniture</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Walking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Walking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasGestureInWatchBoolValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</hasGestureInWatchBoolValue>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Time_Now -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Time_Now">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2018-07-10 10:35:14.492</hasTimeStamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#VS_W_StandingUp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#VS_W_StandingUp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#SmartWatch"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <isSensorWithThePerson rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+        <hasTimeStamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2004-04-12 13:20:15.5</hasTimeStamp>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Be careful here. 
+Might give a problem later on.
+
+The type called &apos;VirtualSensor&apos;
+
+If errors in the future: Perhaps this might be the source.</rdfs:comment>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
+    </rdf:Description>
+    <rdf:Description>
+        <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">--(0[1-9]|1[0-9]|20)(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
+    </rdf:Description>
+    <rdf:Description>
+        <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">---(0[1-9]|[1-9][0-9])(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#dateTimeStamp">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dateTimeStamp</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#generalYear">
+        <rdfs:label xml:lang="en">Generalized year</rdfs:label>
+        <rdfs:comment xml:lang="en">Year number - generalization of xsd:gYear, formulated as a text string with a pattern constraint to reproduce the same lexical form as gYear. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type.</rdfs:comment>
+        <skos:definition xml:lang="en">Year number - generalization of xsd:gYear, formulated as a text string with a pattern constraint to reproduce the same lexical form as gYear. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type.</skos:definition>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Ambient"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Sensor"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Brightness"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Temprature"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanGesture"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanPosture"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Bed"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_KitchenCabinet"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_KitchenSinkOrHeat"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Shower"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TV"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TVCouch"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_Table"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_TableX"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_F_ToiletSeat"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_House"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BathRoom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_BedRoom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_CorridorArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_Kitchen"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_LivingRoom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#A_R_TableArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Drinking"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Falling"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_LyingDown"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Pouring"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingDown"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingUp"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_StandingUp"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_Walking"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Lying"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Sitting"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Standing"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Human_Yusha"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_B_TV"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisX"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisY"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisZ"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_BathRoom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Bed"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Kitchen"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenCabinet"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_KitchenSinkOrHeat"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_LivingRoom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Shower"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_Table"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_M_TableX"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Drinking"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_FallingDown"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_HeartRate"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_LyingDown"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Pouring"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingDown"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingUp"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_Walking"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Time_Now"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#VS_W_StandingUp"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#f">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#val">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temporal relation with previous spatial frame</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isStillIn</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#EnvironmentalSensor"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasMotionBoolValue"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</swrl:argument2>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#before"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Time_Now"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasRoomTheSensor"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isStillIn"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person isUtilizing Furniture</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithTheFurniture"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#f"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureNotOccupiableByHuman"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#f"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasMotionBoolValue"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isUtilizing"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#f"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person isOccupying Furniture</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorWithTheFurniture"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#f"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#FurnitureOccupiableByHuman"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#f"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPosture"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Sitting"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasMotionBoolValue"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                                                <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isOccupying"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#f"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isIn and isStillIn</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person isBeingIn Room</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#Motion"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isSensorInRoom"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasMotionBoolValue"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                                <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isIn"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isStillIn"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isDetectedBy"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#r"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#ms"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person hasPosture Sitting</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasElikoAxisIntValue"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_E_AxisZ"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#val"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#val"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPosture"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Sitting"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">With gesture sittingDown</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person isDoingGesture SittingDown</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasGestureInWatchBoolValue"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingDown"/>
+                                <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isDoingGesture"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingDown"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPosture"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Sitting"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">with Gesture SittingUp</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person isDoingGesture SittingUp</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasGestureInWatchBoolValue"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#S_W_SittingUp"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#HumanIdentity"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#isDoingGesture"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_G_SittingUp"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#hasPosture"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#p"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlacingOntology#H_P_Sitting"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+

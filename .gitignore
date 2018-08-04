@@ -23,7 +23,8 @@
 hs_err_pid*
 
 *.iml
-
+*.DS_Store
+*.xml
 .idea
 .gradle
 /build
