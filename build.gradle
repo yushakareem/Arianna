@@ -19,6 +19,10 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    // Do not forget to add this path before compiling the gradle, otherwise we do not have AMOR or OWLOOP :)
+    flatDir {
+        dirs 'lib'
+    }
 }
 
 dependencies {
