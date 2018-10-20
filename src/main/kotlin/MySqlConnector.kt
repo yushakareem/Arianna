@@ -1,5 +1,8 @@
 import java.sql.*
 
+/**
+ *  This class helps in connecting with a MySQL DB and manipulate it.
+ */
 class MySqlConnector: MySqlConnectorInterface {
     override lateinit var connection: Connection
     override lateinit var statement: Statement

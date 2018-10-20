@@ -34,7 +34,8 @@ fun main(args: Array<String>) {
 //            )
 
 
-
 //    PO.createOrUpdateObjectPropertyStatement(statement)
 //    PO.saveOnto("src/main/resources/WorkingOntos/New.owl")
 }
+
+

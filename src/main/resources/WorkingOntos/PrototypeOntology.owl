@@ -2811,13 +2811,13 @@ The type called &apos;VirtualSensor&apos;
 If errors in the future: Perhaps this might be the source.</rdfs:comment>
     </owl:NamedIndividual>
     <rdf:Description>
-        <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">--(0[1-9]|1[0-9]|20)(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
+        <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
     </rdf:Description>
     <rdf:Description>
         <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">---(0[1-9]|[1-9][0-9])(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
     </rdf:Description>
     <rdf:Description>
-        <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
+        <xsd:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">--(0[1-9]|1[0-9]|20)(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?</xsd:pattern>
     </rdf:Description>
     
 

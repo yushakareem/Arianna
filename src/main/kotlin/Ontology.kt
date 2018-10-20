@@ -7,6 +7,11 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual
 
 
 /**
+ * Please explore these links, for a clear understanding of:
+ * (The idea of Ontology based on OWL and SWRL) https://dior.ics.muni.cz/~makub/owl/
+ * (Common mistakes while building an ontology) https://protege.stanford.edu/conference/2004/slides/6.1_Horridge_CommonErrorsInOWL.pdf
+ *
+ * This class helps in initializing ontologies and manipulating them.
  *
  * @param ontoRefName is the reference name that you would like to give to this ontology.
  * @param ontoFilePath is the location (path) to the .owl file.
@@ -27,7 +32,7 @@ class Ontology(ontoRefName: String, ontoFilePath: String, ontoIRI: String, buffe
         temporalOntoRef = OWLReferencesInterface.OWLReferencesContainer.newOWLReferenceFromFileWithPellet(owlTimeOntoRef, ontoFilePath, owlTimeOntoIRI, bufferingReasoner)
     }
 
-    //Function for adding an object(individual or data) .. create
+    //CREATE statements
     /**
      * Using the provided statement,
      * create dataProperty(verb in the statement) and data(data in the statement) linked to an individual(subject in the statement) in the ontology.
@@ -73,7 +78,7 @@ class Ontology(ontoRefName: String, ontoFilePath: String, ontoIRI: String, buffe
         }
     }
 
-    //READ inference
+    //READ inference from statements
     /**
      *  Read Inference of an <code>OntoStatement</code> whose verb is a DataProperty
      */
@@ -146,7 +151,7 @@ class Ontology(ontoRefName: String, ontoFilePath: String, ontoIRI: String, buffe
         return individual.getOWLName(namedIndiv)
     }
 
-    //UPDATE
+    //UPDATE statements
     /**
      *  Create or update data property statement.
      *  If the statement does not exist in the ontology, it gets created.
@@ -206,7 +211,7 @@ class Ontology(ontoRefName: String, ontoFilePath: String, ontoIRI: String, buffe
         }
     }
 
-    //DELETE statement
+    //DELETE statements
     /**
      * Breaks the dataPropertyStatement & deletes the object (object, i.e., data: string, bool or int)
      *
@@ -261,7 +266,6 @@ class Ontology(ontoRefName: String, ontoFilePath: String, ontoIRI: String, buffe
      * Save the Ontology
      */
     fun saveOnto(placeToSave: String) {
-
         this.notTemporalOntoRef.saveOntology(placeToSave)
     }
 }

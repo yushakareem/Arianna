@@ -6,6 +6,9 @@ import java.sql.Timestamp
  * A full statement is made up of the structure: 'subject' 'verb' 'object', as in English
  * analogous to the structure: 'Individual' 'Object property' 'Individual' OR 'Individual' 'Data property' 'Data(of some type)', in OWL.
  *
+ * What we consider as a statement is actually a 'declarative statement'.
+ * For a clear understanding explore: (Statements) https://philosophy.hku.hk/think/logic/statements.php
+ *
  * OntoStatement is (the child class) of IncompleteOntoStatement (the parent class).
  *
  * The idea is,
