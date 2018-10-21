@@ -25,7 +25,7 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             Class.forName("com.mysql.jdbc.Driver")
         } catch (e: ClassNotFoundException) {
-            println("Cannot find jdbc driver.")
+            error("Cannot find jdbc driver.")
         }
 
         try {
@@ -34,19 +34,19 @@ class MySqlConnector: MySqlConnectorInterface {
             try {
                 statement = connection.createStatement()
             } catch (e1: SQLException) {
-                println("Although DB already exist and connection is made, problem in creating SQL statement object.")
+                error("Although DB already exist and connection is made, problem in creating SQL statement object.")
             }
         } catch (e: SQLException) {
             try {
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/?autoReconnect=true&verifyServerCertificate=false&useSSL=true", username, password)
             } catch (e1: SQLException) {
-                println("Unable to connect with SQL server, Please check if server is running OR check username and password.")
+                error("Unable to connect with SQL server, Please check if server is running OR check username and password.")
             }
 
             try {
                 statement = connection.createStatement()
             } catch (e1: SQLException) {
-                println("Problem in creating SQL statement object.")
+                error("Problem in creating SQL statement object.")
             }
 
             try {
@@ -54,7 +54,7 @@ class MySqlConnector: MySqlConnectorInterface {
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/$databaseName?autoReconnect=true&verifyServerCertificate=false&useSSL=true", username, password)
                 println("Created DataBase with the name: $databaseName. Making connection now.")
             } catch (e1: SQLException) {
-                println("Problem in creating a new DataBase with the name: $databaseName.")
+                error("Problem in creating a new DataBase with the name: $databaseName.")
             }
 
         }
@@ -68,19 +68,19 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             resultSet?.close()
         } catch (e: SQLException) {
-            println("Problem in closing SQL resultSet.")
+            error("Problem in closing SQL resultSet.")
         }
 
         try {
             statement.close()
         } catch (e: SQLException) {
-            println("Problem in closing SQL statement.")
+            error("Problem in closing SQL statement.")
         }
 
         try {
             connection.close()
         } catch (e: SQLException) {
-            println("Problem in closing SQL connection.")
+            error("Problem in closing SQL connection.")
         }
     }
 
@@ -97,7 +97,7 @@ class MySqlConnector: MySqlConnectorInterface {
             val query = "select * from $tableName order by time desc limit 1"
             resultSet = statement.executeQuery(query)
         } catch (e: SQLException) {
-            println("MySQL Making query problem")
+            error("MySQL Making query problem")
         }
         return resultSet!!
     }
@@ -115,7 +115,7 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             resultSet = statement.executeQuery(query)
         } catch (e: SQLException) {
-            println("MySQL Making query problem")
+            error("MySQL Making query problem")
         }
         return resultSet!!
     }
@@ -134,7 +134,7 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             timestamp = resultSet!!.getTimestamp("time")
         } catch (e: SQLException) {
-            println("Problem in getting timestamp")
+            error("Problem in getting timestamp")
         }
         return timestamp
     }
@@ -153,7 +153,7 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             booleanValue = resultSet!!.getBoolean("value")
         } catch (e: SQLException) {
-            println("Problem in getting booleanValue")
+            error("Problem in getting booleanValue")
         }
         return booleanValue
     }
@@ -172,7 +172,7 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             integerValue = resultSet!!.getInt("value")
         } catch (e: SQLException) {
-            println("Problem in getting booleanValue")
+            error("Problem in getting booleanValue")
         }
         return integerValue
     }
@@ -192,7 +192,7 @@ class MySqlConnector: MySqlConnectorInterface {
             preparedStmt?.setBoolean(2, booleanValue)
             preparedStmt?.execute()
         } catch (e: SQLException) {
-            println("Problem in inserting timestamp and booleanValue in the table: $tableName")
+            error("Problem in inserting timestamp and booleanValue in the table: $tableName")
         }
     }
 
@@ -211,7 +211,7 @@ class MySqlConnector: MySqlConnectorInterface {
             preparedStmt?.setInt(2, integerValue)
             preparedStmt?.execute()
         } catch (e: SQLException) {
-            println("Problem in inserting timestamp and integerValue in the table: $tableName")
+            error("Problem in inserting timestamp and integerValue in the table: $tableName")
         }
     }
 
@@ -227,7 +227,7 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             resultSet = statement.executeQuery(query)
         } catch (e: SQLException) {
-            println("MySQL Making query problem")
+            error("MySQL Making query problem")
         }
 
         var numberOfRows = 0
@@ -235,7 +235,7 @@ class MySqlConnector: MySqlConnectorInterface {
             try {
                 numberOfRows = resultSet!!.getInt("rows")
             } catch (e: SQLException) {
-                println("MySQL getting Item TimeStamp/Value problem")
+                error("MySQL getting Item TimeStamp/Value problem")
             }
         }
         return numberOfRows
