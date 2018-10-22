@@ -1,8 +1,3 @@
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.rxkotlin.toObservable
-import it.emarolab.owloop.aMORDescriptor.utility.individual.MORFullIndividual
-import openllet.shared.tools.Log
-
 fun main(args: Array<String>) {
 
     val PO = Ontology(
@@ -12,7 +7,7 @@ fun main(args: Array<String>) {
             true
     )
 
-    println(PO.notTemporalOntoRef.useBufferingReasoner())
+    println(PO.getOntologyRef().useBufferingReasoner())
 //    val newOnto = Ontology(
 //            "New",
 //            "src/main/resources/WorkingOntos/New.owl",
@@ -20,15 +15,15 @@ fun main(args: Array<String>) {
 //            true
 //    )
 
-    val statement = OntoStatement("TI_A", "isReally","Crazy")//.assignParticularOntoRef(PO.notTemporalOntoRef,PO.temporalOntoRef,PO.notTemporalOntoRef)
-    //val incompState = IncompleteOntoStatement("TI_A","before").assignParticularOntoRef(PO.notTemporalOntoRef,PO.temporalOntoRef,PO.notTemporalOntoRef)
-    //val particularStatement = OntoStatement("TI_A","before","TI_B").assignParticularOntoRef(PO.notTemporalOntoRef,PO.temporalOntoRef,PO.notTemporalOntoRef)
+    val statement = OntoStatement("TI_A", "isReally","Crazy")//.assignParticularOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
+    //val incompState = IncompleteOntoStatement("TI_A","before").assignParticularOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
+    //val particularStatement = OntoStatement("TI_A","before","TI_B").assignParticularOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
 
 
 //    val list = listOf("Aeroplane","Bike","crazy","greedy","Humble","Hungry","Light","Poor")
 //    list.toObservable()
 //            .subscribeBy (
-//                onNext = { PO.deleteObject(it,PO.notTemporalOntoRef) },
+//                onNext = { PO.deleteObject(it,PO.ontoRef) },
 //                onError = { it.printStackTrace() },
 //                onComplete = { println("Done!") }
 //            )
