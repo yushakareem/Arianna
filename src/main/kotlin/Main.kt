@@ -1,5 +1,6 @@
 fun main(args: Array<String>) {
 
+
     val PO = Ontology(
             "PO",
             "src/main/resources/WorkingOntos/PrototypeOntology.owl",
@@ -7,7 +8,10 @@ fun main(args: Array<String>) {
             true
     )
 
-    println(PO.getOntologyRef().useBufferingReasoner())
+
+    val saveNewInSrc = "src/main/resources/WorkingOntos/New.owl"
+    val saveNewInDesktop = "~/Desktop/New.owl"
+
 //    val newOnto = Ontology(
 //            "New",
 //            "src/main/resources/WorkingOntos/New.owl",
@@ -15,9 +19,10 @@ fun main(args: Array<String>) {
 //            true
 //    )
 
-    val statement = OntoStatement("TI_A", "isReally","Crazy")//.assignParticularOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
-    //val incompState = IncompleteOntoStatement("TI_A","before").assignParticularOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
-    //val particularStatement = OntoStatement("TI_A","before","TI_B").assignParticularOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
+    val statement = ObjectPropertyStatement("TI_A", "isReally","Incredible")//.assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
+    //val statement2 = DataPropertyStatement("TI_A", "isReally","Crazy")
+    //val incompState = IncompleteStatement("TI_A","before").assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
+    //val particularStatement = ObjectPropertyStatement("TI_A","before","TI_B").assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
 
 
 //    val list = listOf("Aeroplane","Bike","crazy","greedy","Humble","Hungry","Light","Poor")
@@ -29,8 +34,10 @@ fun main(args: Array<String>) {
 //            )
 
 
-//    PO.createOrUpdateObjectPropertyStatement(statement)
-//    PO.saveOnto("src/main/resources/WorkingOntos/New.owl")
+//    PO.createOrUpdateStatement(statement,true)
+    PO.deleteVerbObjectProperty(statement)
+
+    PO.saveOnto(PO.getOntoFilePath())
 }
 
 
