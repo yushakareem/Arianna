@@ -1,17 +1,26 @@
 import it.emarolab.amor.owlInterface.OWLReferences
 
+/**
+ * An ObjectPropertyStatement is made up of the structure: 'subject' 'verb' 'object'.
+ * Where, 'subject' is an Individual, 'verb' is an ObjectProperty and 'object' is an Individual in the ontology.
+ */
 open class ObjectPropertyStatement: IncompleteStatement {
 
     var objectAsString: String
     lateinit var ontoRefForObject: OWLReferences
 
+    /**
+     * Constructor used when the statement's 'verb' is an ObjectProperty and 'object' is an Individual.
+     */
     constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsString: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
         this.subjectAsOwlIndividual = subjectAsOwlIndividual
         this.verbAsOwlProperty = verbAsOwlProperty
         this.objectAsString = objectAsString
     }
-
     /**
+     * Assign special OntoRef for Subject, Verb, Object.
+     * Useful when multiple ontologies are merged in one ontology.
+     * For example: (User defined ontology + OWL time) in a single ontology.
      * @return ObjectPropertyStatement
      */
      fun assignSpecialOntoRef(ontoRefForSubject: OWLReferences, ontoRefForVerb: OWLReferences, ontoRefForObject: OWLReferences): ObjectPropertyStatement {
@@ -23,10 +32,6 @@ open class ObjectPropertyStatement: IncompleteStatement {
         return this
     }
 
-    /**
-     * Overriding parent method
-     * @return Boolean
-     */
     override fun isMadeOfSpecialOntoRef(): Boolean {
 
         return madeOfSpecialOntoRef
@@ -41,7 +46,10 @@ open class ObjectPropertyStatement: IncompleteStatement {
 
         return ontoRefForVerb
     }
-
+    /**
+     * Returns special OntoRef of the object in the statement.
+     * @return OWLReferences
+     */
     fun getSpecialObjectOntoRef(): OWLReferences {
 
         return ontoRefForObject
@@ -56,7 +64,10 @@ open class ObjectPropertyStatement: IncompleteStatement {
 
         return verbAsOwlProperty
     }
-
+    /**
+     * Returns the object in the statement as a string.
+     * @return String
+     */
     fun getObject(): String {
 
         return objectAsString
