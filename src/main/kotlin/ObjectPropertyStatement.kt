@@ -6,16 +6,16 @@ import it.emarolab.amor.owlInterface.OWLReferences
  */
 open class ObjectPropertyStatement: IncompleteStatement {
 
-    var objectAsString: String
+    var objectAsOwlIndividual: String
     lateinit var ontoRefForObject: OWLReferences
 
     /**
      * Constructor used when the statement's 'verb' is an ObjectProperty and 'object' is an Individual.
      */
-    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsString: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsOwlIndividual: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
         this.subjectAsOwlIndividual = subjectAsOwlIndividual
         this.verbAsOwlProperty = verbAsOwlProperty
-        this.objectAsString = objectAsString
+        this.objectAsOwlIndividual = objectAsOwlIndividual
     }
     /**
      * Assign special OntoRef for Subject, Verb, Object.
@@ -70,6 +70,6 @@ open class ObjectPropertyStatement: IncompleteStatement {
      */
     fun getObject(): String {
 
-        return objectAsString
+        return objectAsOwlIndividual
     }
 }

@@ -1,3 +1,6 @@
+import java.sql.Timestamp
+import java.util.concurrent.TimeUnit
+
 fun main(args: Array<String>) {
 
 
@@ -19,25 +22,57 @@ fun main(args: Array<String>) {
 //            true
 //    )
 
-    val statement = ObjectPropertyStatement("TI_A", "isReally","Incredible")//.assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
-    //val statement2 = DataPropertyStatement("TI_A", "isReally","Crazy")
-    //val incompState = IncompleteStatement("TI_A","before").assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
-    //val particularStatement = ObjectPropertyStatement("TI_A","before","TI_B").assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
-
+    val statement = ObjectPropertyStatement("TI_A", "isCrazy","Incredible")//.assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
+    val incompState = IncompleteStatement("TI_A","before").assignSpecialOntoRef(PO.getOntoRef(),PO.getTemporalOntoRef())
+    val dpStatement = DataPropertyStatement("TI_A", "hasTemprature",999.0)
+    val incomp = IncompleteStatement("TI_A", "hasTemp")
 
 //    val list = listOf("Aeroplane","Bike","crazy","greedy","Humble","Hungry","Light","Poor")
 //    list.toObservable()
 //            .subscribeBy (
-//                onNext = { PO.deleteObject(it,PO.ontoRef) },
+//                onNext = { PO.removeObjectFromOnto(it,PO.ontoRef) },
 //                onError = { it.printStackTrace() },
 //                onComplete = { println("Done!") }
 //            )
 
+//    PO.addOrUpdateToOnto(statement,true)
+//    PO.addOrUpdateToOnto(dpStatement)
 
-//    PO.createOrUpdateStatement(statement,true)
-    PO.deleteVerbObjectProperty(statement)
+//    val a = PO.readInferenceDataPropertyStatement(incomp)
+//    println("======CHECK====> $a")
 
     PO.saveOnto(PO.getOntoFilePath())
 }
 
 
+//    val a = "1"
+//    println("====== CurrentTime: $a")
+//
+//    var check = a.matches("(\\d+\\-\\d+\\-\\d+\\ \\d+\\:\\d+\\:\\d+\\.\\d+)?".toRegex())
+//    println("====== It is timestamp style: $check")
+
+
+//val a = PO.inferFromOntoToReturnDPStatement(incomp)
+//val s = a.getSubject()
+//val v = a.getVerb()
+//print(a.getObjectBooleanData())
+//
+//println("$s, $v, ")
+//when {
+//    a.isObjectAsBoolean() -> {
+//        print(a.getObjectBooleanData())
+//        println("====1")
+//    }
+//    a.isObjectAsTimestamp() -> {
+//        print(a.getObjectTimestampData())
+//        println("====2")
+//    }
+//    a.isObjectAsDouble() -> {
+//        print(a.getObjectDoubleData())
+//        println("====3")
+//    }
+//    a.isObjectAsString() -> {
+//        print(a.getObjectStringData())
+//        println("====4")
+//    }
+//}

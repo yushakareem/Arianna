@@ -1,50 +1,53 @@
 import it.emarolab.amor.owlInterface.OWLReferences
+import org.mindswap.pellet.utils.Bool
 import java.sql.Timestamp
 
 /**
  * A DataPropertyStatement is made up of the structure: 'subject' 'verb' 'object'.
  * Where, 'subject' is an Individual, 'verb' is an ObjectProperty and 'object' is data in the ontology.
+ *
+ * @return DataPropertyStatement
  */
 class DataPropertyStatement: IncompleteStatement {
 
-    lateinit var objectAsString: String
-    lateinit var objectAsTimestamp: Timestamp
-    var objectAsInteger: Int = 0
-    var objectAsBoolean: Boolean = false
+    lateinit var objectAsStringData: String
+    lateinit var objectAsTimestampData: Timestamp
+    var objectAsDoubleData: Double = 0.0
+    var objectAsBooleanData: Boolean = false
 
     lateinit var ontoRefForObject: OWLReferences
 
     var madeWithObjectAsString: Boolean = false
     var madeWithObjectAsTimestamp: Boolean = false
-    var madeWithObjectAsInteger: Boolean = false
+    var madeWithObjectAsDouble: Boolean = false
     var madeWithObjectAsBoolean: Boolean = false
 
     /**
      * Constructor used when the statement's 'verb' is a DataProperty and 'object' is String data.
      */
-    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsString: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
-        this.objectAsString = objectAsString
+    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsStringData: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+        this.objectAsStringData = objectAsStringData
         this.madeWithObjectAsString = true
     }
     /**
      * Constructor used when the statement's 'verb' is a DataProperty and 'object' is Timestamp data.
      */
     constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsTimestampData: Timestamp) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
-        this.objectAsTimestamp = objectAsTimestampData
+        this.objectAsTimestampData = objectAsTimestampData
         this.madeWithObjectAsTimestamp = true
     }
     /**
-     * Constructor used when the statement's 'verb' is a DataProperty and 'object' is Integer data.
+     * Constructor used when the statement's 'verb' is a DataProperty and 'object' is Double data.
      */
-    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsIntegerData: Int) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
-        this.objectAsInteger = objectAsIntegerData
-        this.madeWithObjectAsInteger = true
+    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsDoubleData: Double) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+        this.objectAsDoubleData = objectAsDoubleData
+        this.madeWithObjectAsDouble = true
     }
     /**
      * Constructor used when the statement's 'verb' is a DataProperty and 'object' is Boolean data.
      */
     constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsBooleanData: Boolean) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
-        this.objectAsBoolean = objectAsBooleanData
+        this.objectAsBooleanData = objectAsBooleanData
         this.madeWithObjectAsBoolean = true
     }
     /**
@@ -65,6 +68,18 @@ class DataPropertyStatement: IncompleteStatement {
     override fun isMadeOfSpecialOntoRef(): Boolean {
 
         return madeOfSpecialOntoRef
+    }
+    fun isObjectAsString(): Boolean {
+        return madeWithObjectAsString
+    }
+    fun isObjectAsBoolean(): Boolean {
+        return madeWithObjectAsBoolean
+    }
+    fun isObjectAsTimestamp(): Boolean {
+        return madeWithObjectAsTimestamp
+    }
+    fun isObjectAsDouble(): Boolean {
+        return madeWithObjectAsDouble
     }
 
     override fun getSpecialSubjectOntoRef(): OWLReferences {
@@ -97,32 +112,32 @@ class DataPropertyStatement: IncompleteStatement {
      * Returns the object in the statement as a String.
      * @return String
      */
-    fun getObjectAsStr(): String {
+    fun getObjectStringData(): String {
 
-        return objectAsString
+        return objectAsStringData
     }
     /**
      * Returns the object in the statement as a Boolean.
      * @return Boolean
      */
-    fun getObjectAsBool(): Boolean {
+    fun getObjectBooleanData(): Boolean {
 
-        return objectAsBoolean
+        return objectAsBooleanData
     }
     /**
-     * Returns the object in the statement as an Integer.
-     * @return Int
+     * Returns the object in the statement as an Double.
+     * @return Double
      */
-    fun getObjectAsInt(): Int {
+    fun getObjectDoubleData(): Double {
 
-        return objectAsInteger
+        return objectAsDoubleData
     }
     /**
      * Returns the object in the statement as a Timestamp.
      * @return Timestamp
      */
-    fun getObjectAsTimestmp(): Timestamp {
+    fun getObjectTimestampData(): Timestamp {
 
-        return objectAsTimestamp
+        return objectAsTimestampData
     }
 }
