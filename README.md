@@ -8,10 +8,10 @@ Arianna enables human activity recognition by using a network of ontologies that
 Keeping these three points in mind. The idea is to eventually have a system (Arianna) that can be used by developers to quickly build smart environments, i.e., the developers can deploy physical sensors in the environment; then,
 1. build or modify available ontologies using protege, and
 2. link the ontologies together to form a network of ontologies.
- 
-Afterwhich the developer runs the system and voila! human activity recognition and context-awareness begins, i.e., sensors data aquisition, manipulation of knowledge within the network of ontologies and reasoning based on the sensors data in a multi-threaded way. In essence the developer is free from the third step mentioned in the previous paragraph and has explainable AI (Artificial Intelligence/Inference).
 
-Furthermore, Arianna becomes a base on which further progress can be made with respect to, taking uncertainty into account via integration with fuzzy and/or probabilistic approaches.
+Afterwhich the developer runs the system and voila! human activity recognition and context-awareness begins. That is, aquisition of sensors data from DB, manipulation of knowledge within the network of ontologies and reasoning based on that knowledge in a multi-threaded way. In essence, the developer is free from developing the third step as mentioned in the first paragraph.
+
+Furthermore, Arianna is intended, to be an explainable AI (Artificial Intelligence/Inference) system and to be a base on which further progress can be made with respect to, nonmonotonic reasoning via integration with fuzzy and/or probabilistic approaches.
 
 ## Links for study ##
 
