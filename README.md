@@ -17,6 +17,8 @@ Furthermore, Arianna is intended, to be an explainable AI (Artificial Intelligen
 
 * Protege [documentation](http://protegeproject.github.io/protege/).
 * [Fundamentals](https://github.com/protegeproject/swrlapi/wiki/SWRLLanguageFAQ#Does_SWRL_support_Negation_as_Failure) of SWRL shows the basics of building rules and mentions the idea of negation. Further discussions on negations in SWRL rules can be found [here](http://protege-project.136.n4.nabble.com/Negation-in-SWRL-rules-td4664123.html) and Built-ins for SWRL can be found [here](http://www.daml.org/swrl/proposal/builtins.html).
+* Simplified explanation of [fuzzy vs probability](http://goodmath.scientopia.org/2011/02/02/fuzzy-logic-vs-probability/) theory with examples.
+	* In essence probability theory deals with partial knowledge and fuzzy theory deals with partial truth. Both are closely related but the key difference is *meaning*
 
 ## Contact for issues ##
 
