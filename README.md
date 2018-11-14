@@ -13,6 +13,8 @@ Afterwhich the developer runs the system and voila! human activity recognition a
 
 Furthermore, Arianna is intended, to be an explainable AI (Artificial Intelligence/Inference) system and to be a base on which further progress can be made with respect to, nonmonotonic reasoning via integration with fuzzy and/or probabilistic approaches.
 
+In near future, focus will also be given on recognizing complex ADLs, which are characterized by large intra- and inter-personal variability of execution.
+
 ## Links for study ##
 
 * Protege [documentation](http://protegeproject.github.io/protege/).
