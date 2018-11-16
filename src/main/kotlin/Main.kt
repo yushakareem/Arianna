@@ -5,8 +5,7 @@
 fun main(args: Array<String>) {
 
     // Initializing database
-    val db = MySqlConnector()
-    db.connectToDBorCreateNewDB("AriannaDB", "root", "nepo")
+    val db = MySqlConnector("AriannaDB", "root", "nepo")
 
     // Initializing ontologies
     val placeOnto = Ontology(

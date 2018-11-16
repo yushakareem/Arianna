@@ -3,13 +3,14 @@ import java.sql.*
 /**
  *  This class helps in connecting with a MySQL DB and manipulate it.
  */
-class MySqlConnector: MySqlConnectorInterface {
-    override lateinit var connection: Connection
-    override lateinit var statement: Statement
-    override var resultSet: ResultSet? = null
-    override lateinit var timestamp: Timestamp
-    override var booleanValue: Boolean = false //primitives have to be initialized
-    override var integerValue: Int = 0 //primitives have to be initialized
+class MySqlConnector(private val databaseName: String, private val username: String, private val password: String): MySqlConnectorInterface {
+
+    private lateinit var connection: Connection
+    private lateinit var statement: Statement
+    private var resultSet: ResultSet? = null
+    private lateinit var timestamp: Timestamp
+    private var booleanValue: Boolean = false //primitives have to be initialized
+    private var integerValue: Int = 0 //primitives have to be initialized
 
     /**
      * Looks for the JDBC driver, if it exists, then makes connection with the database.
@@ -21,7 +22,7 @@ class MySqlConnector: MySqlConnectorInterface {
      * @param username  The <code>String</code> of username of SQL server.
      * @param password  The <code>String</code> of password of SQL server.
      */
-    override fun connectToDBorCreateNewDB(databaseName: String, username: String, password: String) {
+    override fun connectToDBorCreateNewDB() {
         try {
             Class.forName("com.mysql.jdbc.Driver")
         } catch (e: ClassNotFoundException) {
@@ -93,11 +94,11 @@ class MySqlConnector: MySqlConnectorInterface {
      * @return resultSet The <code>ResultSet Object</code> that holds the data read from the table.
      */
     override fun readLatestRow(tableName: String): ResultSet {
+        val query = "select * from $tableName order by time desc limit 1"
         try {
-            val query = "select * from $tableName order by time desc limit 1"
             resultSet = statement.executeQuery(query)
         } catch (e: SQLException) {
-            error("MySQL Making query problem")
+            error("Please check the 'table name' in database.")
         }
         return resultSet!!
     }
@@ -115,7 +116,7 @@ class MySqlConnector: MySqlConnectorInterface {
         try {
             resultSet = statement.executeQuery(query)
         } catch (e: SQLException) {
-            error("MySQL Making query problem")
+            error("Please check the 'table name' or 'row number' in database.")
         }
         return resultSet!!
     }
