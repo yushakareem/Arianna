@@ -6,8 +6,8 @@ import it.emarolab.amor.owlInterface.OWLReferences
  */
 open class ObjectPropertyStatement: IncompleteStatement {
 
-    var objectAsOwlIndividual: String
-    lateinit var ontoRefForObject: OWLReferences
+    private var objectAsOwlIndividual: String
+    private lateinit var specialOntoRefForObject: OWLReferences
 
     /**
      * Constructor used when the statement's 'verb' is an ObjectProperty and 'object' is an Individual.
@@ -23,28 +23,28 @@ open class ObjectPropertyStatement: IncompleteStatement {
      * For example: (User defined ontology + OWL time) in a single ontology.
      * @return ObjectPropertyStatement
      */
-     fun assignSpecialOntoRef(ontoRefForSubject: OWLReferences, ontoRefForVerb: OWLReferences, ontoRefForObject: OWLReferences): ObjectPropertyStatement {
-        this.ontoRefForSubject = ontoRefForSubject
-        this.ontoRefForVerb = ontoRefForVerb
-        this.ontoRefForObject = ontoRefForObject
+     fun assignSpecialOntoRef(specialOntoRefForSubject: OWLReferences, specialOntoRefForVerb: OWLReferences, specialOntoRefForObject: OWLReferences): ObjectPropertyStatement {
+        this.specialOntoRefForSubject = specialOntoRefForSubject
+        this.specialOntoRefForVerb = specialOntoRefForVerb
+        this.specialOntoRefForObject = specialOntoRefForObject
         this.madeOfSpecialOntoRef = true
 
         return this
     }
 
-    override fun isMadeOfSpecialOntoRef(): Boolean {
+    override fun hasSpecialOntoRef(): Boolean {
 
         return madeOfSpecialOntoRef
     }
 
     override fun getSpecialSubjectOntoRef(): OWLReferences {
 
-        return ontoRefForSubject
+        return specialOntoRefForSubject
     }
 
     override fun getSpecialVerbOntoRef(): OWLReferences {
 
-        return ontoRefForVerb
+        return specialOntoRefForVerb
     }
     /**
      * Returns special OntoRef of the object in the statement.
@@ -52,7 +52,7 @@ open class ObjectPropertyStatement: IncompleteStatement {
      */
     fun getSpecialObjectOntoRef(): OWLReferences {
 
-        return ontoRefForObject
+        return specialOntoRefForObject
     }
 
     override fun getSubject(): String {

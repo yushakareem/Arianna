@@ -1,78 +1,39 @@
-import java.sql.Timestamp
-import java.util.concurrent.TimeUnit
+/**
+ *  This is the story board.
+ */
 
 fun main(args: Array<String>) {
 
+    // Initializing database
+    val db = MySqlConnector()
+    db.connectToDBorCreateNewDB("AriannaDB", "root", "nepo")
 
-    val PO = Ontology(
-            "PO",
-            "src/main/resources/WorkingOntos/PrototypeOntology.owl",
-            "http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology",
+    // Initializing ontologies
+    val placeOnto = Ontology(
+            "po",
+            "src/main/resources/WorkingOntos/PlaceOntology.owl",
+            "http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology",
             true
     )
 
+    val kitchenActOnto = Ontology(
+            "kao",
+            "src/main/resources/WorkingOntos/KitchenActivityOntology.owl",
+            "http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology",
+            true
+    )
 
-    val saveNewInSrc = "src/main/resources/WorkingOntos/New.owl"
-    val saveNewInDesktop = "~/Desktop/New.owl"
+    val livingRoomActOnto = Ontology(
+            "lrao",
+            "src/main/resources/WorkingOntos/LivingRoomActivityOntology.owl",
+            "http://www.semanticweb.org/emaroLab/YushaKareem/LivingRoomActivityOntology",
+            true
+    )
 
-//    val newOnto = Ontology(
-//            "New",
-//            "src/main/resources/WorkingOntos/New.owl",
-//            "http://www.semanticweb.org/emaroLab/YushaKareem/New",
-//            true
-//    )
+    // Initializing ontology links
+    val placeOntoLinks = OntologyLinksBuilder(placeOnto)
 
-    val statement = ObjectPropertyStatement("TI_A", "isCrazy","Incredible")//.assignSpecialOntoRef(PO.ontoRef,PO.temporalOntoRef,PO.ontoRef)
-    val incompState = IncompleteStatement("TI_A","before").assignSpecialOntoRef(PO.getOntoRef(),PO.getTemporalOntoRef())
-    val dpStatement = DataPropertyStatement("TI_A", "hasTemprature",999.0)
-    val incomp = IncompleteStatement("TI_A", "hasTemp")
+    val test = ObjectPropertyStatement("Yusha","isin","theToilet")
 
-//    val list = listOf("Aeroplane","Bike","crazy","greedy","Humble","Hungry","Light","Poor")
-//    list.toObservable()
-//            .subscribeBy (
-//                onNext = { PO.removeObjectFromOnto(it,PO.ontoRef) },
-//                onError = { it.printStackTrace() },
-//                onComplete = { println("Done!") }
-//            )
-
-//    PO.addOrUpdateToOnto(statement,true)
-//    PO.addOrUpdateToOnto(dpStatement)
-
-//    val a = PO.readInferenceDataPropertyStatement(incomp)
-//    println("======CHECK====> $a")
-
-    PO.saveOnto(PO.getOntoFilePath())
+    //po.saveOnto(po.getOntoFilePath())
 }
-
-
-//    val a = "1"
-//    println("====== CurrentTime: $a")
-//
-//    var check = a.matches("(\\d+\\-\\d+\\-\\d+\\ \\d+\\:\\d+\\:\\d+\\.\\d+)?".toRegex())
-//    println("====== It is timestamp style: $check")
-
-
-//val a = PO.inferFromOntoToReturnDPStatement(incomp)
-//val s = a.getSubject()
-//val v = a.getVerb()
-//print(a.getObjectBooleanData())
-//
-//println("$s, $v, ")
-//when {
-//    a.isObjectAsBoolean() -> {
-//        print(a.getObjectBooleanData())
-//        println("====1")
-//    }
-//    a.isObjectAsTimestamp() -> {
-//        print(a.getObjectTimestampData())
-//        println("====2")
-//    }
-//    a.isObjectAsDouble() -> {
-//        print(a.getObjectDoubleData())
-//        println("====3")
-//    }
-//    a.isObjectAsString() -> {
-//        print(a.getObjectStringData())
-//        println("====4")
-//    }
-//}

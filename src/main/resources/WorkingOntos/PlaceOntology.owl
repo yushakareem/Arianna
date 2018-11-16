@@ -45,7 +45,6 @@ V: stands for virtual</rdfs:comment>
 
 Ontology engineering by Simon J D Cox</skos:historyNote>
         <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
-        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
         <rdfs:comment>Yusha Notes:
 
 Object Properties: &apos;The&apos; is added in places where it feels necessary.
@@ -53,6 +52,7 @@ Object Properties: &apos;The&apos; is added in places where it feels necessary.
 Data Properties: Cannot be influced by SWRL rules (true in the sense that they do not present themselves in the ontology after the reasoner runs), whereas SWRL rules can be influenced by data properties.
 
 OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
+        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
         <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
         <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
         <terms:contributor rdf:resource="mailto:chris.little@metoffice.gov.uk"/>

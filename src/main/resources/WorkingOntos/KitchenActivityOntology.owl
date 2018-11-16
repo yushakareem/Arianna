@@ -46,7 +46,6 @@ V: stands for virtual</rdfs:comment>
 
 Ontology engineering by Simon J D Cox</skos:historyNote>
         <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
-        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
         <rdfs:comment>Yusha Notes:
 
 Object Properties: &apos;The&apos; is added in places where it feels necessary.
@@ -54,6 +53,7 @@ Object Properties: &apos;The&apos; is added in places where it feels necessary.
 Data Properties: Cannot be influced by SWRL rules (true in the sense that they do not present themselves in the ontology after the reasoner runs), whereas SWRL rules can be influenced by data properties.
 
 OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
+        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
         <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
         <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
         <terms:contributor rdf:resource="mailto:chris.little@metoffice.gov.uk"/>
@@ -681,6 +681,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsBrightness -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsBrightness">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Brightness"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
         <rdfs:comment>new in Nov 2018</rdfs:comment>
@@ -691,6 +692,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsGesture -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsGesture">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -700,6 +702,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsHeartrate -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsHeartrate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
         <rdfs:comment>new in Nov 2018</rdfs:comment>
@@ -710,6 +713,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsMotion -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsMotion">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
@@ -719,6 +723,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasLocation -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasLocation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -738,6 +743,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasTemprature -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasTemprature">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Temprature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
@@ -757,6 +763,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasZaxisValue -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasZaxisValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#ElikoDevice"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
@@ -1244,7 +1251,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology#S2">
         <time:before rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology#S3"/>
-        <PrototypeOntology:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</PrototypeOntology:hasState>
+        <PrototypeOntology:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</PrototypeOntology:hasState>
         <PrototypeOntology:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26-10-2018 14:16:17.456</PrototypeOntology:hasTimestamp>
     </owl:NamedIndividual>
     
@@ -1253,7 +1260,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology#S3 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology#S3">
-        <PrototypeOntology:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</PrototypeOntology:hasState>
+        <PrototypeOntology:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</PrototypeOntology:hasState>
         <PrototypeOntology:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26-10-2018 14:16:17.456</PrototypeOntology:hasTimestamp>
     </owl:NamedIndividual>
     
@@ -1818,6 +1825,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
         <PrototypeOntology:isPartOfStatement rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology#S2"/>
         <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenCabinet"/>
+        <PrototypeOntology:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</PrototypeOntology:detectsMotion>
     </owl:NamedIndividual>
     
 
@@ -1828,6 +1836,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
         <PrototypeOntology:isPartOfStatement rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology#S3"/>
         <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrHeat"/>
+        <PrototypeOntology:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</PrototypeOntology:detectsMotion>
     </owl:NamedIndividual>
     
 

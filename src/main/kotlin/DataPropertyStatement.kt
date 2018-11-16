@@ -1,5 +1,4 @@
 import it.emarolab.amor.owlInterface.OWLReferences
-import org.mindswap.pellet.utils.Bool
 import java.sql.Timestamp
 
 /**
@@ -10,17 +9,17 @@ import java.sql.Timestamp
  */
 class DataPropertyStatement: IncompleteStatement {
 
-    lateinit var objectAsStringData: String
-    lateinit var objectAsTimestampData: Timestamp
-    var objectAsDoubleData: Double = 0.0
-    var objectAsBooleanData: Boolean = false
+    private lateinit var objectAsStringData: String
+    private lateinit var objectAsTimestampData: Timestamp
+    private var objectAsDoubleData: Double = 0.0
+    private var objectAsBooleanData: Boolean = false
 
-    lateinit var ontoRefForObject: OWLReferences
+    private lateinit var ontoRefForObject: OWLReferences
 
-    var madeWithObjectAsString: Boolean = false
-    var madeWithObjectAsTimestamp: Boolean = false
-    var madeWithObjectAsDouble: Boolean = false
-    var madeWithObjectAsBoolean: Boolean = false
+    private var madeWithObjectAsString: Boolean = false
+    private var madeWithObjectAsTimestamp: Boolean = false
+    private var madeWithObjectAsDouble: Boolean = false
+    private var madeWithObjectAsBoolean: Boolean = false
 
     /**
      * Constructor used when the statement's 'verb' is a DataProperty and 'object' is String data.
@@ -57,38 +56,54 @@ class DataPropertyStatement: IncompleteStatement {
      * @return DataPropertyStatement
      */
      fun assignSpecialOntoRef(ontoRefForSubject: OWLReferences, ontoRefForVerb: OWLReferences, ontoRefForObject: OWLReferences): DataPropertyStatement {
-        this.ontoRefForSubject = ontoRefForSubject
-        this.ontoRefForVerb = ontoRefForVerb
+        this.specialOntoRefForSubject = ontoRefForSubject
+        this.specialOntoRefForVerb = ontoRefForVerb
         this.ontoRefForObject = ontoRefForObject
         this.madeOfSpecialOntoRef = true
 
         return this
     }
 
-    override fun isMadeOfSpecialOntoRef(): Boolean {
+    override fun hasSpecialOntoRef(): Boolean {
 
         return madeOfSpecialOntoRef
     }
-    fun isObjectAsString(): Boolean {
+    /**
+     * Checks if the object is made of string.
+     * @return Boolean
+     */
+    fun hasObjectAsString(): Boolean {
         return madeWithObjectAsString
     }
-    fun isObjectAsBoolean(): Boolean {
+    /**
+     * Checks if the object is made of boolean.
+     * @return Boolean
+     */
+    fun hasObjectAsBoolean(): Boolean {
         return madeWithObjectAsBoolean
     }
-    fun isObjectAsTimestamp(): Boolean {
+    /**
+     * Checks if the object is made of timestamp.
+     * @return Boolean
+     */
+    fun hasObjectAsTimestamp(): Boolean {
         return madeWithObjectAsTimestamp
     }
-    fun isObjectAsDouble(): Boolean {
+    /**
+     * Checks if the object is made of double.
+     * @return Boolean
+     */
+    fun hasObjectAsDouble(): Boolean {
         return madeWithObjectAsDouble
     }
 
     override fun getSpecialSubjectOntoRef(): OWLReferences {
 
-        return ontoRefForSubject
+        return specialOntoRefForSubject
     }
     override fun getSpecialVerbOntoRef(): OWLReferences {
 
-        return ontoRefForVerb
+        return specialOntoRefForVerb
     }
     /**
      * Returns special OntoRef of the object in the statement.

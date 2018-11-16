@@ -9,13 +9,13 @@ import it.emarolab.amor.owlInterface.OWLReferences
 
 open class IncompleteStatement() {
 
-    lateinit var subjectAsOwlIndividual: String
-    lateinit var verbAsOwlProperty: String
+    protected lateinit var subjectAsOwlIndividual: String
+    protected lateinit var verbAsOwlProperty: String
 
-    lateinit var ontoRefForSubject: OWLReferences
-    lateinit var ontoRefForVerb: OWLReferences
+    protected lateinit var specialOntoRefForSubject: OWLReferences
+    protected lateinit var specialOntoRefForVerb: OWLReferences
 
-    var madeOfSpecialOntoRef: Boolean = false
+    protected var madeOfSpecialOntoRef: Boolean = false
 
     constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String) : this() {
         this.subjectAsOwlIndividual = subjectAsOwlIndividual
@@ -28,8 +28,8 @@ open class IncompleteStatement() {
      * @return IncompleteStatement
      */
      fun assignSpecialOntoRef(ontoRefForSubject: OWLReferences, ontoRefForVerb: OWLReferences): IncompleteStatement {
-        this.ontoRefForSubject = ontoRefForSubject
-        this.ontoRefForVerb = ontoRefForVerb
+        this.specialOntoRefForSubject = ontoRefForSubject
+        this.specialOntoRefForVerb = ontoRefForVerb
         this.madeOfSpecialOntoRef = true
 
         return this
@@ -38,7 +38,7 @@ open class IncompleteStatement() {
      * Checks if the statement is made of special OntoRef.
      * @return Boolean
      */
-    open fun isMadeOfSpecialOntoRef(): Boolean {
+    open fun hasSpecialOntoRef(): Boolean {
 
         return madeOfSpecialOntoRef
     }
@@ -48,7 +48,7 @@ open class IncompleteStatement() {
      */
     open fun getSpecialSubjectOntoRef(): OWLReferences {
 
-        return ontoRefForSubject
+        return specialOntoRefForSubject
     }
     /**
      * Returns special OntoRef of the verb in the statement.
@@ -56,7 +56,7 @@ open class IncompleteStatement() {
      */
     open fun getSpecialVerbOntoRef(): OWLReferences {
 
-        return ontoRefForVerb
+        return specialOntoRefForVerb
     }
     /**
      * Returns the subject in the statement.
