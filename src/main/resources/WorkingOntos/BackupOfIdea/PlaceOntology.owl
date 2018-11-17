@@ -45,7 +45,6 @@ V: stands for virtual</rdfs:comment>
 
 Ontology engineering by Simon J D Cox</skos:historyNote>
         <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
-        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
         <rdfs:comment>Yusha Notes:
 
 Object Properties: &apos;The&apos; is added in places where it feels necessary.
@@ -53,6 +52,7 @@ Object Properties: &apos;The&apos; is added in places where it feels necessary.
 Data Properties: Cannot be influced by SWRL rules (true in the sense that they do not present themselves in the ontology after the reasoner runs), whereas SWRL rules can be influenced by data properties.
 
 OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
+        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
         <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
         <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
         <terms:contributor rdf:resource="mailto:chris.little@metoffice.gov.uk"/>
@@ -1301,9 +1301,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
-    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_W_Gesture -->
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Gesture -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_W_Gesture">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Gesture">
         <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
         <PrototypeOntology:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha"/>
         <rdfs:comment>S_W_Drinking</rdfs:comment>
@@ -1317,9 +1317,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
-    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_W_Location -->
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Location -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_W_Location">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Location">
         <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
         <PrototypeOntology:isPartOfStatement rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S1"/>
         <PrototypeOntology:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha"/>
@@ -1348,11 +1348,11 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
-    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrHeat -->
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrStove -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrHeat">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrStove">
         <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture"/>
-        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrHeat"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrStove"/>
         <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen"/>
     </owl:NamedIndividual>
     
@@ -1806,11 +1806,11 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
-    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrHeat -->
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrStove -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrHeat">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrStove">
         <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
-        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrHeat"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrStove"/>
     </owl:NamedIndividual>
     
 
@@ -1851,9 +1851,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
-    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_W_HeartRate -->
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_SW_HeartRate -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_W_HeartRate">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_SW_HeartRate">
         <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
         <PrototypeOntology:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha"/>
     </owl:NamedIndividual>

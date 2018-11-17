@@ -4,10 +4,10 @@
 
 fun main(args: Array<String>) {
 
-    // Initializing database
+    // -Initializing database
     val db = MySqlConnector("AriannaDB", "root", "nepo")
 
-    // Initializing ontologies
+    // -Initializing ontologies
     val placeOnto = Ontology(
             "po",
             "src/main/resources/WorkingOntos/PlaceOntology.owl",
@@ -29,10 +29,44 @@ fun main(args: Array<String>) {
             true
     )
 
-    // Initializing ontology links
+    // -Initializing statements
+    // --Common statements
+    val outputHARIncStmt = IncompleteStatement("H_Yusha", "isDoingActvity")
+
+    // --PlaceOnto statements
+    val swLocationIncStmt = IncompleteStatement("S_SW_Location","hasLocation")
+    
+    // --KitchenActOnto statements
+    val kitchenActActivationStmt = ObjectPropertyStatement("H_Yusha", "isDoingActivity", "BeingIn_Kitchen")
+    val mKitchenCabinetIncStmt = IncompleteStatement("S_M_KitchenCabinet", "detectsMotion")
+    val mKitchenSinkOrStoveIncStmt = IncompleteStatement("S_M_KitchenSinkOrStove", "detectsMotion")
+
+
+    // -Initializing ontology links
     val placeOntoLinks = OntologyLinksBuilder(placeOnto)
+            .activatedBySchedular()
+            .inputIsFromDB(db)
+            .linkTableWithIncompleteStatement("Estimote_Location_SmartWatch1", swLocationIncStmt)
+            .linkingComplete()
+            .outputIsToDB(db)
+            .linkIncompleteStatementWithTable(outputHARIncStmt, "HAR_Output_PlaceOnto")
+            .build()
 
-    val test = ObjectPropertyStatement("Yusha","isin","theToilet")
+    val kitchenActOntoLinks = OntologyLinksBuilder(kitchenActOnto)
+            .activatedByOntology(placeOnto, kitchenActActivationStmt)
+            .inputIsFromDB(db)
+            .linkTableWithIncompleteStatement("PIR_KitchenCabinet", mKitchenCabinetIncStmt)
+            .linkTableWithIncompleteStatement("PIR_KitchenSinkOrStove", mKitchenSinkOrStoveIncStmt)
+            .linkingComplete()
+            .outputIsToDB(db)
+            .linkIncompleteStatementWithTable(outputHARIncStmt, "HAR_Output_PlaceOnto")
+            .build()
 
-    //po.saveOnto(po.getOntoFilePath())
+    // -Initializing network of Ontologies
+    val ontologiesNetwork = OntologiesNetworkBuilder()
+            .withAnalyticsDisabled()
+            .build()
+
+    // -Starting the network
+    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(placeOntoLinks, kitchenActOntoLinks)
 }
