@@ -88,13 +88,13 @@ class Ontology(ontoRefName: String, private val ontoFilePath: String, ontoIRI: S
             individual = MORFullIndividual(opStatement.getSubject(), opStatement.getSpecialSubjectOntoRef())
             individual.apply {
                 readSemantic()
-                namedIndiv = individual.getObject(opStatement.getSpecialVerbOntoRef().getOWLObjectProperty(opStatement.getVerb()))
+                namedIndiv = getObject(opStatement.getSpecialVerbOntoRef().getOWLObjectProperty(opStatement.getVerb()))
             }
         } else {
             individual = MORFullIndividual(opStatement.getSubject(), this.ontoRef)
             individual.apply {
                 readSemantic()
-                namedIndiv = individual.getObject(opStatement.getVerb())
+                namedIndiv = getObject(opStatement.getVerb())
             }
         }
 
@@ -109,7 +109,7 @@ class Ontology(ontoRefName: String, private val ontoFilePath: String, ontoIRI: S
 
         individual.apply {
             readSemantic()
-            data = individual.dataSemantics.getLiteral(individual.getOWLDataProperty(dpStatement.getVerb()))
+            data = dataSemantics.getLiteral(individual.getOWLDataProperty(dpStatement.getVerb()))
         }
 
         return data.literal
@@ -128,7 +128,7 @@ class Ontology(ontoRefName: String, private val ontoFilePath: String, ontoIRI: S
                 individual = MORFullIndividual(incompleteStatement.getSubject(), incompleteStatement.getSpecialSubjectOntoRef())
                 individual.apply {
                     readSemantic()
-                    namedIndiv = individual.getObject(incompleteStatement.getSpecialVerbOntoRef().getOWLObjectProperty(incompleteStatement.getVerb()))
+                    namedIndiv = getObject(incompleteStatement.getSpecialVerbOntoRef().getOWLObjectProperty(incompleteStatement.getVerb()))
                 }
                 inferredObjectAsOWLIndividual = individual.getOWLName(namedIndiv)
                 opStatement = ObjectPropertyStatement(incompleteStatement.getSubject(),incompleteStatement.getVerb(),inferredObjectAsOWLIndividual).assignSpecialOntoRef(incompleteStatement.getSpecialSubjectOntoRef(),incompleteStatement.getSpecialVerbOntoRef(),getOntoRef())
@@ -136,7 +136,7 @@ class Ontology(ontoRefName: String, private val ontoFilePath: String, ontoIRI: S
                 individual = MORFullIndividual(incompleteStatement.getSubject(), this.ontoRef)
                 individual.apply {
                     readSemantic()
-                    namedIndiv = individual.getObject(incompleteStatement.getVerb())
+                    namedIndiv = getObject(incompleteStatement.getVerb())
                 }
                 inferredObjectAsOWLIndividual = individual.getOWLName(namedIndiv)
                 opStatement = ObjectPropertyStatement(incompleteStatement.getSubject(),incompleteStatement.getVerb(),inferredObjectAsOWLIndividual)
@@ -166,7 +166,7 @@ class Ontology(ontoRefName: String, private val ontoFilePath: String, ontoIRI: S
         try {
             individual.apply {
                 readSemantic()
-                data = individual.dataSemantics.getLiteral(individual.getOWLDataProperty(incompleteStatement.getVerb()))
+                data = dataSemantics.getLiteral(individual.getOWLDataProperty(incompleteStatement.getVerb()))
                 inferredString = data.literal
 
                 dataAsSting = inferredString

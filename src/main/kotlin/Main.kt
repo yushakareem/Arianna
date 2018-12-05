@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit
+
 /**
  *  This is the story board.
  */
@@ -35,7 +37,7 @@ fun main(args: Array<String>) {
 
     // --PlaceOnto statements
     val swLocationIncStmt = IncompleteStatement("S_SW_Location","hasLocation")
-    
+
     // --KitchenActOnto statements
     val kitchenActActivationStmt = ObjectPropertyStatement("H_Yusha", "isDoingActivity", "BeingIn_Kitchen")
     val mKitchenCabinetIncStmt = IncompleteStatement("S_M_KitchenCabinet", "detectsMotion")
@@ -44,7 +46,7 @@ fun main(args: Array<String>) {
 
     // -Initializing ontology links
     val placeOntoLinks = OntologyLinksBuilder(placeOnto)
-            .activatedBySchedular()
+            .activatedBySchedular(0,2000,TimeUnit.MILLISECONDS)
             .inputIsFromDB(db)
             .linkTableWithIncompleteStatement("Estimote_Location_SmartWatch1", swLocationIncStmt)
             .linkingComplete()
@@ -59,12 +61,12 @@ fun main(args: Array<String>) {
             .linkTableWithIncompleteStatement("PIR_KitchenSinkOrStove", mKitchenSinkOrStoveIncStmt)
             .linkingComplete()
             .outputIsToDB(db)
-            .linkIncompleteStatementWithTable(outputHARIncStmt, "HAR_Output_PlaceOnto")
+            .linkIncompleteStatementWithTable(outputHARIncStmt, "HAR_Output_KitchenActOnto")
             .build()
 
     // -Initializing network of Ontologies
     val ontologiesNetwork = OntologiesNetworkBuilder()
-            .withAnalyticsDisabled()
+            //.withAnalyticsDisabled()
             .build()
 
     // -Starting the network
