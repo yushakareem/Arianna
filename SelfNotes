@@ -1,0 +1,27 @@
+JAVA STUFF. Try later.
+
+Ontology placeOnto = new Ontology(
+"po",
+"src/main/resources/WorkingOntos/PlaceOntology.owl",
+"http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology",
+true
+);
+
+MORFullConcept something = new MORFullConcept("HumanName",placeOnto.getOntoRef());
+
+something.readSemantic();
+
+for (OWLNamedIndividual i : something.queryIndividualClassified()){
+
+}
+
+for (MORFullConcept i : something.buildSuperConcept()){
+
+    Semantic.Axioms<SemanticRestriction> r = i.getDefinitionConcept()
+
+    for( MORLinkIndividual j : i.buildIndividualClassified()){
+        for( MORFullDataProperty k : j.buildDataIndividual()){
+        k
+        }
+    }
+}
