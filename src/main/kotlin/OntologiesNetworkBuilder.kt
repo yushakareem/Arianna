@@ -12,7 +12,7 @@ class OntologiesNetworkBuilder {
     // Here somehow i would like to enable and disable logging
 
     fun build(): OntologiesNetwork {
-
+        return OntologiesNetwork()
     }
 
 }

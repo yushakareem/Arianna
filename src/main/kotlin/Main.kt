@@ -1,5 +1,3 @@
-import java.util.concurrent.TimeUnit
-
 /**
  *  This is the story board.
  */
@@ -50,7 +48,7 @@ fun main(args: Array<String>) {
     // -Initializing ontology links
     //// -Placing Ontology links
     val placeOntologyLinks = OntologyLinksBuilder(placeOnto)
-            .activatedBySchedular(0,2000,TimeUnit.MILLISECONDS)
+            .activatedByScheduler(0,2000)
             .inputIsFromDB(db)
             .linkDataBaseTableToStatementInOntology("Estimote_Location_SmartWatch1", smartWatchLocation)
             .linksCompleted()
@@ -76,5 +74,6 @@ fun main(args: Array<String>) {
 
     //// -Starting the network
     val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(placeOntologyLinks, kitchenActOntoLinks)
+
 }
 
