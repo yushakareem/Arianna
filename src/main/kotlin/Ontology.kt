@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat
  * @param ontoIRI is the Internationalized Resource Identifier which can be found from Protege.
  * @param bufferingReasoner if true, causes the reasoner to take into consideration the changes in the current root ontology.
  */
-class Ontology(ontoRefName: String, private val ontoFilePath: String, ontoIRI: String, bufferingReasoner: Boolean) {
+class Ontology(private val ontoRefName: String, private val ontoFilePath: String, private val ontoIRI: String, private val bufferingReasoner: Boolean) {
 
     private val temporalOntoRef: OWLReferences
     private val ontoRef: OWLReferences
@@ -28,7 +28,9 @@ class Ontology(ontoRefName: String, private val ontoFilePath: String, ontoIRI: S
     init {
 
         val owlTimeOntoIRI = "http://www.w3.org/2006/time"
-        val owlTimeOntoRef = "owlTimeOntoRef"
+        val owlTimeOntoRef = ontoRefName + "Time"
+
+        println(owlTimeOntoRef)
 
         ontoRef = OWLReferencesInterface.OWLReferencesContainer.newOWLReferenceFromFileWithPellet(ontoRefName, ontoFilePath, ontoIRI, bufferingReasoner)
         temporalOntoRef = OWLReferencesInterface.OWLReferencesContainer.newOWLReferenceFromFileWithPellet(owlTimeOntoRef, ontoFilePath, owlTimeOntoIRI, bufferingReasoner)

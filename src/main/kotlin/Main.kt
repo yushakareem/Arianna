@@ -17,19 +17,19 @@ fun main(args: Array<String>) {
     )
 
     //// -Kitchen Ontology
-    val kitchenActOnto = Ontology(
+    val kitchenOnto = Ontology(
             "kao",
             "src/main/resources/WorkingOntos/KitchenActivityOntology.owl",
             "http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology",
             true
     )
 
-//    val livingRoomActOnto = Ontology(
-//            "lrao",
-//            "src/main/resources/WorkingOntos/LivingRoomActivityOntology.owl",
-//            "http://www.semanticweb.org/emaroLab/YushaKareem/LivingRoomActivityOntology",
-//            true
-//    )
+    val livingRoomOnto = Ontology(
+            "lrao",
+            "src/main/resources/WorkingOntos/LivingRoomActivityOntology.owl",
+            "http://www.semanticweb.org/emaroLab/YushaKareem/LivingRoomActivityOntology",
+            true
+    )
 
     // -Initializing statements
     //// -Common statements
@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
     val smartWatchLocation = IncompleteStatement("S_SW_Location","hasLocation")
 
     //// -Kitchen Ontology statements
-    val kitchenActivityActivation = ObjectPropertyStatement("H_Yusha", "isDoingActivity", "BeingIn_Kitchen")
+    val kitchenActivationStatement = ObjectPropertyStatement("H_Yusha", "isDoingActivity", "BeingIn_Kitchen")
 
     val kitchenCabinet = IncompleteStatement("S_M_KitchenCabinet", "detectsMotion")
     val kitchenSinkOrStove = IncompleteStatement("S_M_KitchenSinkOrStove", "detectsMotion")
@@ -47,24 +47,24 @@ fun main(args: Array<String>) {
 
     // -Initializing ontology links
     //// -Placing Ontology links
-    val placeOntologyLinks = OntologyLinksBuilder(placeOnto)
-            .activatedByScheduler(0,2000)
+    val linksOfPlaceOnto = OntologyLinksBuilder(placeOnto)
+            .activatedByScheduler(0,5000)
             .inputIsFromDB(db)
-            .linkDataBaseTableToStatementInOntology("Estimote_Location_SmartWatch1", smartWatchLocation)
+            .linkDBTableToStatementInOnto("Estimote_Location_SmartWatch1", smartWatchLocation)
             .linksCompleted()
             .outputIsToDB(db)
-            .linkStatementInOntologyToDataBaseTable(outputHAR, "HAR_Output_PlaceOnto")
+            .linkStatementInOntoToDBTable(outputHAR, "HAR_Output_PlaceOnto")
             .build()
 
     //// -Kitchen Ontology links
-    val kitchenActOntoLinks = OntologyLinksBuilder(kitchenActOnto)
-            .activatedByOntology(placeOnto, kitchenActivityActivation)
+    val linksOfKitchenOnto = OntologyLinksBuilder(kitchenOnto)
+            .activatedByOntology(placeOnto, kitchenActivationStatement)
             .inputIsFromDB(db)
-            .linkDataBaseTableToStatementInOntology("PIR_KitchenCabinet", kitchenCabinet)
-            .linkDataBaseTableToStatementInOntology("PIR_KitchenSinkOrStove", kitchenSinkOrStove)
+            .linkDBTableToStatementInOnto("PIR_KitchenCabinet", kitchenCabinet)
+            .linkDBTableToStatementInOnto("PIR_KitchenSinkOrStove", kitchenSinkOrStove)
             .linksCompleted()
             .outputIsToDB(db)
-            .linkStatementInOntologyToDataBaseTable(outputHAR, "HAR_Output_KitchenActOnto")
+            .linkStatementInOntoToDBTable(outputHAR, "HAR_Output_KitchenActOnto")
             .build()
 
     // -Initializing the network of Ontologies
@@ -73,7 +73,9 @@ fun main(args: Array<String>) {
             .build()
 
     //// -Starting the network
-    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(placeOntologyLinks, kitchenActOntoLinks)
+    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfPlaceOnto, linksOfKitchenOnto)
+
+
 
 }
 

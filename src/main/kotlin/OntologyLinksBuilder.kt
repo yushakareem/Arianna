@@ -1,59 +1,65 @@
-class OntologyLinksBuilder(val thisOntology: Ontology) {
+class OntologyLinksBuilder(ontoAtCenterOfLinks: Ontology) {
 
-    private var ontoLinksConfiguration = OntologyLinks.defaultConfiguration()
+    private val ontoLinksConfig = OntologyLinksConfiguration(ontoAtCenterOfLinks)
 
-    fun activatedByScheduler(initialDelay: Int, periodicIntervalMillis: Int): InputDBBuilder {
-        ontoLinksConfiguration.copy(schedulerInitialDelay = initialDelay, schedulerIntervalPeriod = periodicIntervalMillis, activatedByScheduler = true)
-        return InputDBBuilder(ontoLinksConfiguration)
+    fun activatedByScheduler(initialDelay: Long, periodicIntervalMillis: Long): InputDBBuilder {
+
+        ontoLinksConfig.schedulerInitialDelay = initialDelay
+        ontoLinksConfig.schedulerIntervalPeriod = periodicIntervalMillis
+        ontoLinksConfig.isActivatedByScheduler = true
+        return InputDBBuilder(ontoLinksConfig)
     }
 
     fun activatedByOntology(activatorOntology: Ontology, activationStatement: ObjectPropertyStatement): InputDBBuilder {
-        ontoLinksConfiguration.copy(activatorOntology = activatorOntology, activationStatement = activationStatement, activatedByOntology = true)
-        return InputDBBuilder(ontoLinksConfiguration)
+
+        ontoLinksConfig.activatorOntology = activatorOntology
+        ontoLinksConfig.activationStatement = activationStatement
+        ontoLinksConfig.isActivatedByOntology = true
+        return InputDBBuilder(ontoLinksConfig)
     }
 
-    class InputDBBuilder(var ontoLinksConfig: OntologyLinks) {
-        
-        fun inputIsFromDB(dataBaseInfo: MySqlConnector): DatabaseTableToOntologyLinkBuilder {
-            ontoLinksConfig.copy(inputDB = dataBaseInfo)
-            return DatabaseTableToOntologyLinkBuilder(ontoLinksConfig)
+    class InputDBBuilder(private val ontoLinksConfig: OntologyLinksConfiguration) {
+
+        fun inputIsFromDB(dataBaseInfo: MySqlConnector): DBTableToOntoLinkBuilder {
+
+            ontoLinksConfig.inputDBInfo = dataBaseInfo
+            return DBTableToOntoLinkBuilder(ontoLinksConfig)
         }
-        
-        class DatabaseTableToOntologyLinkBuilder(var ontoLinksConfig: OntologyLinks) {
 
-            var DBTableToStatementMap = HashMap<String, IncompleteStatement>()
+        class DBTableToOntoLinkBuilder(private val ontoLinksConfig: OntologyLinksConfiguration) {
 
-            fun linkDataBaseTableToStatementInOntology(tableNameInDataBase: String, incompleteStatement: IncompleteStatement): DatabaseTableToOntologyLinkBuilder {
-                DBTableToStatementMap[tableNameInDataBase] = incompleteStatement
-                ontoLinksConfig.copy(DBTableToStatement = DBTableToStatementMap)
-                return DatabaseTableToOntologyLinkBuilder(ontoLinksConfig)
+            fun linkDBTableToStatementInOnto(tableNameInDataBase: String, incompleteStatement: IncompleteStatement): DBTableToOntoLinkBuilder {
+
+                ontoLinksConfig.mapDBTableToStatement[tableNameInDataBase] = incompleteStatement
+                return DBTableToOntoLinkBuilder(ontoLinksConfig)
             }
 
             fun linksCompleted(): OutputDBBuilder {
+
                 return OutputDBBuilder(ontoLinksConfig)
             }
 
         }
     }
-    
-    class OutputDBBuilder(var ontoLinksConfig: OntologyLinks) {
-        
-        fun outputIsToDB(dataBaseInfo: MySqlConnector): OntologyToDatabaseTableLinkBuilder {
-            ontoLinksConfig.copy(outputDB = dataBaseInfo)
-            return OntologyToDatabaseTableLinkBuilder(ontoLinksConfig)
+
+    class OutputDBBuilder(private val ontoLinksConfig: OntologyLinksConfiguration) {
+
+        fun outputIsToDB(dataBaseInfo: MySqlConnector): OntoToDBTableLinkBuilder {
+
+            ontoLinksConfig.outputDBInfo = dataBaseInfo
+            return OntoToDBTableLinkBuilder(ontoLinksConfig)
         }
-        
-        class OntologyToDatabaseTableLinkBuilder(var ontoLinksConfig: OntologyLinks){
 
-            var statementToDBTableMap = HashMap<IncompleteStatement, String>()
+        class OntoToDBTableLinkBuilder(private val ontoLinksConfig: OntologyLinksConfiguration){
 
-            fun linkStatementInOntologyToDataBaseTable(incompleteStatement: IncompleteStatement, tableNameInDataBase: String): OntologyToDatabaseTableLinkBuilder {
-                statementToDBTableMap[incompleteStatement] = tableNameInDataBase
-                ontoLinksConfig.copy(statementToDBTable = statementToDBTableMap)
-                return OntologyToDatabaseTableLinkBuilder(ontoLinksConfig)
+            fun linkStatementInOntoToDBTable(incompleteStatement: IncompleteStatement, tableNameInDataBase: String): OntoToDBTableLinkBuilder {
+
+                ontoLinksConfig.mapStatementToDBTable[incompleteStatement] = tableNameInDataBase
+                return OntoToDBTableLinkBuilder(ontoLinksConfig)
             }
 
-            fun build(): OntologyLinks {
+            fun build(): OntologyLinksConfiguration {
+
                 return ontoLinksConfig
             }
         }
