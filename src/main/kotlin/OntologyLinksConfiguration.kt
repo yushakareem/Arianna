@@ -1,3 +1,7 @@
+/**
+ * This is a dataclass. It allows it's objects to have the attributes (seen below).
+ */
+
 data class OntologyLinksConfiguration(val ontoAtCenterOfLinks: Ontology) {
 
     var schedulerInitialDelay: Long = 0

@@ -1,3 +1,7 @@
+/**
+ * This class enables the builder-pattern that the developer uses to build the links between all ontologies in a network.
+ */
+
 class OntologyLinksBuilder(ontoAtCenterOfLinks: Ontology) {
 
     private val ontoLinksConfig = OntologyLinksConfiguration(ontoAtCenterOfLinks)

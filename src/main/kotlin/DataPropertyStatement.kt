@@ -2,7 +2,7 @@ import it.emarolab.amor.owlInterface.OWLReferences
 import java.sql.Timestamp
 
 /**
- * A DataPropertyStatement is made up of the structure: 'subject' 'verb' 'object'.
+ * A DataPropertyStatement is made of the structure: 'subject' 'verb' 'object'.
  * Where, 'subject' is an Individual, 'verb' is an ObjectProperty and 'object' is data in the ontology.
  *
  * @return DataPropertyStatement

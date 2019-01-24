@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     val placeOnto = Ontology(
             "po",
             "src/main/resources/WorkingOntos/PlaceOntology.owl",
-            "http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology",
+            "http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology",
             true
     )
 
@@ -33,22 +33,21 @@ fun main(args: Array<String>) {
 
     // -Initializing statements
     //// -Common statements
-    val outputHAR = IncompleteStatement("H_Yusha", "isDoingActvity")
+    val outputHAR = IncompleteStatement("Yusha", "isDoingActvity")
 
     //// -Placing Ontology statements
     val smartWatchLocation = IncompleteStatement("S_SW_Location","hasLocation")
 
     //// -Kitchen Ontology statements
-    val kitchenActivationStatement = ObjectPropertyStatement("H_Yusha", "isDoingActivity", "BeingIn_Kitchen")
+    val kitchenActivationStatement = ObjectPropertyStatement("Yusha", "isDoingActivity", "BeingIn_Kitchen")
 
     val kitchenCabinet = IncompleteStatement("S_M_KitchenCabinet", "detectsMotion")
     val kitchenSinkOrStove = IncompleteStatement("S_M_KitchenSinkOrStove", "detectsMotion")
 
-
     // -Initializing ontology links
     //// -Placing Ontology links
     val linksOfPlaceOnto = OntologyLinksBuilder(placeOnto)
-            .activatedByScheduler(0,5000)
+            .activatedByScheduler(0,15000)
             .inputIsFromDB(db)
             .linkDBTableToStatementInOnto("Estimote_Location_SmartWatch1", smartWatchLocation)
             .linksCompleted()
@@ -74,8 +73,5 @@ fun main(args: Array<String>) {
 
     //// -Starting the network
     val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfPlaceOnto, linksOfKitchenOnto)
-
-
-
 }
 

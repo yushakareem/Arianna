@@ -1,13 +1,13 @@
+import java.sql.Timestamp
 import java.util.*
+import kotlin.collections.HashMap
 import kotlin.concurrent.fixedRateTimer
 
 class OntologiesNetwork {
 
-
-
     fun startNetworking(vararg ontologyLinksConfig: OntologyLinksConfiguration) = startNetworking(ontologyLinksConfig.asList())
 
-    private fun startNetworking(ontologyLinksConfig: List<OntologyLinksConfiguration>): Handler {
+    private fun startNetworking(ontologyLinksConfig: List<OntologyLinksConfiguration>): OntologiesNetworkHandler {
 
         lateinit var fixedRateTimer: Timer
 
@@ -21,17 +21,40 @@ class OntologiesNetwork {
             }
         }
 
-        return Handler(fixedRateTimer)
+        return OntologiesNetworkHandler(fixedRateTimer)
     }
 
     private fun coreComputations(it: OntologyLinksConfiguration) {
-        println("This is it: ${it.ontoAtCenterOfLinks.getOntoRef()}")
+
+        transferSensorsData(it.inputDBInfo, it.mapDBTableToStatement, it.ontoAtCenterOfLinks)
     }
 
-    class Handler(private val fixedRateTimer: Timer) {
+    private fun transferSensorsData(inputDBInfo: MySqlConnector, mapDBTableToStatement: HashMap<String, IncompleteStatement>, ontoAtCenterOfLinks: Ontology) {
 
-        fun stop() {
-                fixedRateTimer.cancel()
+        mapDBTableToStatement.iterator().forEach {
+
+            lateinit var sensorValue: String
+            lateinit var timeStamp: Timestamp
+
+            inputDBInfo.connectToDBorCreateNewDB()
+            val resultSet = inputDBInfo.readLatestRow(it.key)
+            if (resultSet.next()) {
+                sensorValue = inputDBInfo.getStringValue(resultSet)
+                timeStamp = inputDBInfo.getTimestamp(resultSet)
+            }
+            val sensorValueStatement = DataPropertyStatement(it.value.getSubject(), it.value.getVerb(), sensorValue)
+            val sensorTimestampStatement = DataPropertyStatement(it.value.getSubject(), "hasTimestamp", timeStamp)
+            ontoAtCenterOfLinks.addOrUpdateToOnto(sensorValueStatement)
+            ontoAtCenterOfLinks.addOrUpdateToOnto(sensorTimestampStatement)
+            inputDBInfo.disconnectFromDB()
+            ontoAtCenterOfLinks.saveOnto(ontoAtCenterOfLinks.getOntoFilePath())
         }
+    }
+}
+
+class OntologiesNetworkHandler(private val fixedRateTimer: Timer) {
+
+    fun stop() {
+        fixedRateTimer.cancel()
     }
 }

@@ -11,6 +11,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     private lateinit var timestamp: Timestamp
     private var booleanValue: Boolean = false //primitives have to be initialized
     private var integerValue: Int = 0 //primitives have to be initialized
+    private lateinit var stringValue: String
 
     /**
      * Looks for the JDBC driver, if it exists, then makes connection with the database.
@@ -100,6 +101,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
         } catch (e: SQLException) {
             error("Please check the 'table name' in database.")
         }
+
         return resultSet!!
     }
 
@@ -135,7 +137,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
         try {
             timestamp = resultSet!!.getTimestamp("time")
         } catch (e: SQLException) {
-            error("Problem in getting timestamp")
+            error("Problem in getting timestamp: Check if you have done resultSet.next()")
         }
         return timestamp
     }
@@ -154,7 +156,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
         try {
             booleanValue = resultSet!!.getBoolean("value")
         } catch (e: SQLException) {
-            error("Problem in getting booleanValue")
+            error("Problem in getting booleanValue: Check if you have done resultSet.next()")
         }
         return booleanValue
     }
@@ -173,9 +175,28 @@ class MySqlConnector(private val databaseName: String, private val username: Str
         try {
             integerValue = resultSet!!.getInt("value")
         } catch (e: SQLException) {
-            error("Problem in getting booleanValue")
+            error("Problem in getting integerValue: Check if you have done resultSet.next()")
         }
         return integerValue
+    }
+
+    /**
+     * Returns the integerValue from the resultSet object. Note that the column name of the table (in SQL database)
+     * is hardcoded in this method.
+     *
+     * Attention: this method has good scope for modification.
+     *
+     * @param resultSet  The <code>ResultSet Object</code> that holds the data read from the table.
+     *
+     * @return integerValue of <code>Int</code> type.
+     */
+    override fun getStringValue(resultSet: ResultSet?): String {
+        try {
+            stringValue = resultSet!!.getString("value")
+        } catch (e: SQLException) {
+            error("Problem in getting stringValue: Check if you have done resultSet.next()")
+        }
+        return stringValue
     }
 
     /**

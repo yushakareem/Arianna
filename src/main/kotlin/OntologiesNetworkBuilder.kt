@@ -9,7 +9,8 @@
 
 class OntologiesNetworkBuilder {
 
-    // Here somehow i would like to enable and disable logging
+    // Here i would like to enable and disable logging
+    // fun withAnalyticsDisabled() {}
 
     fun build(): OntologiesNetwork {
         return OntologiesNetwork()
