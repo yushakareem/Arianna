@@ -1583,6 +1583,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#BeingIn_LivingRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Activity"/>
         <LocalizationOnto1:isAnActivityLinkedTo rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#A_R_LivingRoom"/>
+        <LocalizationOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#S_SW_Location"/>
     </owl:NamedIndividual>
     
 
@@ -2069,9 +2070,9 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#S_SW_Location">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#SmartWatch"/>
         <LocalizationOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Yusha"/>
-        <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unknown</LocalizationOnto1:hasLocation>
+        <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kitchen</LocalizationOnto1:hasLocation>
         <LocalizationOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</LocalizationOnto1:hasState>
-        <LocalizationOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-26 16:29:13.717</LocalizationOnto1:hasTimestamp>
+        <LocalizationOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-26 23:31:09.856</LocalizationOnto1:hasTimestamp>
     </owl:NamedIndividual>
     
 

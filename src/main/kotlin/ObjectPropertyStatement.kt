@@ -72,4 +72,12 @@ open class ObjectPropertyStatement: IncompleteStatement {
 
         return objectAsOwlIndividual
     }
+    /**
+     * Compares an [ObjectPropertyStatement] with another [ObjectPropertyStatement].
+     * @return Boolean
+     */
+    fun compare(objectPropertyStatement: ObjectPropertyStatement): Boolean {
+
+        return getSubject() == objectPropertyStatement.getSubject() && getVerb() == objectPropertyStatement.getVerb() && getObject() == objectPropertyStatement.getObject()
+    }
 }

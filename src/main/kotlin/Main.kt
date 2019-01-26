@@ -19,7 +19,7 @@ fun main(args: Array<String>) {
     /** Initializing ontologies */
 
     //  Localization Ontology
-    val placeOnto = Ontology(
+    val LocalizationOnto = Ontology(
             "LocalizationOnto",
             "src/main/resources/WorkingOntos/LocalizationOnto.owl",
             "http://www.semanticweb.org/Arianna/LocalizationOnto",
@@ -58,8 +58,8 @@ fun main(args: Array<String>) {
     /** Initializing ontology links */
 
     //  LocalizationOnto links
-    val linksOfPlaceOnto = OntologyLinksBuilder(placeOnto)
-            .activatedByScheduler(0,20000)
+    val linksOfLocalizationOnto = OntologyLinksBuilder(LocalizationOnto)
+            .activatedByScheduler(0,10000)
             .inputIsFromDB(db)
             .linkDBTableToStatementInOnto("Estimote_Location_SmartWatch1", smartWatchLocation1)
             .linksCompleted()
@@ -69,7 +69,7 @@ fun main(args: Array<String>) {
 
     //  KitchenOnto links
     val linksOfKitchenOnto = OntologyLinksBuilder(kitchenOnto)
-            .activatedByOntology(placeOnto, kitchenActivationStatement)
+            .activatedByOntology(LocalizationOnto, kitchenActivationStatement)
             .inputIsFromDB(db)
             .linkDBTableToStatementInOnto("PIR_KitchenCabinet", kitchenCabinet)
             .linkDBTableToStatementInOnto("PIR_KitchenSinkOrStove", kitchenSinkOrStove)
@@ -80,6 +80,6 @@ fun main(args: Array<String>) {
 
     /** Starting the network */
 
-    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfPlaceOnto, linksOfKitchenOnto)
+    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfLocalizationOnto, linksOfKitchenOnto)
 }
 
