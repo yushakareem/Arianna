@@ -4,58 +4,70 @@
 
 fun main(args: Array<String>) {
 
-    // -Initializing database
+
+    /** Initializing DataBase */
+
     val db = MySqlConnector("AriannaDB", "root", "nepo")
 
-    // -Initializing ontologies
-    //// -Placing Ontology
+    /** Initializing the network of Ontologies */
+
+    val ontologiesNetwork = OntologiesNetworkBuilder()
+            .withOWLOOPAnalyticsDisabled()
+            //.withAriannaAnalyticsDisabled()
+            .build()
+
+    /** Initializing ontologies */
+
+    //  Localization Ontology
     val placeOnto = Ontology(
-            "po",
-            "src/main/resources/WorkingOntos/PlaceOntology.owl",
-            "http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology",
+            "LocalizationOnto",
+            "src/main/resources/WorkingOntos/LocalizationOnto.owl",
+            "http://www.semanticweb.org/Arianna/LocalizationOnto",
             true
     )
 
-    //// -Kitchen Ontology
+    //  Kitchen Ontology
     val kitchenOnto = Ontology(
-            "kao",
-            "src/main/resources/WorkingOntos/KitchenActivityOntology.owl",
-            "http://www.semanticweb.org/emaroLab/YushaKareem/KitchenActivityOntology",
+            "KitchenOnto",
+            "src/main/resources/WorkingOntos/KitchenOnto.owl",
+            "http://www.semanticweb.org/Arianna/KitchenOnto",
             true
     )
 
+    //  LivingRoom Ontology
     val livingRoomOnto = Ontology(
-            "lrao",
-            "src/main/resources/WorkingOntos/LivingRoomActivityOntology.owl",
-            "http://www.semanticweb.org/emaroLab/YushaKareem/LivingRoomActivityOntology",
+            "LivingRoomOnto",
+            "src/main/resources/WorkingOntos/LivingRoomOnto.owl",
+            "http://www.semanticweb.org/Arianna/LivingRoomOnto",
             true
     )
 
-    // -Initializing statements
-    //// -Common statements
-    val outputHAR = IncompleteStatement("Yusha", "isDoingActvity")
+    /** Initializing statements */
 
-    //// -Placing Ontology statements
-    val smartWatchLocation = IncompleteStatement("S_SW_Location","hasLocation")
+    //  Common statements
+    val outputHAR = IncompleteStatement("Yusha", "isDoingActivity")
 
-    //// -Kitchen Ontology statements
+    //  LocalizationOnto statements
+    val smartWatchLocation1 = IncompleteStatement("S_SW_Location","hasLocation")
+
+    //  KitchenOnto statements
     val kitchenActivationStatement = ObjectPropertyStatement("Yusha", "isDoingActivity", "BeingIn_Kitchen")
-
     val kitchenCabinet = IncompleteStatement("S_M_KitchenCabinet", "detectsMotion")
     val kitchenSinkOrStove = IncompleteStatement("S_M_KitchenSinkOrStove", "detectsMotion")
 
-    // -Initializing ontology links
-    //// -Placing Ontology links
+    /** Initializing ontology links */
+
+    //  LocalizationOnto links
     val linksOfPlaceOnto = OntologyLinksBuilder(placeOnto)
-            .activatedByScheduler(0,15000)
+            .activatedByScheduler(0,20000)
             .inputIsFromDB(db)
-            .linkDBTableToStatementInOnto("Estimote_Location_SmartWatch1", smartWatchLocation)
+            .linkDBTableToStatementInOnto("Estimote_Location_SmartWatch1", smartWatchLocation1)
             .linksCompleted()
             .outputIsToDB(db)
             .linkStatementInOntoToDBTable(outputHAR, "HAR_Output_PlaceOnto")
             .build()
 
-    //// -Kitchen Ontology links
+    //  KitchenOnto links
     val linksOfKitchenOnto = OntologyLinksBuilder(kitchenOnto)
             .activatedByOntology(placeOnto, kitchenActivationStatement)
             .inputIsFromDB(db)
@@ -66,12 +78,8 @@ fun main(args: Array<String>) {
             .linkStatementInOntoToDBTable(outputHAR, "HAR_Output_KitchenActOnto")
             .build()
 
-    // -Initializing the network of Ontologies
-    val ontologiesNetwork = OntologiesNetworkBuilder()
-            //.withAnalyticsDisabled()
-            .build()
+    /** Starting the network */
 
-    //// -Starting the network
     val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfPlaceOnto, linksOfKitchenOnto)
 }
 

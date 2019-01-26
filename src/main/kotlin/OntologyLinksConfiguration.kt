@@ -1,5 +1,6 @@
 /**
- * This is a dataclass. It allows it's objects to have the attributes (seen below).
+ * This is a dataclass. It allows it's objects to have a particular set of attributes (seen below).
+ * Attributes in this dataclass hold information about all the links of a single ontology.
  */
 
 data class OntologyLinksConfiguration(val ontoAtCenterOfLinks: Ontology) {
@@ -11,7 +12,7 @@ data class OntologyLinksConfiguration(val ontoAtCenterOfLinks: Ontology) {
     lateinit var activationStatement: ObjectPropertyStatement
     var isActivatedByOntology: Boolean = false
     lateinit var inputDBInfo: MySqlConnector
-    var mapDBTableToStatement: HashMap<String, IncompleteStatement> = hashMapOf()
+    var mapOfDBTablesToStatements: HashMap<String, IncompleteStatement> = hashMapOf()
     lateinit var outputDBInfo: MySqlConnector
-    var mapStatementToDBTable: HashMap<IncompleteStatement, String> = hashMapOf()
+    var mapOfStatementsToDBTables: HashMap<IncompleteStatement, String> = hashMapOf()
 }

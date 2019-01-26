@@ -16,6 +16,7 @@ interface MySqlConnectorInterface {
 
     fun setBooleanValue(tableName: String, timestamp: Timestamp, booleanValue: Boolean)
     fun setIntegerValue(tableName: String, timestamp: Timestamp, integerValue: Int)
+    fun setStringValue(tableName: String, timestamp: Timestamp, stringValue: String)
 
     fun getNumberOfRows(tableName: String): Int
 }

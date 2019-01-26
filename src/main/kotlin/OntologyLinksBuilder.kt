@@ -34,7 +34,7 @@ class OntologyLinksBuilder(ontoAtCenterOfLinks: Ontology) {
 
             fun linkDBTableToStatementInOnto(tableNameInDataBase: String, incompleteStatement: IncompleteStatement): DBTableToOntoLinkBuilder {
 
-                ontoLinksConfig.mapDBTableToStatement[tableNameInDataBase] = incompleteStatement
+                ontoLinksConfig.mapOfDBTablesToStatements[tableNameInDataBase] = incompleteStatement
                 return DBTableToOntoLinkBuilder(ontoLinksConfig)
             }
 
@@ -58,7 +58,7 @@ class OntologyLinksBuilder(ontoAtCenterOfLinks: Ontology) {
 
             fun linkStatementInOntoToDBTable(incompleteStatement: IncompleteStatement, tableNameInDataBase: String): OntoToDBTableLinkBuilder {
 
-                ontoLinksConfig.mapStatementToDBTable[incompleteStatement] = tableNameInDataBase
+                ontoLinksConfig.mapOfStatementsToDBTables[incompleteStatement] = tableNameInDataBase
                 return OntoToDBTableLinkBuilder(ontoLinksConfig)
             }
 

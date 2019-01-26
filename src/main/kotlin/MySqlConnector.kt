@@ -181,14 +181,14 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     }
 
     /**
-     * Returns the integerValue from the resultSet object. Note that the column name of the table (in SQL database)
+     * Returns the stringValue from the resultSet object. Note that the column name of the table (in SQL database)
      * is hardcoded in this method.
      *
      * Attention: this method has good scope for modification.
      *
      * @param resultSet  The <code>ResultSet Object</code> that holds the data read from the table.
      *
-     * @return integerValue of <code>Int</code> type.
+     * @return stringValue of <code>String</code> type.
      */
     override fun getStringValue(resultSet: ResultSet?): String {
         try {
@@ -234,6 +234,25 @@ class MySqlConnector(private val databaseName: String, private val username: Str
             preparedStmt?.execute()
         } catch (e: SQLException) {
             error("Problem in inserting timestamp and integerValue in the table: $tableName")
+        }
+    }
+
+    /**
+     * Allows to set timestamp and integerValue in the table.
+     *
+     * @param tableName  The <code>String</code> name of the table.
+     * @param timestamp  The <code>Timestamp</code> to be added to the table.
+     * @param stringValue  The <code>String</code> to be added to the table.
+     */
+    override fun setStringValue(tableName: String, timestamp: Timestamp, stringValue: String) {
+        val query = "INSERT INTO $tableName (time,value) VALUES (?,?)"
+        try {
+            val preparedStmt = connection.prepareStatement(query)
+            preparedStmt?.setTimestamp(1, timestamp)
+            preparedStmt?.setString(2, stringValue)
+            preparedStmt?.execute()
+        } catch (e: SQLException) {
+            error("Problem in inserting timestamp and stringValue in the table: $tableName")
         }
     }
 

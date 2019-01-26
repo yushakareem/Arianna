@@ -43,8 +43,8 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.43'
 
     //ReactiveX
-    compile 'io.reactivex.rxjava2:rxkotlin:2.2.0'
-    compile "io.reactivex.rxjava2:rxjava:2.1.16"
+    compile 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    compile "io.reactivex.rxjava2:rxjava:2.2.6"
 }
 
 compileKotlin {

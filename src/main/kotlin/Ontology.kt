@@ -388,6 +388,14 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         }
     }
 
+    //Synchronize reasoner
+    /**
+     * To save the manipulations done to the ontology
+     */
+    fun synchronizeReasoner() {
+        this.ontoRef.synchronizeReasoner()
+    }
+
     //To save
     /**
      * To save the manipulations done to the ontology
