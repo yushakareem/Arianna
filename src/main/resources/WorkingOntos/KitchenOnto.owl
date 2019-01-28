@@ -18,6 +18,13 @@
      xmlns:KitchenOnto1="http://www.semanticweb.org/Arianna/KitchenOnto#"
      xmlns:time="http://www.w3.org/2006/time#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yusha Notes:
+
+Object Properties: &apos;The&apos; is added in places where it feels necessary.
+
+Data Properties: Cannot be influced by SWRL rules (true in the sense that they do not present themselves in the ontology after the reasoner runs), whereas SWRL rules can be influenced by data properties.
+
+OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
         <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl-time"/>
         <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-04-06</terms:modified>
         <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - adjust range of time:timeZone to time:TimeZone, moved up from the tzont ontology.  </skos:changeNote>
@@ -48,13 +55,6 @@ V: stands for virtual</rdfs:comment>
 
 Ontology engineering by Simon J D Cox</skos:historyNote>
         <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
-        <rdfs:comment>Yusha Notes:
-
-Object Properties: &apos;The&apos; is added in places where it feels necessary.
-
-Data Properties: Cannot be influced by SWRL rules (true in the sense that they do not present themselves in the ontology after the reasoner runs), whereas SWRL rules can be influenced by data properties.
-
-OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
         <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
         <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
         <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
@@ -222,14 +222,6 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
-    <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isAnActivityLinkedTo -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isAnActivityLinkedTo">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isBasedOn -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isBasedOn">
@@ -257,6 +249,15 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
+    <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isDoneIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isDoneIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isFurnitureOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isFurnitureOf">
@@ -271,6 +272,15 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isIn">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isLinkedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isLinkedTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Time"/>
     </owl:ObjectProperty>
     
 
@@ -307,7 +317,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isPartOfStatement">
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Statement"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -686,7 +696,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Brightness"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -707,7 +717,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -978,7 +988,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Space -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Space">
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:Class>
     
 
@@ -987,18 +997,20 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Statement">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#hasState"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#hasState"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#hasTimestamp"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#hasTimestamp"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:Class>
     
 
@@ -1014,7 +1026,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Time -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Time">
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:Class>
     
 
@@ -1379,10 +1391,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement">
-        <KitchenOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</KitchenOnto1:hasState>
-        <KitchenOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26-10-2018 14:16:17.456</KitchenOnto1:hasTimestamp>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
     
 
 
@@ -1474,15 +1483,6 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
-    <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_Yusha -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_Yusha">
-        <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
-        <KitchenOnto1:isIn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Afternoon -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Afternoon">
@@ -1490,7 +1490,6 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Afternoon_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Afternoon_EndTime"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Lunch"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1501,6 +1500,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1511,6 +1511,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1522,10 +1523,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Evening_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Evening_EndTime"/>
         <time:hasInside rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
-        <time:hasInside rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
-        <time:hasInside rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Dinner"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1536,6 +1534,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1546,6 +1545,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1556,6 +1556,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1566,6 +1567,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1576,6 +1578,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1586,6 +1589,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_EndTime"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1596,8 +1600,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Morning_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Morning_EndTime"/>
+        <time:hasInside rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet"/>
+        <time:hasInside rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Breakfast"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1607,8 +1612,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Night">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Night_BeginTime"/>
-        <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Night_EndTime"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <time:hasInside rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove"/>
     </owl:NamedIndividual>
     
 
@@ -1621,6 +1625,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Evening"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Morning"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Night"/>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1629,10 +1634,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Making_Breakfast">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
-        <KitchenOnto1:isAnActivityLinkedTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Morning"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
+        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet"/>
+        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove"/>
+        <KitchenOnto1:isDoneIn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen"/>
+        <KitchenOnto1:isLinkedTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Morning"/>
     </owl:NamedIndividual>
     
 
@@ -1641,10 +1646,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Making_Dinner">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
-        <KitchenOnto1:isAnActivityLinkedTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Evening"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
+        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet"/>
+        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove"/>
+        <KitchenOnto1:isDoneIn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen"/>
+        <KitchenOnto1:isLinkedTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Evening"/>
     </owl:NamedIndividual>
     
 
@@ -1653,10 +1658,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Making_Lunch">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
-        <KitchenOnto1:isAnActivityLinkedTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Afternoon"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
-        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
+        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet"/>
+        <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove"/>
+        <KitchenOnto1:isDoneIn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen"/>
+        <KitchenOnto1:isLinkedTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Afternoon"/>
     </owl:NamedIndividual>
     
 
@@ -1664,9 +1669,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S2 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S2">
-        <time:before rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
-        <KitchenOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</KitchenOnto1:hasState>
-        <KitchenOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26-10-2018 14:16:17.456</KitchenOnto1:hasTimestamp>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1674,8 +1677,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S3 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S3">
-        <KitchenOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</KitchenOnto1:hasState>
-        <KitchenOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26-10-2018 14:16:17.456</KitchenOnto1:hasTimestamp>
+        <rdfs:comment>Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1694,7 +1696,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_BathRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1703,7 +1705,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_BedRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1712,7 +1714,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_Kitchen">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1721,7 +1723,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_LivingRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1730,7 +1732,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_Table">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1739,7 +1741,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_TableX">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
-        <rdfs:comment>new in Nov 2018</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1764,7 +1766,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_E_AxisZ">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#ElikoDevice"/>
-        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#H_Yusha"/>
+        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Yusha"/>
     </owl:NamedIndividual>
     
 
@@ -1800,9 +1802,11 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
-        <KitchenOnto1:isPartOfStatement rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
         <KitchenOnto1:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_KitchenCabinet"/>
-        <KitchenOnto1:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</KitchenOnto1:detectsMotion>
+        <time:before rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove"/>
+        <KitchenOnto1:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</KitchenOnto1:detectsMotion>
+        <KitchenOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</KitchenOnto1:hasState>
+        <KitchenOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-27 20:05:02.39</KitchenOnto1:hasTimestamp>
     </owl:NamedIndividual>
     
 
@@ -1811,9 +1815,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
-        <KitchenOnto1:isPartOfStatement rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
         <KitchenOnto1:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_KitchenSinkOrStove"/>
-        <KitchenOnto1:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</KitchenOnto1:detectsMotion>
+        <KitchenOnto1:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</KitchenOnto1:detectsMotion>
+        <KitchenOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</KitchenOnto1:hasState>
+        <KitchenOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-27 20:05:09.429</KitchenOnto1:hasTimestamp>
     </owl:NamedIndividual>
     
 
@@ -1858,14 +1863,14 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_Gesture">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
-        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#H_Yusha"/>
-        <rdfs:comment>S_W_Drinking</rdfs:comment>
-        <rdfs:comment>S_W_FallingDown</rdfs:comment>
-        <rdfs:comment>S_W_LyingDown</rdfs:comment>
-        <rdfs:comment>S_W_Pouring</rdfs:comment>
-        <rdfs:comment>S_W_SittingDown</rdfs:comment>
-        <rdfs:comment>S_W_SittingUp</rdfs:comment>
-        <rdfs:comment>S_W_Walking</rdfs:comment>
+        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Yusha"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S_W_Drinking</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S_W_FallingDown</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S_W_LyingDown</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S_W_Pouring</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S_W_SittingDown</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S_W_SittingUp</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S_W_Walking</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1874,7 +1879,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_HeartRate">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
-        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#H_Yusha"/>
+        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Yusha"/>
     </owl:NamedIndividual>
     
 
@@ -1883,7 +1888,7 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_Location">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
-        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#H_Yusha"/>
+        <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Yusha"/>
     </owl:NamedIndividual>
     
 
@@ -2080,6 +2085,15 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     
 
 
+    <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Yusha -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Yusha">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
+        <KitchenOnto1:isIn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -2104,14 +2118,6 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
             <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Temprature"/>
         </owl:members>
     </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#HumanPosture"/>
-        </owl:members>
-    </rdf:Description>
     
 
 
@@ -2126,19 +2132,28 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#interval">
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a">
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s2">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#Int">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description>
@@ -2161,10 +2176,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                         <rdf:first>
                             <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#hasState"/>
-                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
-                                <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
                             </rdf:Description>
                         </rdf:first>
                         <rdf:rest>
@@ -2172,10 +2186,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                 <rdf:first>
                                     <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#hasState"/>
-                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
-                                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
                                     </rdf:Description>
                                 </rdf:first>
                                 <rdf:rest>
@@ -2183,10 +2196,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                         <rdf:first>
                                             <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#hasInside"/>
-                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#interval"/>
-                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Statement"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s1"/>
                                             </rdf:Description>
                                         </rdf:first>
                                         <rdf:rest>
@@ -2194,10 +2206,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                                 <rdf:first>
                                                     <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                                        <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#hasInside"/>
-                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#interval"/>
-                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Statement"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s2"/>
                                                     </rdf:Description>
                                                 </rdf:first>
                                                 <rdf:rest>
@@ -2206,9 +2217,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                         <rdf:first>
                                                             <rdf:Description>
                                                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                                                <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#hasInside"/>
-                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#interval"/>
-                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isBasedOn"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s1"/>
                                                             </rdf:Description>
                                                         </rdf:first>
                                                         <rdf:rest>
@@ -2216,9 +2227,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                                                 <rdf:first>
                                                                     <rdf:Description>
-                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isBasedOn"/>
                                                                         <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s2"/>
                                                                     </rdf:Description>
                                                                 </rdf:first>
                                                                 <rdf:rest>
@@ -2226,10 +2238,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                                         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                                                         <rdf:first>
                                                                             <rdf:Description>
-                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                                                                <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#before"/>
-                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
-                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#detectsMotion"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s1"/>
+                                                                                <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
                                                                             </rdf:Description>
                                                                         </rdf:first>
                                                                         <rdf:rest>
@@ -2237,9 +2249,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                                                                 <rdf:first>
                                                                                     <rdf:Description>
-                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Statement"/>
-                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#detectsMotion"/>
+                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s2"/>
+                                                                                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
                                                                                     </rdf:Description>
                                                                                 </rdf:first>
                                                                                 <rdf:rest>
@@ -2248,9 +2261,9 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                                                         <rdf:first>
                                                                                             <rdf:Description>
                                                                                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isIn"/>
-                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
-                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen"/>
+                                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isLinkedTo"/>
+                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
+                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
                                                                                             </rdf:Description>
                                                                                         </rdf:first>
                                                                                         <rdf:rest>
@@ -2258,10 +2271,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                                                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                                                                                 <rdf:first>
                                                                                                     <rdf:Description>
-                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                                                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#hasState"/>
-                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
-                                                                                                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                        <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#hasInside"/>
+                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
+                                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s1"/>
                                                                                                     </rdf:Description>
                                                                                                 </rdf:first>
                                                                                                 <rdf:rest>
@@ -2269,9 +2282,10 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                                                                         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                                                                                         <rdf:first>
                                                                                                             <rdf:Description>
-                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                                                                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Statement"/>
-                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S3"/>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#hasInside"/>
+                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#Int"/>
+                                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s2"/>
                                                                                                             </rdf:Description>
                                                                                                         </rdf:first>
                                                                                                         <rdf:rest>
@@ -2279,25 +2293,13 @@ OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apo
                                                                                                                 <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
                                                                                                                 <rdf:first>
                                                                                                                     <rdf:Description>
-                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                                                                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Statement"/>
-                                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S2"/>
+                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                        <swrl:propertyPredicate rdf:resource="http://www.w3.org/2006/time#before"/>
+                                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s1"/>
+                                                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s2"/>
                                                                                                                     </rdf:Description>
                                                                                                                 </rdf:first>
-                                                                                                                <rdf:rest>
-                                                                                                                    <rdf:Description>
-                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                                                                                                        <rdf:first>
-                                                                                                                            <rdf:Description>
-                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                                                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isAnActivityLinkedTo"/>
-                                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
-                                                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#interval"/>
-                                                                                                                            </rdf:Description>
-                                                                                                                        </rdf:first>
-                                                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                                                                                    </rdf:Description>
-                                                                                                                </rdf:rest>
+                                                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                                                                                                             </rdf:Description>
                                                                                                         </rdf:rest>
                                                                                                     </rdf:Description>

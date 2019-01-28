@@ -12,6 +12,7 @@ interface MySqlConnectorInterface {
     fun getTimestamp(resultSet: ResultSet?): Timestamp
     fun getBooleanValue(resultSet: ResultSet?): Boolean
     fun getIntegerValue(resultSet: ResultSet?): Int
+    fun getDoubleValue(resultSet: ResultSet?): Double
     fun getStringValue(resultSet: ResultSet?): String
 
     fun setBooleanValue(tableName: String, timestamp: Timestamp, booleanValue: Boolean)
@@ -19,4 +20,5 @@ interface MySqlConnectorInterface {
     fun setStringValue(tableName: String, timestamp: Timestamp, stringValue: String)
 
     fun getNumberOfRows(tableName: String): Int
+    fun getDatatypeOfTheValue(tableName: String): String
 }

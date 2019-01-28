@@ -11,6 +11,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     private lateinit var timestamp: Timestamp
     private var booleanValue: Boolean = false //primitives have to be initialized
     private var integerValue: Int = 0 //primitives have to be initialized
+    private var doubleValue: Double = 0.0 //primitives have to be initialized
     private lateinit var stringValue: String
 
     /**
@@ -19,9 +20,9 @@ class MySqlConnector(private val databaseName: String, private val username: Str
      * It initializes SQL 'connection' and 'statement' objects.
      * Do not forget to <code>disconnectFromDB()</code> later (after work done with the DB).
      *
-     * @param databaseName  The <code>String</code> representing the database name.
-     * @param username  The <code>String</code> of username of SQL server.
-     * @param password  The <code>String</code> of password of SQL server.
+     * @param databaseName The <code>String</code> representing the database name.
+     * @param username The <code>String</code> of username of SQL server.
+     * @param password The <code>String</code> of password of SQL server.
      */
     override fun connectToDBorCreateNewDB() {
         try {
@@ -32,7 +33,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/$databaseName?autoReconnect=true&verifyServerCertificate=false&useSSL=true", username, password)
-            println("DataBase with the name: $databaseName already exists. Making connection and creating statement.")
+//            println("DataBase with the name: $databaseName already exists. Making connection and creating statement.")
             try {
                 statement = connection.createStatement()
             } catch (e1: SQLException) {
@@ -90,7 +91,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
      * Reads the latest row (by making the query) from the table in the database.
      * Dont forget to do ResultSet.next() once you have the result set object.
      *
-     * @param tableName  The <code>String</code> representing the table in the database.
+     * @param tableName The <code>String</code> representing the table in the database.
      *
      * @return resultSet The <code>ResultSet Object</code> that holds the data read from the table.
      */
@@ -109,7 +110,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
      * Reads a specific row (by making the query) from the table in the database. Rows start from the number 0.
      * Dont forget to do ResultSet.next() once you have the result set object.
      *
-     * @param tableName  The <code>String</code> representing the table in the database.
+     * @param tableName The <code>String</code> representing the table in the database.
      *
      * @return resultSet The <code>ResultSet Object</code> that holds the data read from the table.
      */
@@ -129,7 +130,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
      *
      * Attention: this method has good scope for modification.
      *
-     * @param resultSet  The <code>ResultSet Object</code> that holds the data read from the table.
+     * @param resultSet The <code>ResultSet Object</code> that holds the data read from the table.
      *
      * @return timestamp of <code>Timestamp</code> type.
      */
@@ -148,7 +149,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
      *
      * Attention: this method has good scope for modification.
      *
-     * @param resultSet  The <code>ResultSet Object</code> that holds the data read from the table.
+     * @param resultSet The <code>ResultSet Object</code> that holds the data read from the table.
      *
      * @return booleanValue of <code>Boolean</code> type.
      */
@@ -167,7 +168,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
      *
      * Attention: this method has good scope for modification.
      *
-     * @param resultSet  The <code>ResultSet Object</code> that holds the data read from the table.
+     * @param resultSet The <code>ResultSet Object</code> that holds the data read from the table.
      *
      * @return integerValue of <code>Int</code> type.
      */
@@ -181,12 +182,31 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     }
 
     /**
+     * Returns the integerValue from the resultSet object. Note that the column name of the table (in SQL database)
+     * is hardcoded in this method.
+     *
+     * Attention: this method has good scope for modification.
+     *
+     * @param resultSet The <code>ResultSet Object</code> that holds the data read from the table.
+     *
+     * @return double
+     */
+    override fun getDoubleValue(resultSet: ResultSet?): Double {
+        try {
+            doubleValue = resultSet!!.getDouble("value")
+        } catch (e: SQLException) {
+            error("Problem in getting integerValue: Check if you have done resultSet.next()")
+        }
+        return doubleValue
+    }
+
+    /**
      * Returns the stringValue from the resultSet object. Note that the column name of the table (in SQL database)
      * is hardcoded in this method.
      *
      * Attention: this method has good scope for modification.
      *
-     * @param resultSet  The <code>ResultSet Object</code> that holds the data read from the table.
+     * @param resultSet The <code>ResultSet Object</code> that holds the data read from the table.
      *
      * @return stringValue of <code>String</code> type.
      */
@@ -202,9 +222,9 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     /**
      * Allows to set timestamp and booleanValue in the table.
      *
-     * @param tableName  The <code>String</code> name of the table.
-     * @param timestamp  The <code>Timestamp</code> to be added to the table.
-     * @param booleanValue  The <code>Boolean</code> to be added to the table.
+     * @param tableName The <code>String</code> name of the table.
+     * @param timestamp The <code>Timestamp</code> to be added to the table.
+     * @param booleanValue The <code>Boolean</code> to be added to the table.
      */
     override fun setBooleanValue(tableName: String, timestamp: Timestamp, booleanValue: Boolean) {
         val query = "INSERT INTO $tableName (time,value) VALUES (?,?)"
@@ -221,9 +241,9 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     /**
      * Allows to set timestamp and integerValue in the table.
      *
-     * @param tableName  The <code>String</code> name of the table.
-     * @param timestamp  The <code>Timestamp</code> to be added to the table.
-     * @param integerValue  The <code>Int</code> to be added to the table.
+     * @param tableName The <code>String</code> name of the table.
+     * @param timestamp The <code>Timestamp</code> to be added to the table.
+     * @param integerValue The <code>Int</code> to be added to the table.
      */
     override fun setIntegerValue(tableName: String, timestamp: Timestamp, integerValue: Int) {
         val query = "INSERT INTO $tableName (time,value) VALUES (?,?)"
@@ -240,9 +260,9 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     /**
      * Allows to set timestamp and integerValue in the table.
      *
-     * @param tableName  The <code>String</code> name of the table.
-     * @param timestamp  The <code>Timestamp</code> to be added to the table.
-     * @param stringValue  The <code>String</code> to be added to the table.
+     * @param tableName The <code>String</code> name of the table.
+     * @param timestamp The <code>Timestamp</code> to be added to the table.
+     * @param stringValue The <code>String</code> to be added to the table.
      */
     override fun setStringValue(tableName: String, timestamp: Timestamp, stringValue: String) {
         val query = "INSERT INTO $tableName (time,value) VALUES (?,?)"
@@ -259,7 +279,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
     /**
      * Counts the number of rows in the table and returns the value.
      *
-     * @param tableName  The <code>String</code> name of the table.
+     * @param tableName The <code>String</code> name of the table.
      *
      * @return numberOfRows of <code>Int</code> type.
      */
@@ -272,9 +292,9 @@ class MySqlConnector(private val databaseName: String, private val username: Str
         }
 
         var numberOfRows = 0
-        while (resultSet!!.next()) {
+        if (resultSet!!.next()) {
             try {
-                numberOfRows = resultSet!!.getInt("rows")
+                numberOfRows = resultSet!!.getInt(1)
             } catch (e: SQLException) {
                 error("MySQL getting Item TimeStamp/Value problem")
             }
@@ -282,4 +302,30 @@ class MySqlConnector(private val databaseName: String, private val username: Str
         return numberOfRows
     }
 
+    /**
+     * Gets datatype of the field 'value' from the desired table in DB.
+     *
+     * @param tableName The <code>String</code> name of the table.
+     *
+     * @return datatype The datatype returned as a <code>String</code>.
+     */
+    override fun getDatatypeOfTheValue(tableName: String): String {
+        val query = "select data_type from information_schema.columns where table_name = '$tableName' and column_name = 'value'"
+        try {
+            resultSet = statement.executeQuery(query)
+        } catch (e: SQLException) {
+            error("Please check the 'table name' in database.")
+        }
+
+        lateinit var datatype: String
+        if (resultSet!!.next()) {
+            try {
+                datatype = resultSet!!.getString(1)
+            } catch (e: SQLException) {
+                error("MySQL getting Item TimeStamp/Value problem")
+            }
+        }
+
+        return datatype
+    }
 }

@@ -42,7 +42,7 @@ class OntologiesNetwork {
                 .subscribeBy(
                         onNext = {
                             if (inferredStatementFromObservable.compare(it.activationStatement)) {
-                                println("Activating: ${it.ontoAtCenterOfLinks.getOntoRef().referenceName} ontology.")
+//                                println("Activating: ${it.ontoAtCenterOfLinks.getOntoRef().referenceName} ontology.")
                                 activateOntology(it)
                             }
                             else println("Checking activation condition of ${it.ontoAtCenterOfLinks.getOntoRef().referenceName} ontology, next.")
@@ -52,10 +52,14 @@ class OntologiesNetwork {
                 )
     }
 
-    private fun activateOntology(ontoLinksConfig: OntologyLinksConfiguration?) {
-        transferDataFromDBToOnto()
-        assertTemporalRelations()
-        transferInferencesFromOntoToDB()
+    private fun activateOntology(ontoLinksConfig: OntologyLinksConfiguration) {
+        transferDataFromDBToOnto(ontoLinksConfig.inputDBInfo, ontoLinksConfig.mapOfDBTablesToStatements, ontoLinksConfig.ontoAtCenterOfLinks)
+//        assertTemporalRelations(ontoLinksConfig)
+//        transferInferencesFromOntoToDB()
+    }
+
+    private fun assertTemporalRelations(ontoLinksConfig: OntologyLinksConfiguration) {
+
     }
 
     private fun transferInferencesFromOntoToDB(ontoAtCenterOfLinks: Ontology, mapStatementToDBTable: HashMap<IncompleteStatement, String>, outputDBInfo: MySqlConnector): ObjectPropertyStatement {
@@ -85,15 +89,34 @@ class OntologiesNetwork {
         mapDBTableToStatement.iterator().forEach {
 
             inputDBInfo.connectToDBorCreateNewDB()
+
+            val datatype = inputDBInfo.getDatatypeOfTheValue(it.key)
             val resultSet = inputDBInfo.readLatestRow(it.key)
+
             if (resultSet.next()) {
-                val sensorValue = inputDBInfo.getStringValue(resultSet)
+
+                lateinit var sensorValueStatement: DataPropertyStatement
+                when (datatype) {
+                    "varchar" -> {
+                        val sensorValue = inputDBInfo.getStringValue(resultSet)
+                        sensorValueStatement = DataPropertyStatement(it.value.getSubject(), it.value.getVerb(), sensorValue)
+                    }
+                    "tinyint" -> {
+                        val sensorValue = inputDBInfo.getBooleanValue(resultSet)
+                        sensorValueStatement = DataPropertyStatement(it.value.getSubject(), it.value.getVerb(), sensorValue)
+                    }
+                    "double" -> {
+                        val sensorValue = inputDBInfo.getDoubleValue(resultSet)
+                        sensorValueStatement = DataPropertyStatement(it.value.getSubject(), it.value.getVerb(), sensorValue)
+                    }
+                }
                 val timeStamp = inputDBInfo.getTimestamp(resultSet)
-                val sensorValueStatement = DataPropertyStatement(it.value.getSubject(), it.value.getVerb(), sensorValue)
                 val sensorTimestampStatement = DataPropertyStatement(it.value.getSubject(), "hasTimestamp", timeStamp)
                 ontoAtCenterOfLinks.addOrUpdateToOnto(sensorValueStatement)
                 ontoAtCenterOfLinks.addOrUpdateToOnto(sensorTimestampStatement)
-            } else error("ResultSet is empty. Please check the query for MySQL-DB.")
+            } else {
+                error("ResultSet is empty. Please check the query for MySQL-DB.")
+            }
             inputDBInfo.disconnectFromDB()
             ontoAtCenterOfLinks.saveOnto(ontoAtCenterOfLinks.getOntoFilePath())
         }

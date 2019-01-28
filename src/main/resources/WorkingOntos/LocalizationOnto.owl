@@ -1122,16 +1122,18 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#Statement">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#hasState"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#hasTimestamp"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#hasState"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#hasTimestamp"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </owl:equivalentClass>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:Class>
@@ -2070,9 +2072,9 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#S_SW_Location">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#SmartWatch"/>
         <LocalizationOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Yusha"/>
-        <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kitchen</LocalizationOnto1:hasLocation>
+        <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingRoom</LocalizationOnto1:hasLocation>
         <LocalizationOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</LocalizationOnto1:hasState>
-        <LocalizationOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-26 23:31:09.856</LocalizationOnto1:hasTimestamp>
+        <LocalizationOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-27 20:13:29.076</LocalizationOnto1:hasTimestamp>
     </owl:NamedIndividual>
     
 

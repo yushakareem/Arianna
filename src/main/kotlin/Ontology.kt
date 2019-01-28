@@ -30,8 +30,6 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         val owlTimeOntoIRI = "http://www.w3.org/2006/time"
         val owlTimeOntoRef = ontoRefName + "Time"
 
-        println(owlTimeOntoRef)
-
         ontoRef = OWLReferencesInterface.OWLReferencesContainer.newOWLReferenceFromFileWithPellet(ontoRefName, ontoFilePath, ontoIRI, bufferingReasoner)
         temporalOntoRef = OWLReferencesInterface.OWLReferencesContainer.newOWLReferenceFromFileWithPellet(owlTimeOntoRef, ontoFilePath, owlTimeOntoIRI, bufferingReasoner)
     }
