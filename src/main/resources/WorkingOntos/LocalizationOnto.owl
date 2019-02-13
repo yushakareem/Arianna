@@ -2072,9 +2072,9 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#S_SW_Location">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#SmartWatch"/>
         <LocalizationOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Yusha"/>
-        <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">livingRoom</LocalizationOnto1:hasLocation>
+        <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">livingroom</LocalizationOnto1:hasLocation>
         <LocalizationOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</LocalizationOnto1:hasState>
-        <LocalizationOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-28 12:39:43.402</LocalizationOnto1:hasTimestamp>
+        <LocalizationOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-02-13 22:01:41.13</LocalizationOnto1:hasTimestamp>
     </owl:NamedIndividual>
     
 

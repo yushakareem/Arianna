@@ -7,10 +7,10 @@ data class OntologyLinksConfiguration(val ontoAtCenterOfLinks: Ontology) {
 
     var schedulerInitialDelay: Long = 0
     var schedulerIntervalPeriod: Long = 0
-    var isActivatedByScheduler: Boolean = false
-    lateinit var activatorOntology: Ontology
-    lateinit var activationStatement: ObjectPropertyStatement
-    var isActivatedByOntology: Boolean = false
+    var isScheduledAndObservable: Boolean = false
+    lateinit var observableOntology: Ontology
+    lateinit var activationStatementToObserve: ObjectPropertyStatement
+    var isAnObserver: Boolean = false
     lateinit var inputDBInfo: MySqlConnector
     var mapOfDBTablesToStatements: HashMap<String, IncompleteStatement> = hashMapOf()
     lateinit var outputDBInfo: MySqlConnector

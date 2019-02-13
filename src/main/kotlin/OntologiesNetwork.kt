@@ -8,7 +8,6 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.rxkotlin.toObservable
 import java.lang.IllegalStateException
 
-
 class OntologiesNetwork {
 
     fun startNetworking(vararg ontoLinksConfigList: OntologyLinksConfiguration) = startNetworking(ontoLinksConfigList.asList())
@@ -18,48 +17,43 @@ class OntologiesNetwork {
         lateinit var fixedRateTimer: Timer
 
         ontoLinksConfigList.toObservable()
-                .filter { it.isActivatedByScheduler }
+                .filter { it.isScheduledAndObservable }
                 .subscribeBy(
                         onNext = {
                             fixedRateTimer = fixedRateTimer(name = "${it.ontoAtCenterOfLinks.getOntoRef().referenceName}_ScheduledNonDaemonThread", initialDelay = it.schedulerInitialDelay, period = it.schedulerIntervalPeriod) {
 
-                                transferDataFromDBToOnto(it.inputDBInfo, it.mapOfDBTablesToStatements, it.ontoAtCenterOfLinks)
-                                val observableOntoStatement = Observable.just(transferInferencesFromOntoToDB(it.ontoAtCenterOfLinks, it.mapOfStatementsToDBTables, it.outputDBInfo))
-                                observableOntoStatement.subscribe { inferredStatement -> observerOntologies(inferredStatement,ontoLinksConfigList) }
+                                val observableInferredStatement = activateOntology(it,false)
+                                observableInferredStatement.subscribe { inferredStatement -> activateObserverOntologies(inferredStatement,ontoLinksConfigList) }
                             }
                         },
                         onError = { it.printStackTrace() },
-                        onComplete = { println("Completed: activation of scheduled thread.") }
+                        onComplete = { println("Activated scheduled-observable ontology.") } //dont print, if withAriannaAnalyticsDisabled()
                 )
 
         return OntologiesNetworkHandler(fixedRateTimer)
     }
 
-    private fun observerOntologies(inferredStatementFromObservable: ObjectPropertyStatement, ontoLinksConfigList: List<OntologyLinksConfiguration>) {
+    private fun activateObserverOntologies(inferredStatementFromObservable: ObjectPropertyStatement, ontoLinksConfigList: List<OntologyLinksConfiguration>) {
 
         ontoLinksConfigList.toObservable()
-                .filter { it.isActivatedByOntology }
+                .filter { it.isAnObserver }
+                .filter { inferredStatementFromObservable.compare(it.activationStatementToObserve) }
                 .subscribeBy(
-                        onNext = {
-                            if (inferredStatementFromObservable.compare(it.activationStatement)) {
-//                                println("Activating: ${it.ontoAtCenterOfLinks.getOntoRef().referenceName} ontology.")
-                                activateOntology(it)
-                            }
-                            else println("Checking activation condition of ${it.ontoAtCenterOfLinks.getOntoRef().referenceName} ontology, next.")
-                        },
+                        onNext = { activateOntology(it, true) },
                         onError = { it.printStackTrace() },
-                        onComplete = { println("Completed: Activated ontologies by checking their activation condition.") }
+                        onComplete = { println("Checked activation condition of observer ontologies. And activated it, if condition got satisfied.")  } //dont print, if withAriannaAnalyticsDisabled()
                 )
     }
 
-    private fun activateOntology(ontoLinksConfig: OntologyLinksConfiguration) {
+    private fun activateOntology(ontoLinksConfig: OntologyLinksConfiguration, withAssertTemporalRelations: Boolean): Observable<ObjectPropertyStatement> {
+
         transferDataFromDBToOnto(ontoLinksConfig.inputDBInfo, ontoLinksConfig.mapOfDBTablesToStatements, ontoLinksConfig.ontoAtCenterOfLinks)
-//        assertTemporalRelations(ontoLinksConfig)
-//        transferInferencesFromOntoToDB()
+        if (withAssertTemporalRelations) assertTemporalRelations(ontoLinksConfig)
+        return Observable.just(transferInferencesFromOntoToDB(ontoLinksConfig.ontoAtCenterOfLinks, ontoLinksConfig.mapOfStatementsToDBTables, ontoLinksConfig.outputDBInfo))
     }
 
     private fun assertTemporalRelations(ontoLinksConfig: OntologyLinksConfiguration) {
-
+        // For now incomplete
     }
 
     private fun transferInferencesFromOntoToDB(ontoAtCenterOfLinks: Ontology, mapStatementToDBTable: HashMap<IncompleteStatement, String>, outputDBInfo: MySqlConnector): ObjectPropertyStatement {
@@ -74,8 +68,10 @@ class OntologiesNetwork {
                 val inferredObjectStatement = ontoAtCenterOfLinks.inferFromOntoToReturnOPStatement(it.key)
                 outputDBInfo.setStringValue(it.value, Timestamp(System.currentTimeMillis()), "${it.key.getSubject()}_${it.key.getVerb()}_${inferredObjectStatement.getObject()}")
                 inferredObjectPropertyStatement = ObjectPropertyStatement(it.key.getSubject(), it.key.getVerb(), inferredObjectStatement.getObject())
+                println("\nInferred outputHAR-statement in '${ontoAtCenterOfLinks.getOntoRef().referenceName}' is seen above.") //dont print, if withAriannaAnalyticsDisabled()
             } catch (e: IllegalStateException) {
-                println("\nInference is NULL")// due to 3 possible reasons: \n(1) Ontology is NOT UPDATED properly with sensor values from DB. \n(2) Due to the design of rules in Ontology. Although Ontology is UPDATED with sensor values from DB. \n(3) Due to miss-typing while building statements on JAVA side. Although Ontology is UPDATED with sensor values from DB.\n")
+                println("\nInference of outputHAR-statement in '${ontoAtCenterOfLinks.getOntoRef().referenceName}' is NULL.") // due to 3 possible reasons: \n(1) Ontology is NOT UPDATED properly with sensor values from DB. \n(2) Due to the design of rules in Ontology. Although Ontology is UPDATED with sensor values from DB. \n(3) Due to miss-typing while building statements on JAVA side. Although Ontology is UPDATED with sensor values from DB.\n")
+                //dont print, if withAriannaAnalyticsDisabled()
             }
             outputDBInfo.disconnectFromDB()
         }

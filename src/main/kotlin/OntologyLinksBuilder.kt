@@ -6,19 +6,19 @@ class OntologyLinksBuilder(ontoAtCenterOfLinks: Ontology) {
 
     private val ontoLinksConfig = OntologyLinksConfiguration(ontoAtCenterOfLinks)
 
-    fun activatedByScheduler(initialDelay: Long, periodicIntervalMillis: Long): InputDBBuilder {
+    fun isScheduledAndObservable(initialDelay: Long, periodicIntervalMillis: Long): InputDBBuilder {
 
         ontoLinksConfig.schedulerInitialDelay = initialDelay
         ontoLinksConfig.schedulerIntervalPeriod = periodicIntervalMillis
-        ontoLinksConfig.isActivatedByScheduler = true
+        ontoLinksConfig.isScheduledAndObservable = true
         return InputDBBuilder(ontoLinksConfig)
     }
 
-    fun activatedByOntology(activatorOntology: Ontology, activationStatement: ObjectPropertyStatement): InputDBBuilder {
+    fun isAnObserverOnto(activatedByObservableOntology: Ontology, activationStatementToObserve: ObjectPropertyStatement): InputDBBuilder {
 
-        ontoLinksConfig.activatorOntology = activatorOntology
-        ontoLinksConfig.activationStatement = activationStatement
-        ontoLinksConfig.isActivatedByOntology = true
+        ontoLinksConfig.observableOntology = activatedByObservableOntology
+        ontoLinksConfig.activationStatementToObserve = activationStatementToObserve
+        ontoLinksConfig.isAnObserver = true
         return InputDBBuilder(ontoLinksConfig)
     }
 

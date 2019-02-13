@@ -7,7 +7,6 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
-
 /**
  * This class helps in initializing ontologies and manipulating them.
  *

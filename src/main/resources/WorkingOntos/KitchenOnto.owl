@@ -18,6 +18,15 @@
      xmlns:KitchenOnto1="http://www.semanticweb.org/Arianna/KitchenOnto#"
      xmlns:time="http://www.w3.org/2006/time#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto">
+        <owl:priorVersion rdf:resource="http://www.w3.org/2006/time#2006"/>
+        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
+        <terms:creator rdf:resource="mailto:panfeng66@gmail.com"/>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-06-15 - initial update of OWL-Time - modified to support arbitrary temporal reference systems. </skos:changeNote>
+        <terms:contributor rdf:resource="mailto:chris.little@metoffice.gov.uk"/>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-09-27</terms:created>
+        <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
+        <terms:isVersionOf rdf:resource="http://www.w3.org/TR/owl-time"/>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-04-06 - hasTime, hasXSDDuration added; Number removed; all duration elements changed to xsd:decimal</skos:changeNote>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yusha Notes:
 
 Object Properties: &apos;The&apos; is added in places where it feels necessary.
@@ -25,15 +34,10 @@ Object Properties: &apos;The&apos; is added in places where it feels necessary.
 Data Properties: Cannot be influced by SWRL rules (true in the sense that they do not present themselves in the ontology after the reasoner runs), whereas SWRL rules can be influenced by data properties.
 
 OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
-        <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl-time"/>
-        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-04-06</terms:modified>
-        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - adjust range of time:timeZone to time:TimeZone, moved up from the tzont ontology.  </skos:changeNote>
-        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-04-06 - hasTime, hasXSDDuration added; Number removed; all duration elements changed to xsd:decimal</skos:changeNote>
-        <owl:priorVersion rdf:resource="http://www.w3.org/2006/time#2006"/>
-        <terms:isVersionOf rdf:resource="http://www.w3.org/TR/owl-time"/>
-        <terms:rights xml:lang="en">Copyright © 2006-2017 W3C, OGC. W3C and OGC liability, trademark and document use rules apply.</terms:rights>
+        <rdfs:label xml:lang="en">OWL-Time</rdfs:label>
         <terms:creator rdf:resource="https://en.wikipedia.org/wiki/Jerry_Hobbs"/>
-        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-06-15 - initial update of OWL-Time - modified to support arbitrary temporal reference systems. </skos:changeNote>
+        <terms:rights xml:lang="en">Copyright © 2006-2017 W3C, OGC. W3C and OGC liability, trademark and document use rules apply.</terms:rights>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Naming Convention:
 
 For Individuals:
@@ -51,19 +55,15 @@ T: stands for Temprature
 E: stands for ElikoDevice
 W: stands for Watch/Wearable
 V: stands for virtual</rdfs:comment>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <rdfs:seeAlso rdf:resource="http://www.semantic-web-journal.net/content/time-ontology-extended-non-gregorian-calendar-applications"/>
         <skos:historyNote xml:lang="en">Update of OWL-Time ontology, extended to support general temporal reference systems. 
 
 Ontology engineering by Simon J D Cox</skos:historyNote>
-        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
-        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
-        <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
-        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
-        <terms:contributor rdf:resource="mailto:chris.little@metoffice.gov.uk"/>
-        <terms:creator rdf:resource="mailto:panfeng66@gmail.com"/>
-        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-09-27</terms:created>
-        <rdfs:label xml:lang="en">OWL-Time</rdfs:label>
-        <rdfs:seeAlso rdf:resource="http://www.semantic-web-journal.net/content/time-ontology-extended-non-gregorian-calendar-applications"/>
         <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-02 - intervalIn, intervalDisjoint, monthOfYear added; TemporalUnit subclass of TemporalDuration</skos:changeNote>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - adjust range of time:timeZone to time:TimeZone, moved up from the tzont ontology.  </skos:changeNote>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl-time"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-04-06</terms:modified>
     </owl:Ontology>
     
 
@@ -76,10 +76,12 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+
     
 
 
     <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
 
     <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
     
@@ -87,11 +89,48 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2001/XMLSchema#pattern -->
 
+
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2001/XMLSchema#pattern"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
     
@@ -99,11 +138,13 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2004/02/skos/core#definition -->
 
+
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#editorialNote -->
+
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#editorialNote"/>
     
@@ -111,11 +152,20 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2004/02/skos/core#historyNote -->
 
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#historyNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#historyNote -->
+
+
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#historyNote"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#note -->
+
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
     
@@ -123,11 +173,13 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
+
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#scopeNote -->
+
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#scopeNote"/>
     
@@ -141,10 +193,12 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasFurniture -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasFurniture">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isFurnitureOf"/>
@@ -156,6 +210,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasFurnitureTheSensor -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasFurnitureTheSensor">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheFurniture"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Furniture"/>
@@ -165,6 +220,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasHumanTheSensor -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasHumanTheSensor">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheHuman"/>
@@ -176,6 +232,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasNearIt -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasNearIt">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isNearTo"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
@@ -186,6 +243,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasPosture -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasPosture">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanPosture"/>
@@ -194,6 +252,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasRoom -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasRoom">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isRoomOf"/>
@@ -205,6 +264,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasRoomTheSensor -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasRoomTheSensor">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorInTheRoom"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
@@ -215,6 +275,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#intervalLinkedToActivity -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#intervalLinkedToActivity">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
@@ -223,6 +284,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isBasedOn -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isBasedOn">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
@@ -233,6 +295,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isDoingActivity -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isDoingActivity">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
@@ -241,6 +304,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isDoingGesture -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isDoingGesture">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
@@ -251,6 +315,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isDoneIn -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isDoneIn">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
@@ -259,6 +324,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isFurnitureOf -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isFurnitureOf">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Furniture"/>
@@ -269,6 +335,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isIn -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isIn">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
@@ -277,6 +344,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isLinkedTo -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isLinkedTo">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
@@ -287,6 +355,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isNearTo -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isNearTo">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
@@ -295,6 +364,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isNextTo -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isNextTo">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
@@ -306,6 +376,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isOccupying -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isOccupying">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture"/>
@@ -314,6 +385,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isPartOfStatement -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isPartOfStatement">
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Statement"/>
@@ -324,6 +396,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isRoomOf -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isRoomOf">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Ambience"/>
@@ -332,6 +405,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isSensorInTheRoom -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorInTheRoom">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
@@ -342,6 +416,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheFurniture -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheFurniture">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Furniture"/>
@@ -350,6 +425,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheHuman -->
+
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheHuman">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#WearableSensor"/>
@@ -360,6 +436,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#isUtilizing -->
 
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#isUtilizing">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#UtilizableFurniture"/>
@@ -368,6 +445,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#after -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#after">
         <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#before"/>
@@ -379,6 +457,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#before -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#before">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
@@ -388,6 +467,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#hasBeginning -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTime"/>
@@ -399,6 +479,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#hasDateTimeDescription -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDateTimeDescription">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#DateTimeInterval"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
@@ -407,6 +488,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#hasDuration -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDuration">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTemporalDuration"/>
@@ -417,6 +499,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#hasDurationDescription -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDurationDescription">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTemporalDuration"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
@@ -425,6 +508,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#hasEnd -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTime"/>
@@ -436,6 +520,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#hasInside -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasInside">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Interval"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -444,6 +529,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#hasTRS -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTRS">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -461,6 +547,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#hasTemporalDuration -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTemporalDuration">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
@@ -470,6 +557,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#hasTime -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTime">
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
     </owl:ObjectProperty>
@@ -477,6 +565,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#inDateTime -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inDateTime">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#inTemporalPosition"/>
@@ -488,6 +577,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#inTemporalPosition -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inTemporalPosition">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
@@ -496,6 +586,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#inTimePosition -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inTimePosition">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#inTemporalPosition"/>
@@ -506,6 +597,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#intervalAfter -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalAfter">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#after"/>
@@ -519,6 +611,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalBefore -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalBefore">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#before"/>
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalDisjoint"/>
@@ -530,6 +623,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalContains -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalContains">
         <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalDuring"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -540,6 +634,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalDisjoint -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalDisjoint">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -548,6 +643,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#intervalDuring -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalDuring">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
@@ -559,6 +655,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalEquals -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalEquals">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -568,6 +665,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#intervalFinishedBy -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalFinishedBy">
         <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalFinishes"/>
@@ -579,6 +677,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalFinishes -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalFinishes">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -589,6 +688,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalIn -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalIn">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -597,6 +697,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#intervalMeets -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalMeets">
         <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalMetBy"/>
@@ -608,6 +709,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalMetBy -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalMetBy">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -616,6 +718,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#intervalOverlappedBy -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalOverlappedBy">
         <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalOverlaps"/>
@@ -627,6 +730,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalOverlaps -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalOverlaps">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -635,6 +739,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#intervalStartedBy -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalStartedBy">
         <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalStarts"/>
@@ -646,6 +751,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#intervalStarts -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalStarts">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -656,6 +762,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#monthOfYear -->
 
+
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#monthOfYear">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
         <rdfs:range rdf:resource="http://www.w3.org/2006/time#MonthOfYear"/>
@@ -664,6 +771,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#unitType -->
+
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#unitType">
         <rdfs:domain>
@@ -687,10 +795,12 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#detectsBrightness -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#detectsBrightness">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -703,6 +813,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#detectsGesture -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#detectsGesture">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
@@ -712,6 +823,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#detectsHeartrate -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#detectsHeartrate">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -724,6 +836,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#detectsMotion -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#detectsMotion">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
@@ -733,6 +846,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasLocation -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasLocation">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -744,6 +858,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasState -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasState">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Space"/>
@@ -753,6 +868,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasTemprature -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasTemprature">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -764,6 +880,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasTimestamp -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasTimestamp">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
@@ -773,6 +890,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#hasZaxisValue -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#hasZaxisValue">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -784,6 +902,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#hour -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hour">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
     </owl:DatatypeProperty>
@@ -791,6 +910,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#minute -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#minute">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
@@ -800,6 +920,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#minutes -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#minutes">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
     </owl:DatatypeProperty>
@@ -807,6 +928,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#month -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#month">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
@@ -816,6 +938,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#second -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#second">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
     </owl:DatatypeProperty>
@@ -824,6 +947,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#week -->
 
+
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#week">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
     </owl:DatatypeProperty>
@@ -831,6 +955,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#year -->
+
 
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#year">
         <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
@@ -846,10 +971,12 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Activity -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Activity">
         <owl:equivalentClass>
@@ -864,6 +991,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Ambience -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Ambience">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Space"/>
     </owl:Class>
@@ -872,6 +1000,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Brightness -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Brightness">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
     </owl:Class>
@@ -879,6 +1008,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#ElikoDevice -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#ElikoDevice">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#WearableSensor"/>
@@ -889,6 +1019,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Sensor"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#WearableSensor"/>
@@ -898,6 +1029,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
     </owl:Class>
@@ -905,6 +1037,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Furniture -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Furniture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Ambience"/>
@@ -915,6 +1048,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Human -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Human">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Space"/>
     </owl:Class>
@@ -922,6 +1056,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Human"/>
@@ -931,6 +1066,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#HumanName -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Human"/>
     </owl:Class>
@@ -938,6 +1074,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#HumanPosture -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#HumanPosture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Human"/>
@@ -947,6 +1084,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#UtilizableFurniture"/>
     </owl:Class>
@@ -954,6 +1092,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#PIR -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#PIR">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
@@ -963,6 +1102,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Room -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Room">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Ambience"/>
     </owl:Class>
@@ -970,6 +1110,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Sensor -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Sensor">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Space"/>
@@ -979,6 +1120,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#WearableSensor"/>
     </owl:Class>
@@ -987,6 +1129,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Space -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Space">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:Class>
@@ -994,6 +1137,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Statement -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Statement">
         <owl:equivalentClass>
@@ -1017,6 +1161,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Temprature -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Temprature">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
     </owl:Class>
@@ -1024,6 +1169,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Time -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Time">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
@@ -1033,6 +1179,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#UtilizableFurniture -->
 
+
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#UtilizableFurniture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Furniture"/>
     </owl:Class>
@@ -1040,6 +1187,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#WearableSensor -->
+
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#WearableSensor">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Sensor"/>
@@ -1049,6 +1197,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#DateTimeDescription -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#DateTimeDescription">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
     </owl:Class>
@@ -1057,6 +1206,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#DateTimeInterval -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#DateTimeInterval">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
     </owl:Class>
@@ -1064,6 +1214,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#Duration -->
+
 
     <owl:Class rdf:about="http://www.w3.org/2006/time#Duration">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
@@ -1079,6 +1230,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#DurationDescription -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#DurationDescription">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
     </owl:Class>
@@ -1086,6 +1238,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#GeneralDateTimeDescription -->
+
 
     <owl:Class rdf:about="http://www.w3.org/2006/time#GeneralDateTimeDescription">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
@@ -1107,6 +1260,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#GeneralDurationDescription -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#GeneralDurationDescription">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
         <rdfs:subClassOf>
@@ -1121,6 +1275,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#Instant -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
         <owl:disjointWith rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -1130,6 +1285,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#Interval -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#Interval">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
     </owl:Class>
@@ -1137,6 +1293,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#MonthOfYear -->
+
 
     <owl:Class rdf:about="http://www.w3.org/2006/time#MonthOfYear">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#DateTimeDescription"/>
@@ -1146,6 +1303,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#ProperInterval -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#ProperInterval">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#Interval"/>
     </owl:Class>
@@ -1154,6 +1312,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#TemporalDuration -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalDuration">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Time"/>
     </owl:Class>
@@ -1161,6 +1320,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#TemporalEntity -->
+
 
     <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity">
         <owl:equivalentClass>
@@ -1178,6 +1338,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#TemporalPosition -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalPosition">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Time"/>
         <rdfs:subClassOf>
@@ -1192,6 +1353,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#TemporalUnit -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalUnit">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
     </owl:Class>
@@ -1200,6 +1362,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.w3.org/2006/time#TimePosition -->
 
+
     <owl:Class rdf:about="http://www.w3.org/2006/time#TimePosition">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
     </owl:Class>
@@ -1207,6 +1370,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.w3.org/2006/time#Year -->
+
 
     <owl:Class rdf:about="http://www.w3.org/2006/time#Year">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#DurationDescription"/>
@@ -1222,10 +1386,12 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_Bed -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_Bed">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture"/>
@@ -1237,6 +1403,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_KitchenCabinet -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_KitchenCabinet">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#UtilizableFurniture"/>
         <KitchenOnto1:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet"/>
@@ -1246,6 +1413,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_KitchenSinkOrStove -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_KitchenSinkOrStove">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#UtilizableFurniture"/>
@@ -1257,6 +1425,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_Shower -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_Shower">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture"/>
         <KitchenOnto1:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Shower"/>
@@ -1266,6 +1435,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_TV -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_TV">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#UtilizableFurniture"/>
@@ -1277,6 +1447,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_TVCouch -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_TVCouch">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture"/>
         <KitchenOnto1:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_LivingRoom"/>
@@ -1286,6 +1457,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_Table -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_Table">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture"/>
@@ -1298,6 +1470,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_TableX -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_TableX">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture"/>
         <KitchenOnto1:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_TableX"/>
@@ -1309,6 +1482,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_F_ToiletSeat -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_ToiletSeat">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#OccupiableFurniture"/>
         <KitchenOnto1:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_BathRoom"/>
@@ -1318,6 +1492,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_House -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_House">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Ambience"/>
@@ -1333,6 +1508,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_R_BathRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_BathRoom">
         <KitchenOnto1:hasRoomTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_BathRoom"/>
         <KitchenOnto1:isNextTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_BedRoom"/>
@@ -1341,6 +1517,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_R_BedRoom -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_BedRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
@@ -1353,6 +1530,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_R_CorridorArea -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_CorridorArea">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
     </owl:NamedIndividual>
@@ -1360,6 +1538,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen">
         <KitchenOnto1:hasRoomTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_Kitchen"/>
@@ -1371,6 +1550,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_R_LivingRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_LivingRoom">
         <KitchenOnto1:hasRoomTheSensor rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_LivingRoom"/>
         <KitchenOnto1:isNextTo rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_CorridorArea"/>
@@ -1379,6 +1559,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#A_R_TableArea -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_TableArea">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
@@ -1391,11 +1572,13 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Activation_Statement"/>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Drinking -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Drinking">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
@@ -1405,6 +1588,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Falling -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Falling">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
     </owl:NamedIndividual>
@@ -1412,6 +1596,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_LyingDown -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_LyingDown">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
@@ -1421,6 +1606,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Pouring -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Pouring">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
     </owl:NamedIndividual>
@@ -1428,6 +1614,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_SittingDown -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_SittingDown">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
@@ -1437,6 +1624,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_SittingUp -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_SittingUp">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
     </owl:NamedIndividual>
@@ -1444,6 +1632,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_StandingUp -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_StandingUp">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
@@ -1453,6 +1642,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Walking -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_G_Walking">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanGesture"/>
     </owl:NamedIndividual>
@@ -1460,6 +1650,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_P_Lying -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_P_Lying">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanPosture"/>
@@ -1469,6 +1660,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_P_Sitting -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_P_Sitting">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanPosture"/>
     </owl:NamedIndividual>
@@ -1477,6 +1669,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#H_P_Standing -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#H_P_Standing">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanPosture"/>
     </owl:NamedIndividual>
@@ -1484,6 +1677,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Afternoon -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Afternoon">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -1496,27 +1690,30 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Breakfast -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Breakfast">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Dinner -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Dinner">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Evening -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Evening">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -1530,71 +1727,78 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_BathRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_BathRoom">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_BedRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_BedRoom">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_Kitchen -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_Kitchen">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_LivingRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_LivingRoom">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_TableArea -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_IsIn_TableArea">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Lunch -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Lunch">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_BeginTime"/>
         <time:hasEnd rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_EndTime"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Morning -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Morning">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
@@ -1609,6 +1813,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Night -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Night">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:hasBeginning rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Night_BeginTime"/>
@@ -1619,18 +1824,20 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Interval_WholeDay -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_WholeDay">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Afternoon"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Evening"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Morning"/>
         <time:intervalContains rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Interval_Night"/>
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Making_Breakfast -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Making_Breakfast">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
@@ -1644,6 +1851,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Making_Dinner -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Making_Dinner">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
         <KitchenOnto1:isBasedOn rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet"/>
@@ -1655,6 +1863,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Making_Lunch -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Making_Lunch">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Activity"/>
@@ -1668,21 +1877,24 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S2 -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S2">
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S3 -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S3">
-        <rdfs:comment>Remove later</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remove later</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_B_TV -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_B_TV">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Brightness"/>
@@ -1694,6 +1906,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_BathRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_BathRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
@@ -1702,6 +1915,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_BedRoom -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_BedRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
@@ -1712,6 +1926,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_Kitchen -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_Kitchen">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
@@ -1720,6 +1935,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_LivingRoom -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_LivingRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
@@ -1730,6 +1946,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_Table -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_Table">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
@@ -1738,6 +1955,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_TableX -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_EB_TableX">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EstimoteBeacon"/>
@@ -1748,6 +1966,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_E_AxisX -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_E_AxisX">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#ElikoDevice"/>
     </owl:NamedIndividual>
@@ -1756,6 +1975,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_E_AxisY -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_E_AxisY">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#ElikoDevice"/>
     </owl:NamedIndividual>
@@ -1763,6 +1983,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_E_AxisZ -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_E_AxisZ">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#ElikoDevice"/>
@@ -1773,6 +1994,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_BathRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_BathRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
         <KitchenOnto1:isSensorInTheRoom rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_BathRoom"/>
@@ -1781,6 +2003,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Bed -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Bed">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
@@ -1791,6 +2014,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Kitchen -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Kitchen">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
         <KitchenOnto1:isSensorInTheRoom rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_Kitchen"/>
@@ -1800,18 +2024,20 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenCabinet">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
         <KitchenOnto1:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_KitchenCabinet"/>
         <time:before rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove"/>
-        <KitchenOnto1:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</KitchenOnto1:detectsMotion>
+        <KitchenOnto1:detectsMotion rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</KitchenOnto1:detectsMotion>
         <KitchenOnto1:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</KitchenOnto1:hasState>
-        <KitchenOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-01-27 20:05:02.39</KitchenOnto1:hasTimestamp>
+        <KitchenOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-02-13 19:24:35.287</KitchenOnto1:hasTimestamp>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_KitchenSinkOrStove">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
@@ -1825,6 +2051,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_LivingRoom -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_LivingRoom">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
         <KitchenOnto1:isSensorInTheRoom rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_R_LivingRoom"/>
@@ -1833,6 +2060,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Shower -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Shower">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
@@ -1843,6 +2071,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Table -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_Table">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
         <KitchenOnto1:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_Table"/>
@@ -1852,6 +2081,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_M_TableX -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_M_TableX">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#PIR"/>
         <KitchenOnto1:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#A_F_TableX"/>
@@ -1860,6 +2090,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_Gesture -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_Gesture">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
@@ -1877,6 +2108,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_HeartRate -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_HeartRate">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
         <KitchenOnto1:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Yusha"/>
@@ -1885,6 +2117,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_Location -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#S_SW_Location">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#SmartWatch"/>
@@ -1895,6 +2128,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Afternoon_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Afternoon_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -1902,6 +2136,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Afternoon_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Afternoon_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -1911,6 +2146,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -1918,6 +2154,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Breakfast_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -1927,6 +2164,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -1934,6 +2172,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Dinner_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -1943,6 +2182,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Evening_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Evening_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -1950,6 +2190,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Evening_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Evening_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -1959,6 +2200,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -1966,6 +2208,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BathRoom_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -1975,6 +2218,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -1982,6 +2226,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_BedRoom_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -1991,6 +2236,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -1998,6 +2244,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_Kitchen_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -2007,6 +2254,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -2014,6 +2262,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_LivingRoom_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -2023,6 +2272,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -2030,6 +2280,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_IsIn_TableArea_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -2039,6 +2290,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -2046,6 +2298,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Lunch_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -2055,6 +2308,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Morning_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Morning_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -2062,6 +2316,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Morning_EndTime -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Morning_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
@@ -2071,6 +2326,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Night_BeginTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Night_BeginTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -2079,6 +2335,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#TI_Night_EndTime -->
 
+
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#TI_Night_EndTime">
         <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:NamedIndividual>
@@ -2086,6 +2343,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <!-- http://www.semanticweb.org/Arianna/KitchenOnto#Yusha -->
+
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/KitchenOnto#Yusha">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#HumanName"/>
@@ -2101,6 +2359,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
+
 
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
@@ -2129,13 +2388,20 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s1">
@@ -2150,11 +2416,88 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#Int">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensorFurniture -&gt; SensorRoom</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Furniture"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheFurniture"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isFurnitureOf"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorInTheRoom"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
     </rdf:Description>
     <rdf:Description>
         <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
@@ -2341,92 +2684,10 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
             </rdf:Description>
         </swrl:head>
     </rdf:Description>
-    <rdf:Description>
-        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensorFurniture -&gt; SensorRoom</rdfs:label>
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Furniture"/>
-                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorWithTheFurniture"/>
-                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
-                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
-                            </rdf:Description>
-                        </rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isFurnitureOf"/>
-                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
-                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
-                                    </rdf:Description>
-                                </rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#Room"/>
-                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
-                                            </rdf:Description>
-                                        </rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#EnvironmentalSensor"/>
-                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
-                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/KitchenOnto#isSensorInTheRoom"/>
-                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
-                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-            </rdf:Description>
-        </swrl:head>
-    </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 5.0.2.20160507-1747) https://github.com/owlcs/owlapi/ -->
+
 

@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
 
     /** Initializing DataBase */
 
-    val db = MySqlConnector("AriannaDB", "root", "nepo")
+    val db = MySqlConnector("AriannaDB", "root", "root")
 
     /** Initializing the network of Ontologies */
 
@@ -64,7 +64,7 @@ fun main(args: Array<String>) {
 
     //  LocalizationOnto links
     val linksOfLocalizationOnto = OntologyLinksBuilder(localizationOnto)
-            .activatedByScheduler(0,10000)
+            .isScheduledAndObservable(0,10000)
             .inputIsFromDB(db)
             .linkDBTableToStatementInOnto("Estimote_Location_SmartWatch1", smartWatchLocation1)
             .linksCompleted()
@@ -74,7 +74,7 @@ fun main(args: Array<String>) {
 
     //  KitchenOnto links
     val linksOfKitchenOnto = OntologyLinksBuilder(kitchenOnto)
-            .activatedByOntology(localizationOnto, kitchenActivationStatement)
+            .isAnObserverOnto(localizationOnto, kitchenActivationStatement)
             .inputIsFromDB(db)
             .linkDBTableToStatementInOnto("PIR_KitchenCabinet", kitchenCabinet)
             .linkDBTableToStatementInOnto("PIR_KitchenSinkOrStove", kitchenSinkOrStove)
@@ -83,19 +83,19 @@ fun main(args: Array<String>) {
             .linkStatementInOntoToDBTable(outputHAR, "HAR_Output_KitchenActOnto1")
             .build()
 
-//    //  KitchenOnto links
-//    val linksOfLivingRoom = OntologyLinksBuilder(livingRoomOnto)
-//            .activatedByOntology(localizationOnto, lrActivationStatement)
-//            .inputIsFromDB(db)
-//            .linkDBTableToStatementInOnto("PIR_TV", lrTV)
-//            .linkDBTableToStatementInOnto("Light_TV",bTV)
-//            .linksCompleted()
-//            .outputIsToDB(db)
-//            .linkStatementInOntoToDBTable(outputHAR, "HAR_Output_LivingRoomOnto1")
-//            .build()
+    //  LivingRoomOnto links
+    val linksOfLivingRoom = OntologyLinksBuilder(livingRoomOnto)
+            .isAnObserverOnto(localizationOnto, lrActivationStatement)
+            .inputIsFromDB(db)
+            .linkDBTableToStatementInOnto("PIR_TV", lrTV)
+            .linkDBTableToStatementInOnto("Light_TV",bTV)
+            .linksCompleted()
+            .outputIsToDB(db)
+            .linkStatementInOntoToDBTable(outputHAR, "HAR_Output_LivingRoomOnto1")
+            .build()
 
     /** Starting the network */
 
-    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfLocalizationOnto, linksOfKitchenOnto)
+    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfLocalizationOnto, linksOfKitchenOnto, linksOfLivingRoom)
 }
 
