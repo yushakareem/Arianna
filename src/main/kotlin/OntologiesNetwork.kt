@@ -53,7 +53,7 @@ class OntologiesNetwork {
     }
 
     private fun assertTemporalRelations(ontoLinksConfig: OntologyLinksConfiguration) {
-        // For now incomplete
+        // To be implemented ... assertion of temporal relations between individuals in an ontology.
     }
 
     private fun transferInferencesFromOntoToDB(ontoAtCenterOfLinks: Ontology, mapStatementToDBTable: HashMap<IncompleteStatement, String>, outputDBInfo: MySqlConnector): ObjectPropertyStatement {
