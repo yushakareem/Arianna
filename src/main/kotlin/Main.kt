@@ -1,10 +1,11 @@
+import mu.KotlinLogging
+
 /**
  *  Arianna is an attempt at computationally-scalable reasoning using Description-logic for human activity recognition. (https://arxiv.org/pdf/1809.08208.pdf, https://philosophy.hku.hk/think/logic/whatislogic.php)
  *  This is the story board.
  */
 
 fun main(args: Array<String>) {
-
 
     /** Initializing DataBase */
 
