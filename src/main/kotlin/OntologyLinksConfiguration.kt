@@ -1,6 +1,8 @@
 /**
  * This is a dataclass. It allows it's objects to have a particular set of attributes (seen below).
  * Attributes in this dataclass hold information about all the links of an Ontology within a Network.
+ *
+ * @return OntologyLinksConfiguration
  */
 
 data class OntologyLinksConfiguration(val ontoAtCenterOfLinks: Ontology) {

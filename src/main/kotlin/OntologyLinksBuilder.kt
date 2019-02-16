@@ -1,6 +1,8 @@
 /**
  * A builder class for building an object of class OntologyLinksConfiguration().
  * Allows to build the links for an ontology in a network.
+ *
+ * @return InputDBBuilder, DBTableToOntoLinkBuilder, OutputDBBuilder, OntoToDBTableLinkBuilder, OntologyLinksConfiguration
  */
 
 class OntologyLinksBuilder(ontoAtCenterOfLinks: Ontology) {

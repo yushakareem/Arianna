@@ -2,6 +2,8 @@ import java.sql.*
 
 /**
  *  This class helps in connecting with a MySQL DB and manipulate it.
+ *
+ *  @return MySqlConnector
  */
 class MySqlConnector(private val databaseName: String, private val username: String, private val password: String): MySqlConnectorInterface {
 

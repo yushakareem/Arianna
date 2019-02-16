@@ -1,5 +1,7 @@
 /**
  * This class, (i) connects the links between Ontologies in the Network, (ii) allows to start networking, and (iii) returns a handler object that can allow to stop networking.
+ *
+ * @return OntologiesNetworkHandler
  */
 
 import java.sql.Timestamp

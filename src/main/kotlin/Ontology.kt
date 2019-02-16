@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat
  * @param ontoFilePath is the location (path) to the .owl file.
  * @param ontoIRI is the Internationalized Resource Identifier which can be found from Protege.
  * @param bufferingReasoner if true, causes the reasoner to take into consideration the changes in the current root ontology.
+ *
+ * @return Ontology
  */
 class Ontology(private val ontoRefName: String, private val ontoFilePath: String, private val ontoIRI: String, private val bufferingReasoner: Boolean) {
 

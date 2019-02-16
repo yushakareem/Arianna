@@ -3,6 +3,8 @@ import it.emarolab.amor.owlInterface.OWLReferences
 /**
  * An ObjectPropertyStatement is made of the structure: 'subject' 'verb' 'object'.
  * Where, 'subject' is an Individual, 'verb' is an ObjectProperty and 'object' is an Individual in the ontology.
+ *
+ * @return ObjectPropertyStatement
  */
 open class ObjectPropertyStatement: IncompleteStatement {
 

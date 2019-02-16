@@ -2,6 +2,8 @@ import it.emarolab.amor.owlDebugger.Logger
 /**
  * A builder class for building an object of class OntologiesNetwork().
  * Allows to initialize the Network with some particular features.
+ *
+ * @return OntologiesNetwork
  */
 
 class OntologiesNetworkBuilder {
