@@ -1,5 +1,6 @@
 /**
- * This class enables the builder-pattern that the developer uses to build the links between all ontologies in a network.
+ * A builder class for building an object of class OntologyLinksConfiguration().
+ * Allows to build the links for an ontology in a network.
  */
 
 class OntologyLinksBuilder(ontoAtCenterOfLinks: Ontology) {

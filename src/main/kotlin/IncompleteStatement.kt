@@ -3,8 +3,10 @@
 import it.emarolab.amor.owlInterface.OWLReferences
 
 /**
+ * Developer has to be aware about how an IncompleteStatement is being used.
+ *
  * An IncompleteStatement is made of the structure: 'subject' 'verb'.
- * Where, 'subject' is an Individual, 'verb' is an ObjectProperty in the ontology.
+ * Where, 'subject' is an Individual, 'verb' could be an ObjectProperty or a DataProperty, within the ontology.
  */
 
 open class IncompleteStatement() {

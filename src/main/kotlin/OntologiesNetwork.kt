@@ -1,3 +1,7 @@
+/**
+ * This class, (i) connects the links between Ontologies in the Network, (ii) allows to start networking, and (iii) returns a handler object that can allow to stop networking.
+ */
+
 import java.sql.Timestamp
 import java.util.*
 import kotlin.collections.HashMap
@@ -118,9 +122,13 @@ class OntologiesNetwork {
         }
     }
 
+    /**
+     * Provides an object that can handle a running OntologiesNetwork.
+     * Allows to stop networking.
+     */
     class OntologiesNetworkHandler(private val fixedRateTimer: Timer) {
 
-        fun stop() {
+        fun stopNetworking() {
             fixedRateTimer.cancel()
         }
     }

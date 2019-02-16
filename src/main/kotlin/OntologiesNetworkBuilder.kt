@@ -1,20 +1,20 @@
 import it.emarolab.amor.owlDebugger.Logger
 /**
- * A network of ontologies is an attempt at computationally-scalable reasoning using formal logic for human activity recognition.
- * Ontologies are based on a system of formal logic called Description-logic. Protege is the editor used to create such ontologies.
- *
- * For a clear understanding of above sentences, explore these links:
- * (Link Arianna+ Paper)
- * (what is Logic) https://philosophy.hku.hk/think/logic/whatislogic.php
+ * A builder class for building an object of class OntologiesNetwork().
+ * Allows to initialize the Network with some particular features.
  */
 
 class OntologiesNetworkBuilder {
 
+    // Feature to disable OWLOOP analytics
     fun withOWLOOPAnalyticsDisabled(): OntologiesNetworkBuilder {
 
         Logger.LoggerFlag.resetAllLoggingFlags()
         return this
     }
+
+    // Feature to disable Arianna analytics
+//    fun withAriannaAnalyticsDisabled(): OntologiesNetworkBuilder {}
 
     fun build(): OntologiesNetwork {
 

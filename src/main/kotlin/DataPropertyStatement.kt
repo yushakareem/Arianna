@@ -3,7 +3,7 @@ import java.sql.Timestamp
 
 /**
  * A DataPropertyStatement is made of the structure: 'subject' 'verb' 'object'.
- * Where, 'subject' is an Individual, 'verb' is an ObjectProperty and 'object' is data in the ontology.
+ * Where, 'subject' is an Individual, 'verb' is a DataProperty and 'object' is data in the ontology.
  *
  * @return DataPropertyStatement
  */
