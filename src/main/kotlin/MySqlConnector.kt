@@ -5,7 +5,7 @@ import java.sql.*
  *
  *  @return MySqlConnector
  */
-class MySqlConnector(private val databaseName: String, private val username: String, private val password: String): MySqlConnectorInterface {
+class MySqlConnector(private val databaseName: String, private val username: String, private val password: String): DBConnectorInterface {
 
     private lateinit var connection: Connection
     private lateinit var statement: Statement

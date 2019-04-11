@@ -1,7 +1,7 @@
 import java.sql.ResultSet
 import java.sql.Timestamp
 
-interface MySqlConnectorInterface {
+interface DBConnectorInterface {
 
     fun connectToDBorCreateNewDB()
     fun disconnectFromDB()

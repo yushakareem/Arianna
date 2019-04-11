@@ -45,6 +45,10 @@ dependencies {
     //ReactiveX
     compile 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     compile "io.reactivex.rxjava2:rxjava:2.2.6"
+    
+    //Firebase
+    implementation 'com.google.firebase:firebase-admin:6.8.0'
+
 }
 
 compileKotlin {
