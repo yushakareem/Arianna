@@ -5,7 +5,6 @@
 
 fun main(args: Array<String>) {
 
-
     /** Initializing DataBase */
 
     val db = MySqlConnector("AriannaDB", "root", "root")

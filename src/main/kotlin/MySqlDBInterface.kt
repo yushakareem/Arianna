@@ -1,9 +1,9 @@
 import java.sql.ResultSet
 import java.sql.Timestamp
 
-interface DBConnectorInterface {
+interface MySqlDBInterface {
 
-    fun connectToDBorCreateNewDB()
+    fun connectToDB()
     fun disconnectFromDB()
 
     fun readLatestRow(tableName: String): ResultSet

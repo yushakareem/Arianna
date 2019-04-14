@@ -1,0 +1,1 @@
+data class SensorData(var time: String, var value: String)

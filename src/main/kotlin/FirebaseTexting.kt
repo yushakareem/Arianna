@@ -11,13 +11,16 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 
+object FirebaseTexting {
 
+    @Volatile var dataReadComplete: Boolean = false
 
-object Mainmain {
     @JvmStatic
     fun main(args: Array<String>) {
 
+        lateinit var s:SensorData
 
+        // INITIAL PARAMETERS
         lateinit var serviceAccount: FileInputStream
         try {
             // Fetch the service account key JSON file contents
@@ -26,7 +29,6 @@ object Mainmain {
             e.printStackTrace()
         }
 
-        // Assuming that an environment variable is set in the bashrc, showing path to firebase_privatekey
         // Initialize the app with a service account, granting admin privileges
         lateinit var options: FirebaseOptions
         try {
@@ -38,49 +40,33 @@ object Mainmain {
             e.printStackTrace()
         }
 
-        val app = FirebaseApp.initializeApp(options)
+        val app = FirebaseApp.initializeApp(options) // CONNECT TO DB
 
         // Retrieve services by passing the FirebaseApp object
         val fbAuth = FirebaseAuth.getInstance(app)
         val fbDB = FirebaseDatabase.getInstance(app)
 
         // Get reference to a node
-        val ref = fbDB.getReference("events/proposingActivity")
+        val ref = fbDB.getReference("/sensors") // PATH TO THE SENSOR wherein lies (time) & (value)
 
-        println(fbAuth)
-        println(fbDB)
-        println(ref)
+        ref.child("Light_TV").addValueEventListener(object : ValueEventListener {
 
-        // As an admin, the app has access to read and write all data, regardless of Security Rules
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val document = dataSnapshot.value
-                println(document)
+                s = SensorData(dataSnapshot.child("time").value.toString(),dataSnapshot.child("value").value.toString())
+                dataReadComplete = true
             }
 
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        Thread.sleep(6000)
-
-        ref.setValueAsync("yusha was here (from java code)")
-
-        Thread.sleep(6000)
-
-
-//        viDatabaseReference.addValueEventListener(object : ValueEventListener{
-//            override fun onCancelled(error: DatabaseError?) {
-//                println("ErrorInReadingFirebase: $error")
-//            }
-//
-//            override fun onDataChange(dataSnapshot: DataSnapshot?) {
-//                println("1")
-//
-//                if (dataSnapshot != null) {
-//                    println(dataSnapshot.child("age").value.toString())
-//                } else println("Its a NULL")
-//            }
-//        })
-
+        // The right thing should be volatile
+        while (true) {
+            if (dataReadComplete){
+                println("There was a change!")
+                println(s.time)
+                println(s.value)
+                dataReadComplete = false
+            }
+        }
     }
 }

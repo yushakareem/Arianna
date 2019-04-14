@@ -68,7 +68,7 @@ class OntologiesNetwork {
 
         mapStatementToDBTable.iterator().forEach {
 
-            outputDBInfo.connectToDBorCreateNewDB()
+            outputDBInfo.connectToDB()
             try {
                 ontoAtCenterOfLinks.synchronizeReasoner()
                 val inferredObjectStatement = ontoAtCenterOfLinks.inferFromOntoToReturnOPStatement(it.key)
@@ -90,7 +90,7 @@ class OntologiesNetwork {
         // iterating over the map of (DBTables -> StatementsInOntology)
         mapDBTableToStatement.iterator().forEach {
 
-            inputDBInfo.connectToDBorCreateNewDB()
+            inputDBInfo.connectToDB()
 
             val datatype = inputDBInfo.getDatatypeOfTheValue(it.key)
             val resultSet = inputDBInfo.readLatestRow(it.key)

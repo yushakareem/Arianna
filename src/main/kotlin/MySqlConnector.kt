@@ -5,7 +5,7 @@ import java.sql.*
  *
  *  @return MySqlConnector
  */
-class MySqlConnector(private val databaseName: String, private val username: String, private val password: String): DBConnectorInterface {
+class MySqlConnector(private val databaseName: String, private val username: String, private val password: String): MySqlDBInterface {
 
     private lateinit var connection: Connection
     private lateinit var statement: Statement
@@ -26,7 +26,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
      * @param username The <code>String</code> of username of SQL server.
      * @param password The <code>String</code> of password of SQL server.
      */
-    override fun connectToDBorCreateNewDB() {
+    override fun connectToDB() {
         try {
             Class.forName("com.mysql.jdbc.Driver")
         } catch (e: ClassNotFoundException) {
@@ -35,7 +35,6 @@ class MySqlConnector(private val databaseName: String, private val username: Str
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/$databaseName?autoReconnect=true&verifyServerCertificate=false&useSSL=true", username, password)
-//            println("DataBase with the name: $databaseName already exists. Making connection and creating statement.")
             try {
                 statement = connection.createStatement()
             } catch (e1: SQLException) {
@@ -61,9 +60,7 @@ class MySqlConnector(private val databaseName: String, private val username: Str
             } catch (e1: SQLException) {
                 error("Problem in creating a new DataBase with the name: $databaseName.")
             }
-
         }
-
     }
 
     /**
