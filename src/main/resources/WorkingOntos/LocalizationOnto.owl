@@ -35,7 +35,6 @@ Data Properties: Cannot be influced by SWRL rules (true in the sense that they d
 OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
         <rdfs:label xml:lang="en">OWL-Time</rdfs:label>
         <terms:creator rdf:resource="https://en.wikipedia.org/wiki/Jerry_Hobbs"/>
-        <terms:rights xml:lang="en">Copyright © 2006-2017 W3C, OGC. W3C and OGC liability, trademark and document use rules apply.</terms:rights>
         <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Naming Convention:
 
@@ -76,6 +75,104 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
      -->
 
 
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/isVersionOf -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/isVersionOf -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
     
 
 
@@ -871,6 +968,13 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     
 
 
+    <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#hasValue -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#hasValue"/>
+    
+
+
     <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#hasZaxisValue -->
 
 
@@ -1420,7 +1524,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#A_F_TV">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#UtilizableFurniture"/>
-        <LocalizationOnto1:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#S_B_TV"/>
+        <LocalizationOnto1:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Light_TV"/>
         <LocalizationOnto1:isFurnitureOf rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#A_R_LivingRoom"/>
     </owl:NamedIndividual>
     
@@ -1850,13 +1954,14 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     
 
 
-    <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#S_B_TV -->
+    <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#Light_TV -->
 
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#S_B_TV">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#Light_TV">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Brightness"/>
         <LocalizationOnto1:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#A_F_TV"/>
-        <LocalizationOnto1:detectsBrightness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</LocalizationOnto1:detectsBrightness>
+        <LocalizationOnto1:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-02-13 20:24:35.287</LocalizationOnto1:hasTimestamp>
+        <LocalizationOnto1:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">100</LocalizationOnto1:hasValue>
     </owl:NamedIndividual>
     
 

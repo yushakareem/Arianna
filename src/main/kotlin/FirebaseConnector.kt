@@ -7,12 +7,12 @@ import java.io.FileInputStream
 import io.reactivex.Observable
 
 @Volatile private var sensorData: SensorData = SensorData("null","null")
-//@Volatile private var dataReadComplete: Boolean = false
+@Volatile private var dataReadComplete: Boolean = false
 @Volatile private lateinit var fbDBRef: DatabaseReference
 
 class FirebaseConnector(private val databaseName: String, private val pathToSensors: String, private val pathToPrivateKey: String): GenericDBInterface {
 
-    override fun connectToDB() {
+    override fun connectToDB(): DatabaseReference {
 
         // Fetch the service account key JSON file contents
         val serviceAccount = FileInputStream(pathToPrivateKey)
@@ -32,33 +32,35 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
 
         // Get reference to a node, i.e., PATH TO THE SENSOR node wherein are (time) and (value)
         fbDBRef = fbDB.getReference(pathToSensors)
+
+        return fbDBRef
     }
 
     /** Please setSensorName before doing get operation*/
-    override fun getTimestamp(): String {
+    override fun getTimestamp(): Any {
 
         return sensorData.time
     }
 
-    override fun getValue(): String {
+    override fun getValue(): Any {
 
         return sensorData.value
     }
 
-//    fun getReadComplete(): Boolean {
-//
-//        return dataReadComplete
-//    }
+    fun getReadComplete(): Boolean {
+
+        return dataReadComplete
+    }
 
     override fun startReadData(sensorName: String): Observable<SensorData> {
 
-        fbDBRef.child(sensorName).addListenerForSingleValueEvent(object : ValueEventListener {
+        fbDBRef.child(sensorName).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val sensorTime = dataSnapshot.child("time").value.toString()
-                val sensorValue = dataSnapshot.child("value").value.toString()
+                val sensorTime = dataSnapshot.child("time").value
+                val sensorValue = dataSnapshot.child("value").value
                 sensorData = SensorData(sensorTime, sensorValue)
-//                dataReadComplete = true
+                dataReadComplete = true
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -69,11 +71,11 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
 
         return Observable.just(sensorData)
     }
-//
-//    fun resetReadComplete() {
-//
-//        dataReadComplete = false
-//    }
+
+    fun resetReadComplete() {
+
+        dataReadComplete = false
+    }
 
 //    override fun getBooleanValue(): Boolean {
 //
@@ -134,6 +136,12 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
 //        })
 //        return string as String
 //    }
+
+    override fun setData(sensorName: String, sensorData: SensorData) {
+
+        fbDBRef.child(sensorName).child("time").setValueAsync(sensorData.time)
+        fbDBRef.child(sensorName).child("value").setValueAsync(sensorData.value)
+    }
 
 //    override fun setBooleanValue(timestamp: Timestamp, booleanValue: Boolean) {
 //
