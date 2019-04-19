@@ -9,6 +9,7 @@ import java.sql.Timestamp
  */
 class DataPropertyStatement: IncompleteStatement {
 
+    private lateinit var objectAsAnyData: Any
     private lateinit var objectAsStringData: String
     private lateinit var objectAsTimestampData: Timestamp
     private var objectAsDoubleData: Double = 0.0
@@ -49,6 +50,14 @@ class DataPropertyStatement: IncompleteStatement {
         this.objectAsBooleanData = objectAsBooleanData
         this.madeWithObjectAsBoolean = true
     }
+
+    /**
+     * Constructor for type Any.
+     */
+    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsAnyData: Any) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+        this.objectAsAnyData = objectAsAnyData
+    }
+
     /**
      * Assign special OntoRef for Subject, Verb, Object.
      * Useful when multiple ontologies are merged in one ontology.
@@ -154,5 +163,16 @@ class DataPropertyStatement: IncompleteStatement {
     fun getObjectTimestampData(): Timestamp {
 
         return objectAsTimestampData
+    }
+
+    /**
+     * Returns ANY type
+     * @return ANY
+     */
+
+    fun getObjectAnyData(): Any {
+
+        return objectAsAnyData
+
     }
 }

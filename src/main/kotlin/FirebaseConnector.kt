@@ -52,7 +52,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
         return dataReadComplete
     }
 
-    override fun startReadData(sensorName: String): Observable<SensorData> {
+    override fun startReadData(sensorName: String, ontology : Ontology): Observable<SensorData> {
 
         fbDBRef.child(sensorName).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -60,6 +60,11 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
                 val sensorTime = dataSnapshot.child("time").value
                 val sensorValue = dataSnapshot.child("value").value
                 sensorData = SensorData(sensorTime, sensorValue)
+
+                ontology.addOrUpdateToOnto(DataPropertyStatement(sensorName,"hasTimestamp",dataSnapshot.child("time").value))
+                ontology.addOrUpdateToOnto(DataPropertyStatement(sensorName,"hasValue", dataSnapshot.child("value").value))
+                ontology.saveOnto(ontology.getOntoFilePath())
+
                 dataReadComplete = true
             }
 

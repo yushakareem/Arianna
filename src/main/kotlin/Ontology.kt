@@ -270,16 +270,18 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
     fun addOrUpdateToOnto(dpStatement: DataPropertyStatement) {
 
         val individual = MORFullIndividual(dpStatement.getSubject() ,this.ontoRef)
+
         individual.apply {
             readSemantic()
             removeData(dpStatement.getVerb())
-            when {
-                dpStatement.hasObjectAsString()     -> addData(dpStatement.getVerb(), dpStatement.getObjectStringData())
-                dpStatement.hasObjectAsTimestamp()  -> addData(dpStatement.getVerb(), dpStatement.getObjectTimestampData().toString())
-                dpStatement.hasObjectAsBoolean()    -> addData(dpStatement.getVerb(), dpStatement.getObjectBooleanData(),true)
-                dpStatement.hasObjectAsDouble()    -> addData(dpStatement.getVerb(), dpStatement.getObjectDoubleData())
-                else -> Log.debug("==Error==> ","IncompleteStatement not correctly created or initialized.")
-            }
+            addData(dpStatement.getVerb(), dpStatement.getObjectAnyData()) // NEW STUFF for adding ANY type into the Ontology
+//            when {
+////                dpStatement.hasObjectAsString()     -> addData(dpStatement.getVerb(), dpStatement.getObjectStringData())
+////                dpStatement.hasObjectAsTimestamp()  -> addData(dpStatement.getVerb(), dpStatement.getObjectTimestampData().toString())
+////                dpStatement.hasObjectAsBoolean()    -> addData(dpStatement.getVerb(), dpStatement.getObjectBooleanData(),true)
+////                dpStatement.hasObjectAsDouble()    -> addData(dpStatement.getVerb(), dpStatement.getObjectDoubleData())
+//                else -> Log.debug("==Error==> ","IncompleteStatement not correctly created or initialized.")
+//            }
             writeSemantic()
         }
     }

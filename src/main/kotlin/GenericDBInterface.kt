@@ -7,7 +7,7 @@ interface GenericDBInterface {
 
     fun connectToDB(): DatabaseReference
 
-    fun startReadData(sensorName: String): Observable<SensorData>
+    fun startReadData(sensorName: String, ontology: Ontology): Observable<SensorData>
 
     fun getTimestamp(): Any
     fun getValue(): Any
