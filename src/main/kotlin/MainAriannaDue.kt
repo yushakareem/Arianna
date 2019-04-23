@@ -40,14 +40,6 @@ object MainAriannaDue {
                 println(fbDB2.getTimestamp().javaClass.toString() == "class java.lang.String")
                 println(fbDB2.getValue().javaClass.toString() == "class java.lang.Long")
 
-
-
-
-
-
-
-
-
                 // setting values to fbDB
                 fbDB2.setData("PIR_TV", SensorData(fbDB2.getTimestamp(),fbDB2.getValue()))
 
