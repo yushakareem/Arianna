@@ -269,12 +269,20 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
      */
     fun addOrUpdateToOnto(dpStatement: DataPropertyStatement) {
 
-        val individual = MORFullIndividual(dpStatement.getSubject() ,this.ontoRef)
-
-        individual.apply {
-            readSemantic()
-            removeData(dpStatement.getVerb())
-            addData(dpStatement.getVerb(), dpStatement.getObjectAnyData()) // NEW STUFF for adding ANY type into the Ontology
+        if (dpStatement.hasSpecialOntoRef()) {
+            val individual = MORFullIndividual(dpStatement.getSubject(), dpStatement.getSpecialSubjectOntoRef())
+            individual.apply {
+                readSemantic()
+                removeData(dpStatement.getSpecialVerbOntoRef().getOWLDataProperty(dpStatement.getVerb()))
+                addData(dpStatement.getSpecialVerbOntoRef().getOWLDataProperty(dpStatement.getVerb()), dpStatement.getSpecialObjectOntoRef().getOWLLiteral(dpStatement.getObjectAnyData())) // NEW STUFF for adding ANY type into the Ontology
+                writeSemantic()
+            }
+        } else {
+            val individual = MORFullIndividual(dpStatement.getSubject(), this.ontoRef)
+            individual.apply {
+                readSemantic()
+                removeData(dpStatement.getVerb())
+                addData(dpStatement.getVerb(), dpStatement.getObjectAnyData()) // NEW STUFF for adding ANY type into the Ontology
 //            when {
 ////                dpStatement.hasObjectAsString()     -> addData(dpStatement.getVerb(), dpStatement.getObjectStringData())
 ////                dpStatement.hasObjectAsTimestamp()  -> addData(dpStatement.getVerb(), dpStatement.getObjectTimestampData().toString())
@@ -282,7 +290,8 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
 ////                dpStatement.hasObjectAsDouble()    -> addData(dpStatement.getVerb(), dpStatement.getObjectDoubleData())
 //                else -> Log.debug("==Error==> ","IncompleteStatement not correctly created or initialized.")
 //            }
-            writeSemantic()
+                writeSemantic()
+            }
         }
     }
 
