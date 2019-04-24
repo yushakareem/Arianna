@@ -1,0 +1,2611 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#"
+     xml:base="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:PrototypeOntology="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:placeontology="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:time="http://www.w3.org/2006/time#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology">
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl-time"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-04-06</terms:modified>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - adjust range of time:timeZone to time:TimeZone, moved up from the tzont ontology.  </skos:changeNote>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-04-06 - hasTime, hasXSDDuration added; Number removed; all duration elements changed to xsd:decimal</skos:changeNote>
+        <owl:priorVersion rdf:resource="http://www.w3.org/2006/time#2006"/>
+        <terms:isVersionOf rdf:resource="http://www.w3.org/TR/owl-time"/>
+        <terms:rights xml:lang="en">Copyright © 2006-2017 W3C, OGC. W3C and OGC liability, trademark and document use rules apply.</terms:rights>
+        <terms:creator rdf:resource="https://en.wikipedia.org/wiki/Jerry_Hobbs"/>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-06-15 - initial update of OWL-Time - modified to support arbitrary temporal reference systems. </skos:changeNote>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Naming Convention:
+
+For Individuals:
+A: stands for Ambient
+F: stands for Furniture
+R: stands for Room
+H: stands for Human
+I: stands for Identity
+G: stands for Gesture
+P: stands for Posture
+S: stands for Sensor
+B: stands for Brightness
+M: stands for Motion
+T: stands for Temprature
+E: stands for ElikoDevice
+W: stands for Watch/Wearable
+V: stands for virtual</rdfs:comment>
+        <skos:historyNote xml:lang="en">Update of OWL-Time ontology, extended to support general temporal reference systems. 
+
+Ontology engineering by Simon J D Cox</skos:historyNote>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2016-12-20 - restore time:Year and time:January which were present in the 2006 version of the ontology, but now marked &quot;deprecated&quot;. </skos:changeNote>
+        <rdfs:comment>Yusha Notes:
+
+Object Properties: &apos;The&apos; is added in places where it feels necessary.
+
+Data Properties: Cannot be influced by SWRL rules (true in the sense that they do not present themselves in the ontology after the reasoner runs), whereas SWRL rules can be influenced by data properties.
+
+OWLTime: Object Properties: I modified &apos;inside&apos; to &apos;hasInside&apos;</rdfs:comment>
+        <terms:creator rdf:resource="http://orcid.org/0000-0002-3884-3420"/>
+        <rdfs:seeAlso rdf:resource="http://dx.doi.org/10.3233/SW-150187"/>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <terms:contributor rdf:resource="mailto:chris.little@metoffice.gov.uk"/>
+        <terms:creator rdf:resource="mailto:panfeng66@gmail.com"/>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-09-27</terms:created>
+        <rdfs:label xml:lang="en">OWL-Time</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.semantic-web-journal.net/content/time-ontology-extended-non-gregorian-calendar-applications"/>
+        <skos:changeNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2017-02 - intervalIn, intervalDisjoint, monthOfYear added; TemporalUnit subclass of TemporalDuration</skos:changeNote>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#pattern -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2001/XMLSchema#pattern"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#editorialNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#editorialNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#historyNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#historyNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#scopeNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#scopeNote"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#hasNearIt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#hasNearIt">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isNearTo"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isAnActivityLinkedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isAnActivityLinkedTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isBasedOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isBasedOn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Statement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isNearTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isNearTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasFurniture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasFurniture">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isFurnitureOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasFurnitureTheSensor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasFurnitureTheSensor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheFurniture"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasHumanTheSensor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasHumanTheSensor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheHuman"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasPosture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasPosture">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanPosture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasRoom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasRoom">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isRoomOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasRoomTheSensor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasRoomTheSensor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorInTheRoom"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#intervalLinkedToActivity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#intervalLinkedToActivity">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isDoingActivity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isDoingActivity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isDoingGesture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isDoingGesture">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isFurnitureOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isFurnitureOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isNextTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isNextTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isOccupying -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isOccupying">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isPartOfStatement -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isPartOfStatement">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Statement"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isRoomOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isRoomOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorInTheRoom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorInTheRoom">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheFurniture -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheFurniture">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheHuman -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheHuman">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isUtilizing -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isUtilizing">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#after -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#after">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#before"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#before -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#before">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasBeginning -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTime"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasDateTimeDescription -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDateTimeDescription">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasDuration -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDuration">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTemporalDuration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Duration"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasDurationDescription -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasDurationDescription">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTemporalDuration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasEnd -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasTime"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasInside -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasInside">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Interval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasTRS -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTRS">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#TemporalPosition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasTemporalDuration -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTemporalDuration">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasTime">
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inDateTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inDateTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#inTemporalPosition"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inTemporalPosition -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inTemporalPosition">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#inTimePosition -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#inTimePosition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#inTemporalPosition"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TimePosition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalAfter -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalAfter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#after"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalDisjoint"/>
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalBefore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalBefore -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalBefore">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#before"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalDisjoint"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalContains -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalContains">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalDuring"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalDisjoint -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalDisjoint">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalDuring -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalDuring">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalEquals -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalEquals">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalFinishedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalFinishedBy">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalFinishes"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalFinishes -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalFinishes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalIn">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalMeets -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalMeets">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalMetBy"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalMetBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalMetBy">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalOverlappedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalOverlappedBy">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalOverlaps"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalOverlaps -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalOverlaps">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalStartedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalStartedBy">
+        <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#intervalStarts"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#intervalStarts -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalStarts">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#intervalIn"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#monthOfYear -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#monthOfYear">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#MonthOfYear"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#unitType -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#unitType">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#Duration"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsBrightness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsBrightness">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Brightness"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsGesture -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsGesture">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsHeartrate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsHeartrate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsMotion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#detectsMotion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasLocation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasState -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasState">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Space"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasTemprature -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasTemprature">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Temprature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasTimestamp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasTimestamp">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasZaxisValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasZaxisValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#ElikoDevice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hour -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hour">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#minute -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#minute">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#minutes -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#minutes">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#month -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#month">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#second -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#second">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#week -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#week">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#year -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#year">
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isBasedOn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Statement"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Space"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Brightness -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Brightness">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#ElikoDevice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#ElikoDevice">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Sensor"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Human -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Human">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Space"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanPosture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanPosture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Sensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Sensor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Space"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Space -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Space">
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Statement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Statement">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasState"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasTimestamp"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Temprature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Temprature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Time -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Time">
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#WearableSensor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DateTimeDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#DateTimeDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#GeneralDateTimeDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DateTimeInterval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#DateTimeInterval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Duration -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Duration">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#unitType"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DurationDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#DurationDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#GeneralDurationDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#GeneralDateTimeDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#GeneralDateTimeDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#unitType"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#monthOfYear"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#GeneralDurationDescription -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#GeneralDurationDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hasTRS"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Instant -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Interval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Interval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#MonthOfYear -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#MonthOfYear">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#DateTimeDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#ProperInterval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#ProperInterval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#Interval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalDuration -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalDuration">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Time"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalEntity -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#Instant"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2006/time#Interval"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Time"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalPosition -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalPosition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Time"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hasTRS"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalUnit -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalUnit">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalDuration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TimePosition -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TimePosition">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalPosition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Year -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Year">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#DurationDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_BathRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_BathRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_BedRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_BedRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_Kitchen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_Kitchen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+        <isAnActivityLinkedTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen"/>
+        <isBasedOn rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_LivingRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_LivingRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+        <isAnActivityLinkedTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom"/>
+        <isBasedOn rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_TableArea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#BeingIn_TableArea">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_BathRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_BathRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_BedRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_BedRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_Kitchen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_Kitchen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_LivingRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_LivingRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_Table -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_Table">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_TableX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_TableX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Gesture -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Gesture">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+        <PrototypeOntology:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha"/>
+        <rdfs:comment>S_W_Drinking</rdfs:comment>
+        <rdfs:comment>S_W_FallingDown</rdfs:comment>
+        <rdfs:comment>S_W_LyingDown</rdfs:comment>
+        <rdfs:comment>S_W_Pouring</rdfs:comment>
+        <rdfs:comment>S_W_SittingDown</rdfs:comment>
+        <rdfs:comment>S_W_SittingUp</rdfs:comment>
+        <rdfs:comment>S_W_Walking</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Location -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_SW_Location">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+        <PrototypeOntology:isPartOfStatement rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S1"/>
+        <PrototypeOntology:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha"/>
+        <PrototypeOntology:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</PrototypeOntology:hasLocation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Bed -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Bed">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Bed"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BedRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenCabinet -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenCabinet">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenCabinet"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrStove -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrStove">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrStove"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Shower -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Shower">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Shower"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BathRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TV -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TV">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#UtilizableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_B_TV"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TVCouch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TVCouch">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_LivingRoom"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Table -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Table">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_Table"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Table"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_TableArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TableX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TableX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_TableX"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_TableX"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_TableArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_ToiletSeat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_ToiletSeat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#OccupiableFurniture"/>
+        <PrototypeOntology:hasFurnitureTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_BathRoom"/>
+        <PrototypeOntology:isFurnitureOf rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BathRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_House -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_House">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience"/>
+        <PrototypeOntology:hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BathRoom"/>
+        <PrototypeOntology:hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BedRoom"/>
+        <PrototypeOntology:hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_CorridorArea"/>
+        <PrototypeOntology:hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen"/>
+        <PrototypeOntology:hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom"/>
+        <PrototypeOntology:hasRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_TableArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BathRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BathRoom">
+        <PrototypeOntology:hasRoomTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_BathRoom"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BedRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BedRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BedRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+        <PrototypeOntology:hasRoomTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_BedRoom"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BathRoom"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_CorridorArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_CorridorArea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_CorridorArea">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen">
+        <PrototypeOntology:hasRoomTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_Kitchen"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_CorridorArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom">
+        <PrototypeOntology:hasRoomTheSensor rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_LivingRoom"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_CorridorArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_TableArea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_TableArea">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_CorridorArea"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen"/>
+        <PrototypeOntology:isNextTo rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Drinking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Drinking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Falling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Falling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_LyingDown -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_LyingDown">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Pouring -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Pouring">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_SittingDown -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_SittingDown">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_SittingUp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_SittingUp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_StandingUp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_StandingUp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Walking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_G_Walking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_P_Lying -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_P_Lying">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanPosture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_P_Sitting -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_P_Sitting">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanPosture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_P_Standing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_P_Standing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanPosture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Afternoon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Afternoon">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Afternoon_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Afternoon_EndTime"/>
+        <time:intervalContains rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Lunch"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Breakfast -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Breakfast">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Breakfast_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Breakfast_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Dinner -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Dinner">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Dinner_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Dinner_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Evening -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Evening">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Evening_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Evening_EndTime"/>
+        <time:intervalContains rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Dinner"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_BathRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_BathRoom">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BathRoom_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BathRoom_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_BedRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_BedRoom">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BedRoom_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BedRoom_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_Kitchen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_Kitchen">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_Kitchen_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_Kitchen_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_LivingRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_LivingRoom">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_LivingRoom_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_LivingRoom_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_TableArea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_IsIn_TableArea">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_TableArea_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_TableArea_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Lunch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Lunch">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Lunch_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Lunch_EndTime"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Morning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Morning">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Morning_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Morning_EndTime"/>
+        <time:intervalContains rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Breakfast"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Night -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Night">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:hasBeginning rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Night_BeginTime"/>
+        <time:hasEnd rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Night_EndTime"/>
+        <rdfs:comment>new in Nov 2018</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_WholeDay -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_WholeDay">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <time:intervalContains rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Afternoon"/>
+        <time:intervalContains rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Evening"/>
+        <time:intervalContains rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Morning"/>
+        <time:intervalContains rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Interval_Night"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S1">
+        <PrototypeOntology:hasState rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</PrototypeOntology:hasState>
+        <PrototypeOntology:hasTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26-10-2018 14:16:17.456</PrototypeOntology:hasTimestamp>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_B_TV -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_B_TV">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Brightness"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TV"/>
+        <PrototypeOntology:detectsBrightness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</PrototypeOntology:detectsBrightness>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_E_AxisX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_E_AxisX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#ElikoDevice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_E_AxisY -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_E_AxisY">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#ElikoDevice"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_E_AxisZ -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_E_AxisZ">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#ElikoDevice"/>
+        <PrototypeOntology:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_BathRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_BathRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorInTheRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_BathRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Bed -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Bed">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Bed"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Kitchen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Kitchen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorInTheRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_Kitchen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenCabinet -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenCabinet">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenCabinet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrStove -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_KitchenSinkOrStove">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_KitchenSinkOrStove"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_LivingRoom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_LivingRoom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorInTheRoom rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_R_LivingRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Shower -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Shower">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Shower"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Table -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_Table">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_Table"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_TableX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_M_TableX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+        <PrototypeOntology:isSensorWithTheFurniture rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#A_F_TableX"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_SW_HeartRate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#S_SW_HeartRate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+        <PrototypeOntology:isSensorWithTheHuman rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#H_Yusha"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Afternoon_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Afternoon_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Afternoon_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Afternoon_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Breakfast_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Breakfast_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Breakfast_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Breakfast_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Dinner_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Dinner_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Dinner_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Dinner_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Evening_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Evening_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Evening_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Evening_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BathRoom_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BathRoom_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BathRoom_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BathRoom_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BedRoom_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BedRoom_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BedRoom_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_BedRoom_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_Kitchen_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_Kitchen_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_Kitchen_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_Kitchen_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_LivingRoom_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_LivingRoom_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_LivingRoom_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_LivingRoom_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_TableArea_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_TableArea_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_TableArea_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_IsIn_TableArea_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Lunch_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Lunch_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Lunch_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Lunch_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Morning_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Morning_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Morning_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Morning_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Night_BeginTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Night_BeginTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Night_EndTime -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#TI_Night_EndTime">
+        <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Ambience"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Human"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Sensor"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Brightness"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#PIR"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Temprature"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanGesture"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanPosture"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#sw">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#seb">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Activity Recognition</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Statement"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isIn"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Human"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasState"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s"/>
+                                                <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isBasedOn"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isAnActivityLinkedTo"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Activity"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isDoingActivity"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#a"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensorFurniture -&gt; SensorRoom</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EnvironmentalSensor"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Furniture"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheFurniture"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#Room"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isFurnitureOf"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#f"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorInTheRoom"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#es"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Human Localization</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#sw"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#EstimoteBeacon"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#seb"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheHuman"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#sw"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isNearTo"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#sw"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#seb"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorInTheRoom"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#seb"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isIn"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#r"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Proximity to KitchenBeacon</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheHuman"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasLocation"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#containsIgnoreCase"/>
+                                                        <swrl:arguments>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </swrl:arguments>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isNearTo"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_Kitchen"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prximity to LivingRoomBeacon</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#SmartWatch"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#HumanName"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#isSensorWithTheHuman"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#hasLocation"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#containsIgnoreCase"/>
+                                                        <swrl:arguments>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingRoom</rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </swrl:arguments>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#isNearTo"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#swl"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#S_EB_LivingRoom"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+

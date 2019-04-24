@@ -84,6 +84,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
 
                 // Read latest inferences from the ontology
                 // The incompleteStatement
+
                 val s1 = IncompleteStatement("User", "isDoingActivity")
                 val s2 = ontology.inferFromOntoToReturnOPStatement(s1)
 
