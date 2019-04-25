@@ -4,17 +4,14 @@ import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.io.FileInputStream
-import io.reactivex.Observable
-import io.reactivex.rxkotlin.subscribeBy
-import java.util.*
 
-@Volatile private var sensorData: SensorData = SensorData("null","null")
 @Volatile private var dataReadComplete: Boolean = false
-@Volatile private lateinit var fbDBRef: DatabaseReference
 
 class FirebaseConnector(private val databaseName: String, private val pathToSensors: String, private val pathToPrivateKey: String): GenericDBInterface {
 
     lateinit var fbDB: FirebaseDatabase
+    private lateinit var fbDBRef: DatabaseReference
+
     override fun connectToDB(): DatabaseReference {
 
         // Fetch the service account key JSON file contents
@@ -39,62 +36,29 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
         return fbDBRef
     }
 
-    /** Please setSensorName before doing get operation*/
-    override fun getTimestamp(): Any {
-
-        return sensorData.time
-    }
-
-    override fun getValue(): Any {
-
-        return sensorData.value
-    }
-
     fun getReadComplete(): Boolean {
 
         return dataReadComplete
     }
 
 
-    override fun readNodeData(userNode: String, dataNode: String, ontology : Ontology): Observable<SensorData> {
+    override fun readNodeData(userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager) {
 
         // We check the location of each user
         fbDBRef.child(userNode).child(dataNode).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 println("Entered into OnChange")
-                println(dataSnapshot)
 
-                val sensorTime = Date()
-                lateinit var sensorValue: String
-                if (dataSnapshot.value.toString() == "6") {
-                    sensorValue = "Kitchen"
-                }else if (dataSnapshot.value.toString() == "2") {
-                    sensorValue = "LivingRoom"
-                }
-                sensorData = SensorData(sensorTime, sensorValue)
+                val location = ontoTaskManager.locationMapper(dataSnapshot.value.toString())
 
-                // Adding something to the Ontology
-                ontology.addOrUpdateToOnto(DataPropertyStatement("Instant_CurrentTimeStamp","hour", Date().hours).assignSpecialOntoRef(ontology.getOntoRef(),ontology.getTemporalOntoRef(),ontology.getOntoRef()))
-                ontology.addOrUpdateToOnto(DataPropertyStatement("SmartWatch","hasLocation", sensorData.value))
-                ontology.saveOnto(ontology.getOntoFilePath())
+                println("Location from FB: $location")
 
-                // Synchronize reasoner of the ontology
-                ontology.synchronizeReasoner()
+                val dpStatement = DataPropertyStatement("User", "hasLocation", location)
+                val statementList : List<DataPropertyStatement> = listOf(dpStatement)
 
-                // Read latest inferences from the ontology
-                // The incompleteStatement
-
-                val s1 = IncompleteStatement("User", "isDoingActivity")
-                val s2 = ontology.inferFromOntoToReturnOPStatement(s1)
-
-                val observableDoingActivity = Observable.just(ontology.inferFromOnto(s2))
-
-                observableDoingActivity.subscribeBy {
-
-                    val eventVocalInt = VocalInterfaceEvent()
-                    eventVocalInt.activateEvent(it, userNode, fbDB)
-                }
+                ontoTaskManager.pushToOnto(statementList)
+                ontoTaskManager.pullAndManageOnto()
 
                 dataReadComplete = true
             }
@@ -104,9 +68,10 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
                 error(error)
             }
         })
-
-        return Observable.just(sensorData)
     }
+
+    //                    val eventVocalInt = VocalInterfaceEvent()
+//                    eventVocalInt.activateEvent(it.getObject(), userNode, fbDB)
 
     fun resetReadComplete() {
 
@@ -179,23 +144,24 @@ class FirebaseConnector(private val databaseName: String, private val pathToSens
         fbDBRef.child(sensorName).child("value").setValueAsync(sensorData.value)
     }
 
-    fun checkUserNode(dataNode: String, ontology: Ontology) {
+    fun checkUserNode(dataNode: String, ontoTaskManager: OntoTaskManager) {
 
+        readNodeData("5fe6b3ba-2767-4669-ae69-6fdc402e695e", dataNode, ontoTaskManager)
         // find the user
-        fbDBRef.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (oneElement in snapshot.children) {
-
-                    val userID = oneElement.key.toString()
-                    readNodeData(userID, dataNode, ontology)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-                error(error)
-            }
-        })
+//        fbDBRef.addListenerForSingleValueEvent(object: ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                for (oneElement in snapshot.children) {
+//
+//                    val userID = oneElement.key.toString()
+//                    readNodeData(userID, dataNode, ontology)
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//
+//                error(error)
+//            }
+//        })
     }
 
 //    override fun setBooleanValue(timestamp: Timestamp, booleanValue: Boolean) {

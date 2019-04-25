@@ -6,6 +6,7 @@ import org.semanticweb.owlapi.model.OWLLiteral
 import org.semanticweb.owlapi.model.OWLNamedIndividual
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * This class helps in initializing ontologies and manipulating them.
@@ -118,7 +119,9 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
     /**
      *  Infers from Ontology the 'object' of the ObjectPropertyStatement; returns ObjectPropertyStatement.
      */
+
     fun inferFromOntoToReturnOPStatement(incompleteStatement: IncompleteStatement): ObjectPropertyStatement {
+
         lateinit var individual: MORFullIndividual
         lateinit var namedIndiv: OWLNamedIndividual
         val inferredObjectAsOWLIndividual: String
@@ -148,6 +151,7 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
 
         return opStatement
     }
+
     /**
      *  Infers from Ontology the 'object' of the ObjectPropertyStatement; returns DataPropertyStatement.
      */

@@ -1,16 +1,13 @@
 import com.google.firebase.database.DatabaseReference
-import io.reactivex.Observable
-import java.sql.ResultSet
-import java.sql.Timestamp
 
 interface GenericDBInterface {
 
     fun connectToDB(): DatabaseReference
 
-    fun readNodeData(userNode: String, dataNode: String, ontology: Ontology): Observable<SensorData>
+    fun readNodeData(userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager)
 
-    fun getTimestamp(): Any
-    fun getValue(): Any
+//    fun getTimestamp(): Any
+//    fun getValue(): Any
 
     fun setData(sensorName: String, sensorData: SensorData)
 

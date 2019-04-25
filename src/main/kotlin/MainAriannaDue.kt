@@ -1,7 +1,4 @@
-import com.google.api.client.util.DateTime
 import it.emarolab.amor.owlDebugger.Logger
-import java.sql.Timestamp
-import java.util.*
 
 object MainAriannaDue {
 
@@ -20,14 +17,17 @@ object MainAriannaDue {
                 true
         )
 
+        /** Initialize OntoTakManager */
+
+        val ontoTaskManager = OntoTaskManager(localizationOnto)
+
         /** Initialize Firebase DB and Read data from sensors*/
 
         val fbDB2 = FirebaseConnector("vocalinterface", "/installation_test_name", "/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json")
         fbDB2.connectToDB()
 
-        /** Activate System for each user*/
-
-        fbDB2.checkUserNode("location", localizationOnto)
+        /** Begin */
+        fbDB2.checkUserNode("location", ontoTaskManager)
 
         /** MAIN Arianna 2.0 */
 
@@ -36,9 +36,7 @@ object MainAriannaDue {
 
                 println("Entered into while flag")
 
-//                println("Date.time is ${Date().time}, Date.Hour is ${Date().hours}, Date.Min is ${Date().minutes}")
-//                println("There was a change!")
-//
+
 //                // getting values from fbDB and cheking types
 //                println(fbDB2.getTimestamp().javaClass.toString() == "class java.lang.String")
 //                println(fbDB2.getValue().javaClass.toString() == "class java.lang.Long")
