@@ -2,9 +2,9 @@ import com.google.firebase.database.DatabaseReference
 
 interface GenericDBInterface {
 
-    fun connectToDB(): DatabaseReference
+    //fun connectToDB(): DatabaseReference
 
-    fun readNodeData(pathToNode: String, userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager)
+    fun readNodeData(userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager)
 
 //    fun getTimestamp(): Any
 //    fun getValue(): Any

@@ -6,7 +6,6 @@ object MainAriannaDue {
     fun main(args: Array<String>) {
 
         /** Initializing ontologies */
-
         Logger.LoggerFlag.resetAllLoggingFlags() // For disabling a lot of logging
 
         //  Localization Ontology
@@ -19,7 +18,7 @@ object MainAriannaDue {
 
         /** Initialize Firebase DB and Read data from sensors*/
 
-        val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json")
+        val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json", "/installation_test_name")
 //        fbDB2.connectToDB()
 
         /** Initialize OntoTakManager */
@@ -27,7 +26,7 @@ object MainAriannaDue {
         val ontoTaskManager = OntoTaskManager(localizationOnto,fbDB2)
 
         /** Begin */
-        fbDB2.checkUserNode("/installation_test_name","location", ontoTaskManager)
+        fbDB2.checkUserNode("location", ontoTaskManager)
 
         /** MAIN Arianna 2.0 */
 

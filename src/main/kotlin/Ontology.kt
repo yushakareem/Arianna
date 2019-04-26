@@ -92,14 +92,13 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
                 readSemantic()
                 namedIndiv = getObject(opStatement.getSpecialVerbOntoRef().getOWLObjectProperty(opStatement.getVerb()))
             }
-        } else {
+        }else{
             individual = MORFullIndividual(opStatement.getSubject(), this.ontoRef)
             individual.apply {
                 readSemantic()
                 namedIndiv = getObject(opStatement.getVerb())
             }
         }
-
         return individual.getOWLName(namedIndiv)
     }
     /**
@@ -125,7 +124,7 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         lateinit var individual: MORFullIndividual
         lateinit var namedIndiv: OWLNamedIndividual
         val inferredObjectAsOWLIndividual: String
-        val opStatement: ObjectPropertyStatement
+        var opStatement: ObjectPropertyStatement
 
         try {
             if (incompleteStatement.hasSpecialOntoRef()) {
@@ -146,7 +145,8 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
                 opStatement = ObjectPropertyStatement(incompleteStatement.getSubject(),incompleteStatement.getVerb(),inferredObjectAsOWLIndividual)
             }
         } catch (e: IllegalStateException) {
-            error("The inference of IncompleteStatement is NULL. Please handle this carefully.")
+//            println("The inference of IncompleteStatement is NULL. Please handle this carefully.")
+            opStatement = ObjectPropertyStatement(incompleteStatement.getSubject(),incompleteStatement.getVerb(),"null") // FUTURE: OPStatement should take ANY
         }
 
         return opStatement
