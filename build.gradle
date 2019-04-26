@@ -50,6 +50,10 @@ dependencies {
     
     //Firebase
     implementation 'com.google.firebase:firebase-admin:6.8.0'
+
+    //Firestore JAVA
+    compile 'com.google.firebase:firebase-admin:6.8.1'
+
 }
 
 compileKotlin {

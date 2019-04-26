@@ -17,17 +17,17 @@ object MainAriannaDue {
                 true
         )
 
-        /** Initialize OntoTakManager */
-
-        val ontoTaskManager = OntoTaskManager(localizationOnto)
-
         /** Initialize Firebase DB and Read data from sensors*/
 
-        val fbDB2 = FirebaseConnector("vocalinterface", "/installation_test_name", "/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json")
-        fbDB2.connectToDB()
+        val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json")
+//        fbDB2.connectToDB()
+
+        /** Initialize OntoTakManager */
+
+        val ontoTaskManager = OntoTaskManager(localizationOnto,fbDB2)
 
         /** Begin */
-        fbDB2.checkUserNode("location", ontoTaskManager)
+        fbDB2.checkUserNode("/installation_test_name","location", ontoTaskManager)
 
         /** MAIN Arianna 2.0 */
 

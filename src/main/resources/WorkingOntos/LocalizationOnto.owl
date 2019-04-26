@@ -1001,6 +1001,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#hasLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#HumanName"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -1799,8 +1800,8 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#Instant_CurrentTimeStamp">
-        <time:hour rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</time:hour>
-        <time:minute rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">52</time:minute>
+        <time:hour rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</time:hour>
+        <time:minute rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">46</time:minute>
     </owl:NamedIndividual>
     
 
@@ -2033,6 +2034,15 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#User">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#HumanName"/>
+        <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</LocalizationOnto1:hasLocation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#5fe6b3ba-2767-4669-ae69-6fdc402e695e -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#5fe6b3ba-2767-4669-ae69-6fdc402e695e">
         <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</LocalizationOnto1:hasLocation>
     </owl:NamedIndividual>
     

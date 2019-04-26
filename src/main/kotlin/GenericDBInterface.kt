@@ -4,12 +4,12 @@ interface GenericDBInterface {
 
     fun connectToDB(): DatabaseReference
 
-    fun readNodeData(userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager)
+    fun readNodeData(pathToNode: String, userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager)
 
 //    fun getTimestamp(): Any
 //    fun getValue(): Any
 
-    fun setData(sensorName: String, sensorData: SensorData)
+//    fun setData(sensorName: String, sensorData: SensorData)
 
 //    fun getBooleanValue(): Boolean
 //    fun getIntegerValue(): Int

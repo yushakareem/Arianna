@@ -2,7 +2,7 @@ import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
 import java.util.*
 
-class OntoTaskManager(private val onto: Ontology) {
+class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: FirebaseConnector) {
 
 
     fun pushToOnto(listOfStatements: List<DataPropertyStatement>) {
@@ -19,10 +19,10 @@ class OntoTaskManager(private val onto: Ontology) {
         onto.saveOnto(onto.getOntoFilePath())
     }
 
-    fun pullAndManageOnto() {
+    fun pullAndManageOnto(userNode: String) {
 
         // Read latest inferences from the ontology
-        val si1 = IncompleteStatement("User", "isDoingActivity")
+        val si1 = IncompleteStatement(userNode, "isDoingActivity")
         val sop1 = onto.inferFromOntoToReturnOPStatement(si1)
         val si2 = IncompleteStatement("DrugReminder", "hasActivationState")
         val sop2 = onto.inferFromOntoToReturnOPStatement(si2)
@@ -33,6 +33,7 @@ class OntoTaskManager(private val onto: Ontology) {
         userObservable
                 .subscribeBy {
                     println(it.getObject())
+                    doingActivity(it)
                 }
 
         val taskObservable = Observable.just(sop2)
@@ -41,6 +42,14 @@ class OntoTaskManager(private val onto: Ontology) {
                 .subscribeBy {
                     println(it.getObject())
                 }
+    }
+
+    private fun doingActivity(opStatement: ObjectPropertyStatement) {
+
+        if(opStatement.getObject() == "HavingBreakfast") {
+
+//             val medicineTaken = fbDBConnector.readFirestore(pathToValue)
+        }
     }
 
     private fun reasonWithSynchedTime(currentTimeIndividual: String) {
