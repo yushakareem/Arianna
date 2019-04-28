@@ -96,6 +96,6 @@ fun main(args: Array<String>) {
 
     /** Starting the network */
 
-    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfLocalizationOnto, linksOfKitchenOnto, linksOfLivingRoom)
+//    val ontologiesNetworkHandler = ontologiesNetwork.startNetworking(linksOfLocalizationOnto, linksOfKitchenOnto, linksOfLivingRoom)
 }
 

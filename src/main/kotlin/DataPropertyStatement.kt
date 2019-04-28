@@ -7,20 +7,25 @@ import java.sql.Timestamp
  *
  * @return DataPropertyStatement
  */
-class DataPropertyStatement: IncompleteStatement {
+data class DataPropertyStatement(var subjectAsOwlIndividual: String, var verbAsOwlProperty: String, var objectAsAnyData: Any) {
 
-    private lateinit var objectAsAnyData: Any
-    private lateinit var objectAsStringData: String
-    private lateinit var objectAsTimestampData: Timestamp
-    private var objectAsDoubleData: Double = 0.0
-    private var objectAsBooleanData: Boolean = false
+//    private lateinit var objectAsAnyData: Any
+//    private lateinit var objectAsStringData: String
+//    private lateinit var objectAsTimestampData: Timestamp
+//    private var objectAsDoubleData: Double = 0.0
+//    private var objectAsBooleanData: Boolean = false
+
+    protected lateinit var specialOntoRefForSubject: OWLReferences
+    protected lateinit var specialOntoRefForVerb: OWLReferences
+
+    protected var madeOfSpecialOntoRef: Boolean = false
 
     private lateinit var ontoRefForObject: OWLReferences
 
-    private var madeWithObjectAsString: Boolean = false
-    private var madeWithObjectAsTimestamp: Boolean = false
-    private var madeWithObjectAsDouble: Boolean = false
-    private var madeWithObjectAsBoolean: Boolean = false
+//    private var madeWithObjectAsString: Boolean = false
+//    private var madeWithObjectAsTimestamp: Boolean = false
+//    private var madeWithObjectAsDouble: Boolean = false
+//    private var madeWithObjectAsBoolean: Boolean = false
 
 //    /**
 //     * Constructor used when the statement's 'verb' is a DataProperty and 'object' is String data.
@@ -50,13 +55,13 @@ class DataPropertyStatement: IncompleteStatement {
 //        this.objectAsBooleanData = objectAsBooleanData
 //        this.madeWithObjectAsBoolean = true
 //    }
-
-    /**
-     * Constructor for type Any.
-     */
-    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsAnyData: Any) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
-        this.objectAsAnyData = objectAsAnyData
-    }
+    // UNCOMMENT IF THINGS SCREW UP
+//    /**
+//     * Constructor for type Any.
+//     */
+//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsAnyData: Any) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+//        this.objectAsAnyData = objectAsAnyData
+//    }
 
     /**
      * Assign special OntoRef for Subject, Verb, Object.
@@ -73,44 +78,44 @@ class DataPropertyStatement: IncompleteStatement {
         return this
     }
 
-    override fun hasSpecialOntoRef(): Boolean {
+    fun hasSpecialOntoRef(): Boolean {
 
         return madeOfSpecialOntoRef
     }
-    /**
-     * Checks if the object is made of string.
-     * @return Boolean
-     */
-    fun hasObjectAsString(): Boolean {
-        return madeWithObjectAsString
-    }
-    /**
-     * Checks if the object is made of boolean.
-     * @return Boolean
-     */
-    fun hasObjectAsBoolean(): Boolean {
-        return madeWithObjectAsBoolean
-    }
-    /**
-     * Checks if the object is made of timestamp.
-     * @return Boolean
-     */
-    fun hasObjectAsTimestamp(): Boolean {
-        return madeWithObjectAsTimestamp
-    }
-    /**
-     * Checks if the object is made of double.
-     * @return Boolean
-     */
-    fun hasObjectAsDouble(): Boolean {
-        return madeWithObjectAsDouble
-    }
+//    /**
+//     * Checks if the object is made of string.
+//     * @return Boolean
+//     */
+//    fun hasObjectAsString(): Boolean {
+//        return madeWithObjectAsString
+//    }
+//    /**
+//     * Checks if the object is made of boolean.
+//     * @return Boolean
+//     */
+//    fun hasObjectAsBoolean(): Boolean {
+//        return madeWithObjectAsBoolean
+//    }
+//    /**
+//     * Checks if the object is made of timestamp.
+//     * @return Boolean
+//     */
+//    fun hasObjectAsTimestamp(): Boolean {
+//        return madeWithObjectAsTimestamp
+//    }
+//    /**
+//     * Checks if the object is made of double.
+//     * @return Boolean
+//     */
+//    fun hasObjectAsDouble(): Boolean {
+//        return madeWithObjectAsDouble
+//    }
 
-    override fun getSpecialSubjectOntoRef(): OWLReferences {
+    fun getSpecialSubjectOntoRef(): OWLReferences {
 
         return specialOntoRefForSubject
     }
-    override fun getSpecialVerbOntoRef(): OWLReferences {
+    fun getSpecialVerbOntoRef(): OWLReferences {
 
         return specialOntoRefForVerb
     }
@@ -123,56 +128,56 @@ class DataPropertyStatement: IncompleteStatement {
         return ontoRefForObject
     }
 
-    override fun getSubject(): String {
-
-        return subjectAsOwlIndividual
-    }
-
-    override fun getVerb(): String {
-
-        return verbAsOwlProperty
-    }
-    /**
-     * Returns the object in the statement as a String.
-     * @return String
-     */
-    fun getObjectStringData(): String {
-
-        return objectAsStringData
-    }
-    /**
-     * Returns the object in the statement as a Boolean.
-     * @return Boolean
-     */
-    fun getObjectBooleanData(): Boolean {
-
-        return objectAsBooleanData
-    }
-    /**
-     * Returns the object in the statement as an Double.
-     * @return Double
-     */
-    fun getObjectDoubleData(): Double {
-
-        return objectAsDoubleData
-    }
-    /**
-     * Returns the object in the statement as a Timestamp.
-     * @return Timestamp
-     */
-    fun getObjectTimestampData(): Timestamp {
-
-        return objectAsTimestampData
-    }
-
-    /**
-     * Returns ANY type
-     * @return ANY
-     */
-
-    fun getObjectAnyData(): Any {
-
-        return objectAsAnyData
-
-    }
+//    fun getSubject(): String {
+//
+//        return subjectAsOwlIndividual
+//    }
+//
+//    fun getVerb(): String {
+//
+//        return verbAsOwlProperty
+//    }
+//    /**
+//     * Returns the object in the statement as a String.
+//     * @return String
+//     */
+//    fun getObjectStringData(): String {
+//
+//        return objectAsStringData
+//    }
+//    /**
+//     * Returns the object in the statement as a Boolean.
+//     * @return Boolean
+//     */
+//    fun getObjectBooleanData(): Boolean {
+//
+//        return objectAsBooleanData
+//    }
+//    /**
+//     * Returns the object in the statement as an Double.
+//     * @return Double
+//     */
+//    fun getObjectDoubleData(): Double {
+//
+//        return objectAsDoubleData
+//    }
+//    /**
+//     * Returns the object in the statement as a Timestamp.
+//     * @return Timestamp
+//     */
+//    fun getObjectTimestampData(): Timestamp {
+//
+//        return objectAsTimestampData
+//    }
+//
+//    /**
+//     * Returns ANY type
+//     * @return ANY
+//     */
+//
+//    fun getObjectAnyData(): Any {
+//
+//        return objectAsAnyData
+//
+//    }
 }

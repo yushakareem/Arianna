@@ -97,17 +97,16 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         return dataReadComplete
     }
 
-    fun checkDrugUser(user: String): Any? {
+    fun checkDrugUser(user: String, field: String): Any {
 
         // asynchronously retrieve all users
         val docRef = firestoreDB.collection("usersModel").document(user).collection("drugs").document("morningOnFullStomach")
         val future = docRef.get()
         val document = future.get()
-        if (document.exists() && document.get("state") != "false"){
-            return document.get("state")
+        if (document.exists()){
+            return document.get(field)!!
         }else{
-            println("Error reading on Firestore: drug list doesn't present")
-            return null
+            error("Error reading on Firestore: drug list doesn't present")
         }
     }
 

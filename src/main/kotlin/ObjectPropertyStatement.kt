@@ -6,19 +6,24 @@ import it.emarolab.amor.owlInterface.OWLReferences
  *
  * @return ObjectPropertyStatement
  */
-open class ObjectPropertyStatement: IncompleteStatement {
+data class ObjectPropertyStatement(var subjectAsOwlIndividual: String, var verbAsOwlProperty: String, var objectAsOwlIndividual: String) {
 
-    private var objectAsOwlIndividual: String
+//    private var objectAsOwlIndividual: String
     private lateinit var specialOntoRefForObject: OWLReferences
+    protected lateinit var specialOntoRefForSubject: OWLReferences
+    protected lateinit var specialOntoRefForVerb: OWLReferences
 
-    /**
-     * Constructor used when the statement's 'verb' is an ObjectProperty and 'object' is an Individual.
-     */
-    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsOwlIndividual: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
-        this.subjectAsOwlIndividual = subjectAsOwlIndividual
-        this.verbAsOwlProperty = verbAsOwlProperty
-        this.objectAsOwlIndividual = objectAsOwlIndividual
-    }
+    protected var madeOfSpecialOntoRef: Boolean = false
+
+//    /**
+//     * Constructor used when the statement's 'verb' is an ObjectProperty and 'object' is an Individual.
+//     */
+//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsOwlIndividual: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+//        this.subjectAsOwlIndividual = subjectAsOwlIndividual
+//        this.verbAsOwlProperty = verbAsOwlProperty
+//        this.objectAsOwlIndividual = objectAsOwlIndividual
+//    }
+
     /**
      * Assign special OntoRef for Subject, Verb, Object.
      * Useful when multiple ontologies are merged in one ontology.
@@ -34,17 +39,17 @@ open class ObjectPropertyStatement: IncompleteStatement {
         return this
     }
 
-    override fun hasSpecialOntoRef(): Boolean {
+    fun hasSpecialOntoRef(): Boolean {
 
         return madeOfSpecialOntoRef
     }
 
-    override fun getSpecialSubjectOntoRef(): OWLReferences {
+    fun getSpecialSubjectOntoRef(): OWLReferences {
 
         return specialOntoRefForSubject
     }
 
-    override fun getSpecialVerbOntoRef(): OWLReferences {
+    fun getSpecialVerbOntoRef(): OWLReferences {
 
         return specialOntoRefForVerb
     }
@@ -57,29 +62,29 @@ open class ObjectPropertyStatement: IncompleteStatement {
         return specialOntoRefForObject
     }
 
-    override fun getSubject(): String {
-
-        return subjectAsOwlIndividual
-    }
-
-    override fun getVerb(): String {
-
-        return verbAsOwlProperty
-    }
-    /**
-     * Returns the object in the statement as a string.
-     * @return String
-     */
-    fun getObject(): String {
-
-        return objectAsOwlIndividual
-    }
-    /**
-     * Compares an [ObjectPropertyStatement] with another [ObjectPropertyStatement].
-     * @return Boolean
-     */
-    fun compare(objectPropertyStatement: ObjectPropertyStatement): Boolean {
-
-        return getSubject() == objectPropertyStatement.getSubject() && getVerb() == objectPropertyStatement.getVerb() && getObject() == objectPropertyStatement.getObject()
-    }
+//    fun getSubject(): String {
+//
+//        return subjectAsOwlIndividual
+//    }
+//
+//    fun getVerb(): String {
+//
+//        return verbAsOwlProperty
+//    }
+//    /**
+//     * Returns the object in the statement as a string.
+//     * @return String
+//     */
+//    fun getObject(): String {
+//
+//        return objectAsOwlIndividual
+//    }
+//    /**
+//     * Compares an [ObjectPropertyStatement] with another [ObjectPropertyStatement].
+//     * @return Boolean
+//     */
+//    fun compare(objectPropertyStatement: ObjectPropertyStatement): Boolean {
+//
+//        return getSubject() == objectPropertyStatement.getSubject() && getVerb() == objectPropertyStatement.getVerb() && getObject() == objectPropertyStatement.getObject()
+//    }
 }
