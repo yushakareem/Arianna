@@ -10,6 +10,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiPredicate
 import io.reactivex.subjects.BehaviorSubject
 import org.mindswap.pellet.utils.Bool
+import java.sql.Timestamp
 
 
 object testMain {
@@ -40,6 +41,8 @@ object testMain {
         observable.onNext(ObjectPropertyStatement("a","b","c"))
         observable.onNext(ObjectPropertyStatement("d","g","l"))
         observable.onNext(ObjectPropertyStatement("a","b","c"))
+
+        println(Timestamp(System.currentTimeMillis()))
 
 //
 //        var obs = list.toObservable() // extension function for Iterables

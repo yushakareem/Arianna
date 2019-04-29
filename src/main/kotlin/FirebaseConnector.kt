@@ -114,5 +114,24 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
 
         realtimeDBRef.child("$pathToNode/$path").setValueAsync(value)
     }
+
+    fun readDB(path: String): String{
+
+        var any = "null"
+
+        realtimeDBRef.child(pathToNode).child(path).addListenerForSingleValueEvent(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                any = snapshot.value as String
+                println("In readDB: $any")
+            }
+
+            override fun onCancelled(error: DatabaseError?) {
+                error("Error in reading FireBase ")
+            }
+        })
+
+        return any
+    }
 }
 

@@ -1,8 +1,9 @@
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
-
+import java.sql.Timestamp
 import java.util.*
 import kotlin.concurrent.thread
+import kotlin.coroutines.experimental.suspendCoroutine
 import kotlin.math.roundToLong
 
 class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: FirebaseConnector) {
@@ -74,15 +75,31 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
         taskObservable.onNext(isDoingActivity)
     }
 
+//    suspend fun login(): String = suspendCoroutine { continuation ->
+//        val username = ""
+//        val password = ""
+//        continuation.resume("Success")
+//    }
 
     // Problem!! Exist only one individual DrugReminder for any user
     private fun doingActivity(opStatement: ObjectPropertyStatement) {
+        println("doingActivity Function STARTED")
 
         if(opStatement.objectAsOwlIndividual == "HavingBreakfast") {
 
             val medicineTaken = fbDBConnector.checkDrugUser(opStatement.subjectAsOwlIndividual, "state")
             val si1 = IncompleteStatement("DrugReminder", "hasActivationState")
             val sop1 = onto.inferFromOntoToReturnOPStatement(si1)
+
+            val drStatus = fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus")
+
+
+//            val loginResult = login()
+
+            println("------------------------------------- $drStatus") // && drStatus.contentEquals("idle")
+//            while (drStatus == "null"){
+//
+//            }
 
             if(medicineTaken != "False" && sop1.objectAsOwlIndividual != "True"){ //Check carefully for the type
 
@@ -99,17 +116,20 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
                     val si2 = IncompleteStatement("DrugReminderConfirmation", "timeElapsedMinute")
                     val sop2 = onto.inferFromOntoToReturnDPStatement(si2)
                     val number = sop2.objectAsAnyData as Double
-
+                    println("========${Date()}")
                     Thread.sleep(number.roundToLong() * 60000) // Minutes
+                    println("========${Date()}")
                     reasonWithSynchedTime("Instant_CurrentTimeStamp")
                     onto.saveOnto(onto.getOntoFilePath())
                     pullAndManageOnto(opStatement.subjectAsOwlIndividual)
                 }
             }
         }
+        println("doingActivity Function ENDED")
     }
 
     private fun drugReminder(opStatement: ObjectPropertyStatement) {
+        println("drugReminder Function STARTED")
 
         val drIncState = IncompleteStatement("DrugReminderConfirmation", "hasActivationState")
         val drOPState = onto.inferFromOntoToReturnOPStatement(drIncState)
@@ -123,7 +143,6 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
 
             syncTimeToOnto("DrugReminderConfirmation")
 
-            println("Just checking counter value: ${drDPCounter.objectAsAnyData} and type ${drDPCounter.objectAsAnyData.javaClass}")
             val currentCounterValue = drDPCounter.objectAsAnyData as Double
             val newCounterValue = currentCounterValue - 1
 
@@ -136,15 +155,25 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
                 val timeElapsed = onto.inferFromOntoToReturnDPStatement(incTimeElapsed)
                 val number = timeElapsed.objectAsAnyData as Double
 
+                println("========${Date()}")
                 Thread.sleep(number.roundToLong() * 60000) // Minutes
+                println("========${Date()}")
                 reasonWithSynchedTime("Instant_CurrentTimeStamp")
                 // Save the Ontology
                 onto.saveOnto(onto.getOntoFilePath())
                 pullAndManageOnto(opStatement.subjectAsOwlIndividual)
             }
+        } else if (drDPCounter.objectAsAnyData as Double <= 0) {
+
+            // Update Onto
+            val opStatementFalsify = ObjectPropertyStatement("DrugReminder", "hasActivationState", "False")
+            pushToOntoObject(opStatementFalsify)
+            // FBDB
+            fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/drugReminderFullStomach", false) // DeACTIVATES! VocalInterface
+            fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/drugReminderStatus", "failed ${Timestamp(System.currentTimeMillis())}") // DeACTIVATES! VocalInterface
         }
 
-        println("drugReminder Function EXECUTED")
+        println("drugReminder Function ENDED")
     }
 
     private fun reasonWithSynchedTime(currentTimeIndividual: String) {
