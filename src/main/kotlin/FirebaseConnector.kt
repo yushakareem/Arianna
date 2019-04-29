@@ -3,7 +3,23 @@ import com.google.cloud.firestore.*
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.database.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.io.FileInputStream
+import org.awaitility.kotlin.*
+
+import java.lang.Thread.sleep
+import kotlin.coroutines.*
+import kotlin.coroutines.suspendCoroutine
+
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import kotlin.coroutines.experimental.*
+
 
 @Volatile private var dataReadComplete: Boolean = false
 
@@ -39,7 +55,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         realtimeDBRef = fbRealtimeDB.reference
     }
 
-     override fun readNodeData(userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager) {
+    override fun readNodeData(userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager) {
 
         // We check the location of each user
         realtimeDBRef.child(pathToNode).child(userNode).child(dataNode).addValueEventListener(object : ValueEventListener {
@@ -52,7 +68,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                 println("Location from FB: $location")
 
                 val dpStatement1 = DataPropertyStatement(userNode, "hasLocation", location)
-                val statementList : List<DataPropertyStatement> = listOf(dpStatement1)
+                val statementList: List<DataPropertyStatement> = listOf(dpStatement1)
 
                 ontoTaskManager.pushToOntoData(statementList)
                 ontoTaskManager.pullAndManageOnto(userNode)
@@ -67,7 +83,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         })
     }
 
-    fun checkUserNode( dataNode: String, ontoTaskManager: OntoTaskManager) {
+    fun checkUserNode(dataNode: String, ontoTaskManager: OntoTaskManager) {
 
         readNodeData("5fe6b3ba-2767-4669-ae69-6fdc402e695e", dataNode, ontoTaskManager)
         // find the user
@@ -103,35 +119,40 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         val docRef = firestoreDB.collection("usersModel").document(user).collection("drugs").document("morningOnFullStomach")
         val future = docRef.get()
         val document = future.get()
-        if (document.exists()){
+        if (document.exists()) {
             return document.get(field)!!
-        }else{
+        } else {
             error("Error reading on Firestore: drug list doesn't present")
         }
     }
 
-    fun writeDB(path: String, value: Any ) {
+    fun writeDB(path: String, value: Any) {
 
         realtimeDBRef.child("$pathToNode/$path").setValueAsync(value)
     }
 
-    fun readDB(path: String): String{
+    fun readDB(path: String): String {
 
-        var any = "null"
+        var any = ""
 
-        realtimeDBRef.child(pathToNode).child(path).addListenerForSingleValueEvent(object : ValueEventListener {
+         realtimeDBRef.child(pathToNode).child(path).addListenerForSingleValueEvent(object : ValueEventListener {
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                any = snapshot.value as String
-                println("In readDB: $any")
-            }
+             override fun onDataChange(snapshot: DataSnapshot) {
+                 any = snapshot.value as String
+                 println("In readDB: $any")
+             }
 
-            override fun onCancelled(error: DatabaseError?) {
-                error("Error in reading FireBase ")
-            }
-        })
+             override fun onCancelled(error: DatabaseError?) {
+                 error("Error in reading FireBase ")
+             }
+         })
 
         return any
     }
+
+
+
+
 }
+
 

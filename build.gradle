@@ -1,11 +1,11 @@
 buildscript {
-    ext.kotlin_version = '1.2.51'
+    ext.kotlin_version = '1.3.30'
 
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.30"
     }
 }
 
@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.30"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     //Luca Buoncompagni's amor and owloop
@@ -54,6 +54,12 @@ dependencies {
     //Firestore JAVA
     compile 'com.google.firebase:firebase-admin:6.8.1'
 
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
+
+    //test
+    compile group: 'org.awaitility', name: 'awaitility-kotlin', version: '3.1.1'
+
 }
 
 compileKotlin {
@@ -61,4 +67,9 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
 }

@@ -1,9 +1,17 @@
+import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
+import kotlinx.coroutines.*
 import java.sql.Timestamp
+import org.awaitility.*
+import org.awaitility.Awaitility.await
+import org.hamcrest.*
+import org.junit.Assert.*
+import org.reactivestreams.Publisher
 import java.util.*
+
 import kotlin.concurrent.thread
-import kotlin.coroutines.experimental.suspendCoroutine
+
 import kotlin.math.roundToLong
 
 class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: FirebaseConnector) {
@@ -14,13 +22,15 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
     private var taskObservable: BehaviorSubject<ObjectPropertyStatement>
 
     init {
+
         userObservable = BehaviorSubject.createDefault(isDoingActivity)
         taskObservable = BehaviorSubject.createDefault(drHasActivationState)
 
         userObservable
                 .distinctUntilChanged()
                 .subscribeBy(
-                        onNext = { doingActivity(it) },
+                        onNext = {
+                            doingActivity(it) },
                         onError = { println("onError of doingActivity") }
                 )
 
@@ -75,12 +85,6 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
         taskObservable.onNext(isDoingActivity)
     }
 
-//    suspend fun login(): String = suspendCoroutine { continuation ->
-//        val username = ""
-//        val password = ""
-//        continuation.resume("Success")
-//    }
-
     // Problem!! Exist only one individual DrugReminder for any user
     private fun doingActivity(opStatement: ObjectPropertyStatement) {
         println("doingActivity Function STARTED")
@@ -91,15 +95,14 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
             val si1 = IncompleteStatement("DrugReminder", "hasActivationState")
             val sop1 = onto.inferFromOntoToReturnOPStatement(si1)
 
+            //var drStatus = " "
+//            val drStatus = fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus")
+//            await().until { fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus"), equlTo(2) }
+//                    fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus")
+
             val drStatus = fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus")
 
-
-//            val loginResult = login()
-
             println("------------------------------------- $drStatus") // && drStatus.contentEquals("idle")
-//            while (drStatus == "null"){
-//
-//            }
 
             if(medicineTaken != "False" && sop1.objectAsOwlIndividual != "True"){ //Check carefully for the type
 
@@ -124,6 +127,7 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
                     pullAndManageOnto(opStatement.subjectAsOwlIndividual)
                 }
             }
+
         }
         println("doingActivity Function ENDED")
     }
