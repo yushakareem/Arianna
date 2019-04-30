@@ -1,30 +1,24 @@
-import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
-import kotlinx.coroutines.*
 import java.sql.Timestamp
-import org.awaitility.*
-import org.awaitility.Awaitility.await
-import org.hamcrest.*
-import org.junit.Assert.*
-import org.reactivestreams.Publisher
 import java.util.*
 
 import kotlin.concurrent.thread
 
 import kotlin.math.roundToLong
 
-class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: FirebaseConnector) {
+class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseConnector) {
 
     @Volatile var isDoingActivity = ObjectPropertyStatement("null","null","null")
     @Volatile var drHasActivationState= ObjectPropertyStatement("null","null","null")
     private var userObservable: BehaviorSubject<ObjectPropertyStatement>
     private var taskObservable: BehaviorSubject<ObjectPropertyStatement>
-
+    var anObservable: BehaviorSubject<String> = BehaviorSubject.createDefault("null")
     init {
 
         userObservable = BehaviorSubject.createDefault(isDoingActivity)
         taskObservable = BehaviorSubject.createDefault(drHasActivationState)
+      //  anObservable = BehaviorSubject.createDefault("null")
 
         userObservable
                 .distinctUntilChanged()
@@ -42,8 +36,6 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
                         onError = { println("onError of  drugReminder") }
                 )
     }
-
-//    fun startNetworking(vararg ontoLinksConfigList: OntologyLinksConfiguration) = startNetworking(ontoLinksConfigList.asList())
 
     fun pushToOntoData(vararg listOfStatements: DataPropertyStatement) = pushToOntoData(listOfStatements.asList())
     fun pushToOntoData(listOfStatements: List<DataPropertyStatement>) {
@@ -85,26 +77,41 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
         taskObservable.onNext(isDoingActivity)
     }
 
+    fun letsTry(opStatement: ObjectPropertyStatement) { //REMEMBER
+
+        anObservable
+                .filter { it != "null" }
+                .subscribeBy(
+                        onNext = { computation(it,opStatement) },
+                        onError = { println("Unable to read data from firebase!!") },
+                        onComplete = { println("SUCCESS!!") }
+                )
+
+
+    }
+
+
+
     // Problem!! Exist only one individual DrugReminder for any user
     private fun doingActivity(opStatement: ObjectPropertyStatement) {
-        println("doingActivity Function STARTED")
 
+        println("doingActivity Function STARTED")
+        letsTry(opStatement)
+        fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus", anObservable)
+        println("doingActivity Function ENDED")
+    }
+
+    fun computation(drStatus:String, opStatement: ObjectPropertyStatement) {
+
+        println("Entered into computation")
         if(opStatement.objectAsOwlIndividual == "HavingBreakfast") {
 
+            println("Entered into computation's IF()")
             val medicineTaken = fbDBConnector.checkDrugUser(opStatement.subjectAsOwlIndividual, "state")
             val si1 = IncompleteStatement("DrugReminder", "hasActivationState")
             val sop1 = onto.inferFromOntoToReturnOPStatement(si1)
 
-            //var drStatus = " "
-//            val drStatus = fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus")
-//            await().until { fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus"), equlTo(2) }
-//                    fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus")
-
-            val drStatus = fbDBConnector.readDB(opStatement.subjectAsOwlIndividual + "/events/drugReminderStatus")
-
-            println("------------------------------------- $drStatus") // && drStatus.contentEquals("idle")
-
-            if(medicineTaken != "False" && sop1.objectAsOwlIndividual != "True"){ //Check carefully for the type
+            if(medicineTaken != "False" && sop1.objectAsOwlIndividual != "True" && drStatus.contentEquals("idle")){ //Check carefully for the type
 
                 fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/drugReminderFullStomach", true) // ACTIVATES! VocalInterface
                 val medicineCounter = fbDBConnector.checkDrugUser(opStatement.subjectAsOwlIndividual, "counter") as Long
@@ -129,7 +136,6 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
             }
 
         }
-        println("doingActivity Function ENDED")
     }
 
     private fun drugReminder(opStatement: ObjectPropertyStatement) {
@@ -139,8 +145,10 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
         val drOPState = onto.inferFromOntoToReturnOPStatement(drIncState)
         val drIncCounter = IncompleteStatement("DrugReminderConfirmation", "hasCounter")
         val drDPCounter = onto.inferFromOntoToReturnDPStatement(drIncCounter)
+        val drIncStatus = IncompleteStatement(opStatement.subjectAsOwlIndividual, "drugReminderStatus")
+        val drOPStatus = onto.inferFromOntoToReturnOPStatement(drIncStatus)
 
-        if(drOPState.objectAsOwlIndividual == "True" && drDPCounter.objectAsAnyData as Double > 0) {
+        if(drOPState.objectAsOwlIndividual == "True" && drDPCounter.objectAsAnyData as Double > 0 && drOPStatus.objectAsOwlIndividual != "succeed") {
 
             fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/confirmMedicineTaken", true) // ACTIVATES! VocalInterface
             fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/confirmMedicineTaken", false) // like a switch
@@ -167,8 +175,7 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
                 onto.saveOnto(onto.getOntoFilePath())
                 pullAndManageOnto(opStatement.subjectAsOwlIndividual)
             }
-        } else if (drDPCounter.objectAsAnyData as Double <= 0) {
-
+        } else if (drDPCounter.objectAsAnyData as Double <= 0 && drOPStatus.objectAsOwlIndividual != "succeed") {
             // Update Onto
             val opStatementFalsify = ObjectPropertyStatement("DrugReminder", "hasActivationState", "False")
             pushToOntoObject(opStatementFalsify)
@@ -203,6 +210,18 @@ class OntoTaskManager(private val onto: Ontology, private val fbDBConnector: Fir
             "3" -> sensorValue = "BathRoom"
             "4" -> sensorValue = "BedRoom"
         }
+        return sensorValue
+    }
+    fun statusMapper(string: String): String{
+
+        lateinit var sensorValue: String
+        when {
+            string.contains("idle") -> sensorValue = "idle"
+            string.contains("failed") -> sensorValue = "failed"
+            string.contains("active") -> sensorValue = "active"
+            string.contains("succeed") -> sensorValue = "succeed"
+        }
+
         return sensorValue
     }
 }

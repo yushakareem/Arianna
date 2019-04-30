@@ -28,6 +28,7 @@ object MainAriannaDue {
         /** Begin */
         fbDB2.checkUserNode("location", ontoTaskManager)
 
+
         /** MAIN Arianna 2.0 */
 
         while (true) {
