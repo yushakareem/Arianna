@@ -17,8 +17,7 @@ object MainAriannaDue {
         )
 
         /** Initialize Firebase DB and Read data from sensors*/
-
-        val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json", "/installation_test_name")
+        val fbDB2 = FirebaseConnector("vocalinterface","/Users/tommasaso/Documents/Tesi/IntalliJ/VocalInterface-aeeaaa40b38f.json", "/installation_test_name")
 //        fbDB2.connectToDB()
 
         /** Initialize OntoTakManager */
@@ -26,27 +25,19 @@ object MainAriannaDue {
         val ontoTaskManager = OntoTaskManager(localizationOnto,fbDB2)
 
         /** Begin */
-        fbDB2.checkUserNode("location", ontoTaskManager)
-
+        fbDB2.checkUserNodes("location", ontoTaskManager)
 
         /** MAIN Arianna 2.0 */
-
         while (true) {
             if (fbDB2.getReadComplete()){
-
-                println("Entered into while flag")
-
-
+                //println("Entered into while flag")
 //                // getting values from fbDB and cheking types
 //                println(fbDB2.getTimestamp().javaClass.toString() == "class java.lang.String")
 //                println(fbDB2.getValue().javaClass.toString() == "class java.lang.Long")
 //
 //                // setting values to fbDB
 //                fbDB2.setData("PIR_TV", SensorData(fbDB2.getTimestamp(),fbDB2.getValue()))
-
-
-
-                fbDB2.resetReadComplete()
+                //fbDB2.resetReadComplete()
             }
         }
     }
