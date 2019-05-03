@@ -1391,6 +1391,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#DrugReminder">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Task"/>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         <LocalizationOnto1:hasActivationState rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#True"/>
 =======
@@ -1400,6 +1401,9 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
         <LocalizationOnto1:hasActivationState rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Fail"/>
 >>>>>>> Stashed changes
 >>>>>>> firebase
+=======
+        <LocalizationOnto1:hasActivationState rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#Fail"/>
+>>>>>>> Stashed changes
         <LocalizationOnto1:hasSubTask rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#DrugReminderConfirmation"/>
     </owl:NamedIndividual>
     
@@ -1442,9 +1446,12 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#False"/>
     
 
+<<<<<<< Updated upstream
 
     <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#Gesture_Drinking -->
 
+=======
+>>>>>>> Stashed changes
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#Gesture_Drinking">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/LocalizationOnto#HumanGesture"/>
     </owl:NamedIndividual>
@@ -1769,6 +1776,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 <<<<<<< HEAD
     <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#True -->
 
+<<<<<<< Updated upstream
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#True"/>
     
 
@@ -1778,6 +1786,8 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 =======
     <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#True -->
 
+=======
+>>>>>>> Stashed changes
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#True"/>
     
 
@@ -1802,6 +1812,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
     <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#failed -->
 
+<<<<<<< Updated upstream
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#failed"/>
     
 
@@ -1810,15 +1821,20 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
 
 =======
 >>>>>>> firebase
+=======
+>>>>>>> Stashed changes
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#succeed"/>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/LocalizationOnto#2703c909-529c-4fd1-bac8-c2ef6522fd06 -->
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#2703c909-529c-4fd1-bac8-c2ef6522fd06"/>
 =======
+=======
+>>>>>>> Stashed changes
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/LocalizationOnto#2703c909-529c-4fd1-bac8-c2ef6522fd06">
         <LocalizationOnto1:hasLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</LocalizationOnto1:hasLocation>
     </owl:NamedIndividual>
@@ -1878,6 +1894,7 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#c">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
@@ -1890,6 +1907,8 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s">
 =======
+=======
+>>>>>>> Stashed changes
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#c">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
@@ -1953,12 +1972,18 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
     <rdf:Description>
         <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingBreakfast</rdfs:label>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
         <swrl:body>
             <rdf:Description>
@@ -2088,6 +2113,9 @@ Ontology engineering by Simon J D Cox</skos:historyNote>
         <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bedroom</rdfs:label>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
         <swrl:body>
