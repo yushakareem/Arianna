@@ -251,8 +251,8 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
                     } else {
                         if (withReplacement) {
                             //The statement's inference is not the same, so update with replacement.
-                            removeObjectFromOnto(inference,getOntoRef())
-                            addObject(getOntoRef().getOWLObjectProperty(opStatement.verbAsOwlProperty), getOntoRef().getOWLIndividual(opStatement.objectAsOwlIndividual))
+                            //removeObjectFromOnto(inference,getOntoRef())
+                            addObject(getOntoRef().getOWLObjectProperty(opStatement.verbAsOwlProperty), getOntoRef().getOWLIndividual(opStatement.objectAsOwlIndividual),true)
                         } else {
                             //The statement's inference is not the same, so update without replacement.
                             addObject(getOntoRef().getOWLObjectProperty(opStatement.verbAsOwlProperty), getOntoRef().getOWLIndividual(opStatement.objectAsOwlIndividual))
@@ -299,7 +299,6 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         }
     }
 
-    //BREAK statement
     /**
      * Breaks the ObjectPropertyStatement.
      * Means that the subject, verb and object still exist in the ontology but are not related to eachother.

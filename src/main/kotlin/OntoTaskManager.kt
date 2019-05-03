@@ -31,6 +31,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
                         onNext = { drugReminder(it) },
                         onError = { println("onError of  drugReminder") }
                 )
+
     }
 
     fun pushToOntoData(vararg listOfStatements: DataPropertyStatement) = pushToOntoData(listOfStatements.asList())
@@ -42,7 +43,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             onto.addOrUpdateToOnto(it)
         }
         // Update Ontology with CurrentTimestamp and Synchronize reasoner
-        reasonWithSynchedTime("Instant_CurrentTimeStamp")
+        syncTimeToOnto("Instant_CurrentTimeStamp")
 
         // Save the Ontology
         onto.saveOnto(onto.getOntoFilePath())
@@ -58,7 +59,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         }
 
         // Update Ontology with CurrentTimestamp and Synchronize reasoner
-        reasonWithSynchedTime("Instant_CurrentTimeStamp")
+        syncTimeToOnto("Instant_CurrentTimeStamp")
 
         // Save the Ontology
         onto.saveOnto(onto.getOntoFilePath())
@@ -66,6 +67,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
 
     fun pullAndManageOnto(userNode: String) { //getData()
         /** Read latest inferences from the ontology */
+        println("pullAndManageOnto")
 
         // Catch the user isDoingActivity statement and observe it
         val sia = IncompleteStatement(userNode, "isDoingActivity")
@@ -75,7 +77,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         // Catch the drugReminder state statement and observe it
         val sib = IncompleteStatement("DrugReminder", "hasActivationState")
         drHasActivationState = onto.inferFromOntoToReturnOPStatement(sib)
-        taskObservable.onNext(isDoingActivity)
+        taskObservable.onNext(drHasActivationState)
     }
 
 
@@ -86,7 +88,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             println(">>>>> HavingBreakfast detected")
 
             // Acquisition of data relating to the user to know if he/she has to take medicine
-            val medicineTaken = fbDBConnector.checkDrugUser(opStatement.subjectAsOwlIndividual, "state")
+            val medicineToTake = fbDBConnector.checkDrugUser(opStatement.subjectAsOwlIndividual, "state")
 
             // Acquisition of DrugReminder state from Ontology
             val si1 = IncompleteStatement("DrugReminder", "hasActivationState")
@@ -96,15 +98,13 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             val drIncStatus = IncompleteStatement(opStatement.subjectAsOwlIndividual, "drugReminderStatus")
             val drOPStatus = onto.inferFromOntoToReturnOPStatement(drIncStatus)
 
-            if(medicineTaken != "False" && sop1.objectAsOwlIndividual != "True" && drOPStatus.objectAsOwlIndividual == "idle"){
+            println(">>>>>DR: First DrugReminder   =>  (medicineToTake != false && DrugReminderState != true && DrugReminderSatus != 'idle') ?? "+(medicineToTake != "False" && sop1.objectAsOwlIndividual != "True" && drOPStatus.objectAsOwlIndividual == "idle"))
+            if(medicineToTake != "False" && sop1.objectAsOwlIndividual != "True" && drOPStatus.objectAsOwlIndividual == "idle"){
                 println(">>>>>DR: activated")
 
                 /** Activation and initialization of Drug reminder Task */
                 // Update Drug Reminder's state on the FirebaseDB as TRUE
                 fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/drugReminderFullStomach", true)
-                // Save the new Drug Reminder's state also in Ontology
-                val opStatement1 = ObjectPropertyStatement("DrugReminder", "hasActivationState", "True")
-                pushToOntoObject(opStatement1)
 
                 // Counter acquisition from Firestore
                 val medicineCounter = fbDBConnector.checkDrugUser(opStatement.subjectAsOwlIndividual, "counter") as Long
@@ -130,6 +130,10 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
                     // Update Ontology with CurrentTimestamp and Synchronize reasoner
                     reasonWithSynchedTime("Instant_CurrentTimeStamp")
 
+                    // Save the new Drug Reminder's state also in Ontology
+                    val opStatement1 = ObjectPropertyStatement("DrugReminder", "hasActivationState", "True")
+                    pushToOntoObject(opStatement1)
+
                     // Save the Ontology
                     onto.saveOnto(onto.getOntoFilePath())
 
@@ -141,10 +145,11 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
     }
 
     private fun drugReminder(opStatement: ObjectPropertyStatement) {
+        println("Task drug reminder management")
         /** Task drug reminder management */
 
         // Acquisition of DrugReminderConfirmation state from Ontology
-        val drIncState = IncompleteStatement("DrugReminderConfirmation", "hasActivationState")
+        val drIncState = IncompleteStatement("DrugReminder", "hasActivationState")
         val drOPState = onto.inferFromOntoToReturnOPStatement(drIncState)
 
         // Acquisition of DrugReminderConfirmation counter from Ontology
@@ -152,16 +157,17 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         val drDPCounter = onto.inferFromOntoToReturnDPStatement(drIncCounter)
 
         // Acquisition of DrugReminderConfirmation status from Ontology
-        val drIncStatus = IncompleteStatement(opStatement.subjectAsOwlIndividual, "drugReminderStatus")
+        val drIncStatus = IncompleteStatement("5fe6b3ba-2767-4669-ae69-6fdc402e695e", "drugReminderStatus")
         val drOPStatus = onto.inferFromOntoToReturnOPStatement(drIncStatus)
 
         println(">>>>>DR: Ask for Confirmation    =>  (DrugReminder == true && counter > 0 && status != succeed) ?? "+( drOPState.objectAsOwlIndividual == "True" && drDPCounter.objectAsAnyData as Double > 0 && drOPStatus.objectAsOwlIndividual != "succeed"))
         if(drOPState.objectAsOwlIndividual == "True" && drDPCounter.objectAsAnyData as Double > 0 && drOPStatus.objectAsOwlIndividual != "succeed") {
             /** Ask for Confirmation */
+            println("+++++DR: Counter = "+drDPCounter)
 
             // Trigger DrugReminderConfirmation in the vocal Interface writing in FirebaseDB
-            fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/confirmMedicineTaken", true) // ACTIVATES! VocalInterface
-            fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/confirmMedicineTaken", false) // like a switch
+            fbDBConnector.writeDB("5fe6b3ba-2767-4669-ae69-6fdc402e695e/events/confirmMedicineTaken", true) // ACTIVATES! VocalInterface
+            fbDBConnector.writeDB("5fe6b3ba-2767-4669-ae69-6fdc402e695e/events/confirmMedicineTaken", false) // like a switch
 
             // Update the DrugReminderConfirmation with the current time
             //that is the last time the voice interface asked the user
@@ -177,7 +183,6 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
 
             //Call the timer function to pushToOntoData the current Time and menage the inference result
             thread(start = true) {
-                // Catch the timeElapsedMinute from the ontology to use it for the time
                 val si2 = IncompleteStatement("DrugReminderConfirmation", "timeElapsedMinute")
                 val sop2 = onto.inferFromOntoToReturnDPStatement(si2)
                 val number = sop2.objectAsAnyData as Double
@@ -193,26 +198,26 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
                 onto.saveOnto(onto.getOntoFilePath())
 
                 // Sync and menage the ontology results
-                pullAndManageOnto(opStatement.subjectAsOwlIndividual)
+                pullAndManageOnto("5fe6b3ba-2767-4669-ae69-6fdc402e695e")
             }
-        } else if (drDPCounter.objectAsAnyData as Double <= 0 && drOPStatus.objectAsOwlIndividual != "succeed") {
 
+        } else if (drDPCounter.objectAsAnyData as Double <= 0 && drOPStatus.objectAsOwlIndividual != "succeed") {
             /** Drug Reminder Task FAILED */
             println(">>>>>DR: Failed       counter <= 0 && status != succeed  ?" + (drDPCounter.objectAsAnyData as Double <= 0 && drOPStatus.objectAsOwlIndividual != "succeed"))
 
             // Acquisition of DrugReminderConfirmation state from Ontology
-            val opStatementFalsify = ObjectPropertyStatement("DrugReminder", "hasActivationState", "False")
-            pushToOntoObject(opStatementFalsify)
+            val statmentActivationState = ObjectPropertyStatement("DrugReminder", "hasActivationState", "False")
+            pushToOntoObject(statmentActivationState)
 
             // Deactivate the Drug Reminder's state, and updateing it on the FirebaseDB as FALSE
-            fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/drugReminderFullStomach", false) // DeACTIVATES! VocalInterface
+            fbDBConnector.writeDB("5fe6b3ba-2767-4669-ae69-6fdc402e695e/events/drugReminderFullStomach", false) // DeACTIVATES! VocalInterface
 
             // Update the Drug Reminder's status on the FirebaseDB as FAILED
-            fbDBConnector.writeDB(opStatement.subjectAsOwlIndividual+"/events/drugReminderStatus", "failed ${Timestamp(System.currentTimeMillis())}") // DeACTIVATES! VocalInterface
+            fbDBConnector.writeDB("5fe6b3ba-2767-4669-ae69-6fdc402e695e/events/drugReminderStatus", "failed ${Timestamp(System.currentTimeMillis())}") // DeACTIVATES! VocalInterface
         }
     }
 
-    private fun reasonWithSynchedTime(currentTimeIndividual: String) {
+    fun reasonWithSynchedTime(currentTimeIndividual: String) {
         // Push into the ontology the current time
         syncTimeToOnto(currentTimeIndividual)
 

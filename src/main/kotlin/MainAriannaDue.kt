@@ -27,6 +27,9 @@ object MainAriannaDue {
         /** Begin */
         fbDB2.checkUserNodes("location", ontoTaskManager)
 
+        /*val res = localizationOnto.inferFromOnto(DataPropertyStatement("DrugReminderConfirmation","hasStateActivation","null"))
+        println(res.datatype)
+        println(res.javaClass)*/
         /** MAIN Arianna 2.0 */
         while (true) {
             if (fbDB2.getReadComplete()){

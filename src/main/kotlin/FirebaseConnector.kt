@@ -46,7 +46,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         // We check the location of each user
         realtimeDBRef.child(pathToNode).child(userNode).child(dataNode).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                println("Entered into OnChange")
+                println("Entered into OnChange Location")
 
                 val location = ontoTaskManager.locationMapper(dataSnapshot.value.toString())
                 println("Location from FB: $location")
@@ -55,6 +55,8 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                 val statementList: List<DataPropertyStatement> = listOf(dpStatement1)
 
                 ontoTaskManager.pushToOntoData(statementList)
+                ontoTaskManager.reasonWithSynchedTime("Instant_CurrentTimeStamp")
+
                 ontoTaskManager.pullAndManageOnto(userNode)
 
                 dataReadComplete = true
@@ -65,18 +67,19 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
             }
         })
     }
-    fun checkUserDrugReminderState(userNode: String, path: String, ontoTaskManager: OntoTaskManager) {
-        // We check the location of each user
+    fun checkUserDrugReminderStatus(userNode: String, path: String, ontoTaskManager: OntoTaskManager) {
+        // We check the location of each user --------- POSSIBLE SOURCE OF DISSAPEARANCE
         realtimeDBRef.child(pathToNode).child(userNode).child(path).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                println("Entered into OnChange")
+                println("Entered into OnChange DR Status")
                 val data = ontoTaskManager.statusMapper(dataSnapshot.value.toString())
                 val dpStatement1 = ObjectPropertyStatement(userNode, "drugReminderStatus", data)
                 ontoTaskManager.pushToOntoObject(dpStatement1)
+
                 if(data == "succeed"){
                     ontoTaskManager.onto.breakStatementInOnto(ObjectPropertyStatement("DrugReminder", "hasActivationState","True"))
                 }
-                // ontoTaskManager.pullAndManageOnto(userNode)
+
                 dataReadComplete = true
             }
             override fun onCancelled(error: DatabaseError) {
@@ -86,8 +89,10 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
     }
 
     fun checkUserNodes(dataNode: String, ontoTaskManager: OntoTaskManager) {
+        checkUserDrugReminderStatus("5fe6b3ba-2767-4669-ae69-6fdc402e695e", "events/drugReminderStatus", ontoTaskManager)
+        Thread.sleep(5000)
         checkUserLocation("5fe6b3ba-2767-4669-ae69-6fdc402e695e", "location", ontoTaskManager)
-        checkUserDrugReminderState("5fe6b3ba-2767-4669-ae69-6fdc402e695e", "events/drugReminderStatus", ontoTaskManager)
+
         // find the user
         /*realtimeDBRef.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
