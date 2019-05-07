@@ -312,9 +312,11 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
             }
         }
     }*/
+
     fun breakStatementInOnto(opStatement: DataPropertyStatement) {
 
         if (opStatement.hasSpecialOntoRef()) {
+
             val individual = MORFullIndividual(opStatement.subject , opStatement.getSpecialSubjectOntoRef())
             individual.apply {
                 readSemantic()
@@ -322,10 +324,13 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
                 writeSemantic()
             }
         } else {
+
             val individual = MORFullIndividual(opStatement.subject, this.ontoRef)
             individual.apply {
                 readSemantic()
+                println(individual)
                 removeData(opStatement.verb)
+                println(individual)
                 writeSemantic()
             }
         }

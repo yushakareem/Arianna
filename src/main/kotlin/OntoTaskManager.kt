@@ -1,5 +1,6 @@
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
+import it.emarolab.owloop.aMORDescriptor.utility.individual.MORFullIndividual
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -209,23 +210,6 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             /** Drug Reminder Task FAILED */
             println(">>>>>DR: Failed       counter <= 0 && status != succeed  ?" + (drDPCounter.objectAsAnyData as Float <= 0 && drDPStatus.objectAsAnyData != "succeed"))
 
-            // Acquisition of DrugReminderConfirmation state from Ontology
-            val hasCounterDrugReminder = DataPropertyStatement(userId, "hasCounterDrugReminder", 0.1)
-            onto.breakStatementInOnto(hasCounterDrugReminder)
-            onto.saveOnto(onto.getOntoFilePath())
-
-            val hasTimeElapsedDrugReminder = DataPropertyStatement(userId, "hasTimeElapsedDrugReminder", 0.0)
-            onto.breakStatementInOnto(hasTimeElapsedDrugReminder)
-            onto.saveOnto(onto.getOntoFilePath())
-
-            val hasTimeDrugReminder = DataPropertyStatement(userId, "hasTimeDrugReminder", 0)
-            onto.breakStatementInOnto(hasTimeDrugReminder)
-            onto.saveOnto(onto.getOntoFilePath())
-
-            val isActiveDrugReminder = DataPropertyStatement(userId, "isActiveDrugReminder", true)
-            onto.breakStatementInOnto(isActiveDrugReminder)
-            onto.saveOnto(onto.getOntoFilePath())
-
             // Deactivate the Drug Reminder's state, and updateing it on the FirebaseDB as FALSE
             fbDBConnector.writeDB("5fe6b3ba-2767-4669-ae69-6fdc402e695e/events/drugReminderFullStomach", false) // DeACTIVATES! VocalInterface
 
@@ -233,6 +217,31 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             fbDBConnector.writeDB("5fe6b3ba-2767-4669-ae69-6fdc402e695e/events/drugReminderStatus", "failed ${Timestamp(System.currentTimeMillis())}") // DeACTIVATES! VocalInterface
 
             //DELETE ALL THE STUFF ABOUT DRUG REMINDER IN THE ONTOLOGY
+//            val hasCounterDrugReminder = DataPropertyStatement(userId, "hasCounterDrugReminder", 0.1)
+//            onto.breakStatementInOnto(hasCounterDrugReminder)
+//
+//            val hasTimeElapsedDrugReminder = DataPropertyStatement(userId, "hasTimeElapsedDrugReminder", 0.0)
+//            onto.breakStatementInOnto(hasTimeElapsedDrugReminder)
+//
+//            val hasTimeDrugReminder = DataPropertyStatement(userId, "hasTimeDrugReminder", 0)
+//            onto.breakStatementInOnto(hasTimeDrugReminder)
+//
+//            val isActiveDrugReminder = DataPropertyStatement(userId, "isActiveDrugReminder", true)
+//            onto.breakStatementInOnto(isActiveDrugReminder)
+
+
+            val indiv = MORFullIndividual(userId, onto.getOntoRef())
+            indiv.readSemantic()
+            println(indiv)
+            indiv.removeData("hasCounterDrugReminder")
+            indiv.removeData("hasTimeElapsedDrugReminder")
+            indiv.removeData("hasTimeDrugReminder")
+            indiv.removeData("isActiveDrugReminder")
+            println(indiv)
+            indiv.writeSemantic()
+//            indiv.saveOntology(onto.getOntoFilePath())
+
+            onto.saveOnto(onto.getOntoFilePath())
         }
     }
 

@@ -77,9 +77,6 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                 ontoTaskManager.pushToOntoData(dpStatement1)
                 ontoTaskManager.pullAndManageOnto(userNode)
 
-                ontoTaskManager.onto.breakStatementInOnto(dpStatement1)
-                ontoTaskManager.onto.saveOnto(ontoTaskManager.onto.getOntoFilePath())
-
                 dataReadComplete = true
             }
 
