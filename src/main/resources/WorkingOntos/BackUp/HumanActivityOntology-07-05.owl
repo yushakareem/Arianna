@@ -579,7 +579,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Morning">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
         <HumanActivityOntology:hasTimeBegin rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">360</HumanActivityOntology:hasTimeBegin>
-        <HumanActivityOntology:hasTimeEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1440</HumanActivityOntology:hasTimeEnd>
+        <HumanActivityOntology:hasTimeEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">719</HumanActivityOntology:hasTimeEnd>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
     
@@ -593,6 +593,45 @@
         <HumanActivityOntology:hasTimeEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">359</HumanActivityOntology:hasTimeEnd>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
     </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#b3ff5507-afb7-460a-be6c-02b0dfbd9b4e -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#b3ff5507-afb7-460a-be6c-02b0dfbd9b4e"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#fbe9a4ad-3a1a-4ed4-9d03-ad0a79f1d456 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#fbe9a4ad-3a1a-4ed4-9d03-ad0a79f1d456"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#test -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#test">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Human"/>
+        <HumanActivityOntology:hasCounterDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:hasCounterDrugReminder>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#0d84fae8-7ae5-4142-a0a4-5b32a0849def -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#0d84fae8-7ae5-4142-a0a4-5b32a0849def"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#2703c909-529c-4fd1-bac8-c2ef6522fd06 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#2703c909-529c-4fd1-bac8-c2ef6522fd06"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e"/>
     
 
 
@@ -620,6 +659,32 @@
             <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#PIR"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Temprature"/>
         </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Drinking"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Falling"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_LyingDown"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Pouring"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_SittingDown"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Walking"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#HavingBreakfast"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant_CurrentTime"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Afternoon"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Breakfast"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Dinner"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Evening"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Lunch"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Morning"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Night"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#b3ff5507-afb7-460a-be6c-02b0dfbd9b4e"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#fbe9a4ad-3a1a-4ed4-9d03-ad0a79f1d456"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#test"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#0d84fae8-7ae5-4142-a0a4-5b32a0849def"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#2703c909-529c-4fd1-bac8-c2ef6522fd06"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e"/>
+        </owl:distinctMembers>
     </rdf:Description>
     
 

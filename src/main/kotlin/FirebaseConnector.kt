@@ -74,11 +74,11 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                 println("${userNode} is in: ${location}")
 
                 val dpStatement1 = DataPropertyStatement(userNode, "isHumanInLocation", location)
-
                 ontoTaskManager.pushToOntoData(dpStatement1)
-                ontoTaskManager.reasonWithSynchedTime("Instant_CurrentTime")
-
                 ontoTaskManager.pullAndManageOnto(userNode)
+
+                ontoTaskManager.onto.breakStatementInOnto(dpStatement1)
+                ontoTaskManager.onto.saveOnto(ontoTaskManager.onto.getOntoFilePath())
 
                 dataReadComplete = true
             }
@@ -101,6 +101,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                     TODO("remove all the stuff realted to drug reminder with the function above")
                     //ontoTaskManager.onto.breakStatementInOnto(dpStatement1)
                 }
+
                 dataReadComplete = true
                 dataReadComplete = true
             }

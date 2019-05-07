@@ -11,20 +11,12 @@ import it.emarolab.amor.owlInterface.OWLReferences
  * @return IncompleteStatement
  */
 
-data class IncompleteStatement(var subjectAsOwlIndividual: String, var verbAsOwlProperty: String) {
+data class IncompleteStatement(private var subject: String, private var verb: String) {
 
-//    protected lateinit var subject: String
-//    protected lateinit var verb: String
+    private lateinit var specialOntoRefForSubject: OWLReferences
+    private lateinit var specialOntoRefForVerb: OWLReferences
 
-    protected lateinit var specialOntoRefForSubject: OWLReferences
-    protected lateinit var specialOntoRefForVerb: OWLReferences
-
-    protected var madeOfSpecialOntoRef: Boolean = false
-
-//    constructor(subject: String, verb: String) : this() {
-//        this.subject = subject
-//        this.verb = verb
-//    }
+    private var madeOfSpecialOntoRef: Boolean = false
 
     /**
      * Assign special OntoRef for Subject, Verb, Object.
@@ -32,7 +24,7 @@ data class IncompleteStatement(var subjectAsOwlIndividual: String, var verbAsOwl
      * For example: (User defined ontology + OWL time) in a single ontology.
      * @return IncompleteStatement
      */
-     fun assignSpecialOntoRef(ontoRefForSubject: OWLReferences, ontoRefForVerb: OWLReferences): IncompleteStatement {
+    fun assignSpecialOntoRef(ontoRefForSubject: OWLReferences, ontoRefForVerb: OWLReferences): IncompleteStatement {
         this.specialOntoRefForSubject = ontoRefForSubject
         this.specialOntoRefForVerb = ontoRefForVerb
         this.madeOfSpecialOntoRef = true
@@ -69,7 +61,7 @@ data class IncompleteStatement(var subjectAsOwlIndividual: String, var verbAsOwl
      */
     open fun getSubject(): String {
 
-        return subjectAsOwlIndividual
+        return subject
     }
     /**
      * Returns the verb in the statement.
@@ -77,6 +69,6 @@ data class IncompleteStatement(var subjectAsOwlIndividual: String, var verbAsOwl
      */
     open fun getVerb(): String {
 
-        return verbAsOwlProperty
+        return verb
     }
 }

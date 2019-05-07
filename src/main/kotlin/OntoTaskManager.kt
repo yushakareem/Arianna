@@ -112,6 +112,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
                 // Save the counter acquired also in the Ontology
                 val drCounter = DataPropertyStatement(dpStatement.subject, "hasCounterDrugReminder", medicineCounter)
                 onto.addOrUpdateToOnto(drCounter)
+                onto.saveOnto(onto.getOntoFilePath())
 
                 // Update the DrugReminderConfirmation with the current time
                 //that is the last time the voice interface asked the user
@@ -148,6 +149,10 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         val drIncState = IncompleteStatement(userId, "isActiveDrugReminder")
         val drDPState = onto.inferFromOntoToReturnDPStatement(drIncState)
 
+        // Acquisition of DrugReminderConfirmation state from Ontology
+        val drIncStateConfirmation = IncompleteStatement(userId, "isActiveDrugReminderConfirmation")
+        val drDPStateConfirmation = onto.inferFromOntoToReturnDPStatement(drIncStateConfirmation)
+
         // Acquisition of DrugReminderConfirmation counter from Ontology
         val drIncCounter = IncompleteStatement(userId, "hasCounterDrugReminder")
         val drDPCounter = onto.inferFromOntoToReturnDPStatement(drIncCounter)
@@ -156,8 +161,9 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         val drIncStatus = IncompleteStatement(userId, "hasCurrentStatusDrugReminder")
         val drDPStatus = onto.inferFromOntoToReturnDPStatement(drIncStatus)
 
-        println(">>>>>DR: Ask for Confirmation    =>  (DrugReminder == true && counter > 0 && status != succeed) ?? "+(  drDPState.objectAsAnyData as Boolean && drDPCounter.objectAsAnyData as Float > 0 && drDPStatus.objectAsAnyData != "succeed"))
-        if( drDPState.objectAsAnyData as Boolean && drDPCounter.objectAsAnyData as Float > 0 && drDPStatus.objectAsAnyData != "succeed") {
+        println(drDPStateConfirmation.objectAsAnyData == true)
+        println(">>>>>DR: Ask for Confirmation    =>  (DrugReminder == true && DrugReminderConfirmation == true && counter > 0 && status != succeed) ?? "+(drDPStateConfirmation.objectAsAnyData == true &&  drDPState.objectAsAnyData as Boolean && drDPCounter.objectAsAnyData as Float > 0 && drDPStatus.objectAsAnyData != "succeed"))
+        if(drDPStateConfirmation.objectAsAnyData == true && drDPState.objectAsAnyData as Boolean && drDPCounter.objectAsAnyData as Float > 0 && drDPStatus.objectAsAnyData != "succeed") {
             /** Ask for Confirmation */
 
             // Trigger DrugReminderConfirmation in the vocal Interface writing in FirebaseDB
@@ -204,25 +210,20 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             println(">>>>>DR: Failed       counter <= 0 && status != succeed  ?" + (drDPCounter.objectAsAnyData as Float <= 0 && drDPStatus.objectAsAnyData != "succeed"))
 
             // Acquisition of DrugReminderConfirmation state from Ontology
-            /*val statmentActivationState = ObjectPropertyStatement(userId, "hasActivationState", "False")
-            pushToOntoObject(statmentActivationState)*/
-            val statmentActivationState = DataPropertyStatement(userId, "hasActiveDrugReminder", true)
-            onto.breakStatementInOnto(statmentActivationState)
+            val hasCounterDrugReminder = DataPropertyStatement(userId, "hasCounterDrugReminder", 0.1)
+            onto.breakStatementInOnto(hasCounterDrugReminder)
+            onto.saveOnto(onto.getOntoFilePath())
 
-            val statmentCounter = DataPropertyStatement(userId, "hasCounterDrugReminder", 0)
-            onto.breakStatementInOnto(statmentCounter)
+            val hasTimeElapsedDrugReminder = DataPropertyStatement(userId, "hasTimeElapsedDrugReminder", 0.0)
+            onto.breakStatementInOnto(hasTimeElapsedDrugReminder)
+            onto.saveOnto(onto.getOntoFilePath())
 
-            val statmentTimeElapsed = DataPropertyStatement(userId, "hasTimeElapsedDrugReminder", 0)
-            onto.breakStatementInOnto(statmentTimeElapsed)
+            val hasTimeDrugReminder = DataPropertyStatement(userId, "hasTimeDrugReminder", 0)
+            onto.breakStatementInOnto(hasTimeDrugReminder)
+            onto.saveOnto(onto.getOntoFilePath())
 
-
-            val statmentTimeDR = DataPropertyStatement(userId, "hasTimeDrugReminder", true)
-            onto.breakStatementInOnto(statmentTimeDR)
-
-            val statmentActiveDR = DataPropertyStatement(userId, "isActiveDrugReminder", true)
-            onto.breakStatementInOnto(statmentActiveDR)
-
-            // Save the Ontology
+            val isActiveDrugReminder = DataPropertyStatement(userId, "isActiveDrugReminder", true)
+            onto.breakStatementInOnto(isActiveDrugReminder)
             onto.saveOnto(onto.getOntoFilePath())
 
             // Deactivate the Drug Reminder's state, and updateing it on the FirebaseDB as FALSE
@@ -230,7 +231,6 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
 
             // Update the Drug Reminder's status on the FirebaseDB as FAILED
             fbDBConnector.writeDB("5fe6b3ba-2767-4669-ae69-6fdc402e695e/events/drugReminderStatus", "failed ${Timestamp(System.currentTimeMillis())}") // DeACTIVATES! VocalInterface
-
 
             //DELETE ALL THE STUFF ABOUT DRUG REMINDER IN THE ONTOLOGY
         }
@@ -252,19 +252,18 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
 
     fun locationMapper(string: String): String{
         /** Mapper to distinguish the user's location */
-
         lateinit var sensorValue: String
         when (string) {
             "6" -> sensorValue = "Kitchen"
-            "2" -> sensorValue = "LivingRoom"
-            "3" -> sensorValue = "BathRoom"
-            "4" -> sensorValue = "BedRoom"
+            "5" -> sensorValue = "LivingRoom"
+            "4" -> sensorValue = "BathRoom"
+            "3" -> sensorValue = "BedRoom"
         }
         return sensorValue
     }
+
     fun statusMapper(string: String): String{
         /** Mapper to distinguish the DrugReminder status */
-
         lateinit var sensorValue: String
         when {
             string.contains("idle") -> sensorValue = "idle"
