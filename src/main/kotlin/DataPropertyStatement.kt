@@ -7,7 +7,7 @@ import java.sql.Timestamp
  *
  * @return DataPropertyStatement
  */
-data class DataPropertyStatement(var subjectAsOwlIndividual: String, var verbAsOwlProperty: String, var objectAsAnyData: Any) {
+data class DataPropertyStatement(var subject: String, var verb: String, var objectAsAnyData: Any) {
 
 //    private lateinit var objectAsAnyData: Any
 //    private lateinit var objectAsStringData: String
@@ -30,28 +30,28 @@ data class DataPropertyStatement(var subjectAsOwlIndividual: String, var verbAsO
 //    /**
 //     * Constructor used when the statement's 'verb' is a DataProperty and 'object' is String data.
 //     */
-//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsStringData: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+//    constructor(subject: String, verb: String, objectAsStringData: String) : super(subject, verb) {
 //        this.objectAsStringData = objectAsStringData
 //        this.madeWithObjectAsString = true
 //    }
 //    /**
 //     * Constructor used when the statement's 'verb' is a DataProperty and 'object' is Timestamp data.
 //     */
-//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsTimestampData: Timestamp) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+//    constructor(subject: String, verb: String, objectAsTimestampData: Timestamp) : super(subject, verb) {
 //        this.objectAsTimestampData = objectAsTimestampData
 //        this.madeWithObjectAsTimestamp = true
 //    }
 //    /**
 //     * Constructor used when the statement's 'verb' is a DataProperty and 'object' is Double data.
 //     */
-//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsDoubleData: Double) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+//    constructor(subject: String, verb: String, objectAsDoubleData: Double) : super(subject, verb) {
 //        this.objectAsDoubleData = objectAsDoubleData
 //        this.madeWithObjectAsDouble = true
 //    }
 //    /**
 //     * Constructor used when the statement's 'verb' is a DataProperty and 'object' is Boolean data.
 //     */
-//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsBooleanData: Boolean) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+//    constructor(subject: String, verb: String, objectAsBooleanData: Boolean) : super(subject, verb) {
 //        this.objectAsBooleanData = objectAsBooleanData
 //        this.madeWithObjectAsBoolean = true
 //    }
@@ -59,7 +59,7 @@ data class DataPropertyStatement(var subjectAsOwlIndividual: String, var verbAsO
 //    /**
 //     * Constructor for type Any.
 //     */
-//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsAnyData: Any) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
+//    constructor(subject: String, verb: String, objectAsAnyData: Any) : super(subject, verb) {
 //        this.objectAsAnyData = objectAsAnyData
 //    }
 
@@ -130,12 +130,12 @@ data class DataPropertyStatement(var subjectAsOwlIndividual: String, var verbAsO
 
 //    fun getSubject(): String {
 //
-//        return subjectAsOwlIndividual
+//        return subject
 //    }
 //
 //    fun getVerb(): String {
 //
-//        return verbAsOwlProperty
+//        return verb
 //    }
 //    /**
 //     * Returns the object in the statement as a String.

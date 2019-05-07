@@ -1,3 +1,7 @@
+import com.clarkparsia.pellet.rules.builtins.DateTimeOperators.time
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -11,56 +15,35 @@ import io.reactivex.functions.BiPredicate
 import io.reactivex.subjects.BehaviorSubject
 import org.mindswap.pellet.utils.Bool
 import java.sql.Timestamp
-
+import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 object testMain {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        var list = mutableListOf("Ciao", "Hello")
 
-//        val todoObservable = Observable.create<String> { emitter -> println("DONE") }
-//        val todoObservable = Observable.just(list)
-//
-//        val disposable = todoObservable.subscribe { t -> System.out.print(t) }
-
-        var test = "Hello!"
-        val observableTest = BehaviorSubject.createDefault(test)
-
-        val observable = BehaviorSubject.createDefault(ObjectPropertyStatement("a","b","c"))
-
-        observable.distinctUntilChanged()
-                .subscribeBy(
-                onNext = { println(">> $it") },
-                onError = { println("Some code runs if some error in doingActivity") }
+        //  Localization Ontology
+        val onto = Ontology(
+                "LocalizationOnto",
+                "src/main/resources/HumanActivityOntology.owl",
+                "http://www.semanticweb.org/Arianna/HumanActivityOntology",
+                true
         )
-        Thread.sleep(2000)
 
-        test = "test!!"
+        /** Initialize Firebase DB and Read data from sensors*/
+        val fbDB2 = FirebaseConnector("vocalinterface","/Users/tommasaso/Documents/Tesi/IntalliJ/vocalinterface-firebase-adminsdk-3ycvz-8068c39321.json", "/installation_test_name")
 
-        observable.onNext(ObjectPropertyStatement("a","b","c"))
-        observable.onNext(ObjectPropertyStatement("d","g","l"))
-        observable.onNext(ObjectPropertyStatement("a","b","c"))
+        /** Initialize OntoTakManager */
 
-        println(Timestamp(System.currentTimeMillis()))
+        val ontoTaskManager = OntoTaskManager(onto,fbDB2)
 
-//
-//        var obs = list.toObservable() // extension function for Iterables
-//                .filter { it.length >= 5 }
-//                .subscribeBy(  // named arguments for lambda Subscribers
-//                        onNext = { println(it) },
-//                        onError = { it.printStackTrace() },
-//                        onComplete = { println("Done!") }
-//                )
-//
-//
-//        Thread.sleep(2000)
-//
-//        obs.addTo(list.toObservable())
+        ontoTaskManager.reasonWithSynchedTime("Instant_CurrentTIme")
+
+        var sia = IncompleteStatement("user","isDoingActivity")
+        val isDoingActivity = onto.inferFromOntoToReturnDPStatement(sia)
+        println(isDoingActivity)
     }
-//    fun comparer(a:ObjectPropertyStatement,b:ObjectPropertyStatement): Boolean {
-//
-//        return a.getSubject() == b.getSubject() && a.getVerb() == (b.getVerb())
-//    }
 
 }

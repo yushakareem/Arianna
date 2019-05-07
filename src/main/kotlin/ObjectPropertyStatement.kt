@@ -18,9 +18,9 @@ data class ObjectPropertyStatement(var subjectAsOwlIndividual: String, var verbA
 //    /**
 //     * Constructor used when the statement's 'verb' is an ObjectProperty and 'object' is an Individual.
 //     */
-//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String, objectAsOwlIndividual: String) : super(subjectAsOwlIndividual, verbAsOwlProperty) {
-//        this.subjectAsOwlIndividual = subjectAsOwlIndividual
-//        this.verbAsOwlProperty = verbAsOwlProperty
+//    constructor(subject: String, verb: String, objectAsOwlIndividual: String) : super(subject, verb) {
+//        this.subject = subject
+//        this.verb = verb
 //        this.objectAsOwlIndividual = objectAsOwlIndividual
 //    }
 
@@ -64,12 +64,12 @@ data class ObjectPropertyStatement(var subjectAsOwlIndividual: String, var verbA
 
 //    fun getSubject(): String {
 //
-//        return subjectAsOwlIndividual
+//        return subject
 //    }
 //
 //    fun getVerb(): String {
 //
-//        return verbAsOwlProperty
+//        return verb
 //    }
 //    /**
 //     * Returns the object in the statement as a string.

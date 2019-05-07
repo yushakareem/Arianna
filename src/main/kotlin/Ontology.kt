@@ -1,12 +1,8 @@
 import it.emarolab.amor.owlInterface.OWLReferences
 import it.emarolab.amor.owlInterface.OWLReferencesInterface
 import it.emarolab.owloop.aMORDescriptor.utility.individual.MORFullIndividual
-import org.apache.jena.atlas.logging.Log
 import org.semanticweb.owlapi.model.OWLLiteral
 import org.semanticweb.owlapi.model.OWLNamedIndividual
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
-import java.util.*
 
 /**
  * This class helps in initializing ontologies and manipulating them.
@@ -63,7 +59,7 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
      */
     fun addToOnto(statement: DataPropertyStatement) {
 
-        val individual = MORFullIndividual(statement.subjectAsOwlIndividual ,this.ontoRef)
+        val individual = MORFullIndividual(statement.subject ,this.ontoRef)
         individual.apply {
             readSemantic()
 //            when {
@@ -79,7 +75,7 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
 
     //INFER from statements
     /**
-     *  Infers from Ontology the 'object' of the ObjectPropertyStatement; returns String.
+     *  Infers from Ontology the 'object' of the ObjectPropertyStatement; returns Any.
      */
     fun inferFromOnto(opStatement: ObjectPropertyStatement): String {
 
@@ -102,19 +98,20 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         return individual.getOWLName(namedIndiv)
     }
     /**
-     *  Infers from Ontology the 'object' of the DataPropertyStatement; returns String.
+     *  Infers from Ontology the 'object' of the DataPropertyStatement; returns Any.
      */
-    fun inferFromOnto(dpStatement: DataPropertyStatement): String {
-        val individual = MORFullIndividual(dpStatement.subjectAsOwlIndividual , this.ontoRef)
+    fun inferFromOnto(dpStatement: DataPropertyStatement):Any {
+        val individual = MORFullIndividual(dpStatement.subject , this.ontoRef)
         lateinit var data: OWLLiteral
 
         individual.apply {
             readSemantic()
-            data = dataSemantics.getLiteral(individual.getOWLDataProperty(dpStatement.verbAsOwlProperty))
+            data = dataSemantics.getLiteral(individual.getOWLDataProperty(dpStatement.verb))
         }
 
         return data.literal
     }
+
     /**
      *  Infers from Ontology the 'object' of the ObjectPropertyStatement; returns ObjectPropertyStatement.
      */
@@ -159,49 +156,17 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         val individual = MORFullIndividual(incompleteStatement.subjectAsOwlIndividual , this.ontoRef)
         lateinit var data: OWLLiteral
         lateinit var dpStatement: DataPropertyStatement
-        var inferredString: String
-
-        var dataAsSting: String
-        var dataAsBoolean: Boolean
-        var dataAsDouble: Double?
-        lateinit var dataAsTimestamp: Timestamp
-
-        val booleanList = listOf<String>("true","True","false","False")
 
         try {
             individual.apply {
                 readSemantic()
                 data = dataSemantics.getLiteral(individual.getOWLDataProperty(incompleteStatement.verbAsOwlProperty))
-                inferredString = data.literal
+                dpStatement = DataPropertyStatement(incompleteStatement.subjectAsOwlIndividual,incompleteStatement.verbAsOwlProperty, dataTypeMapper(data))
 
-                dataAsSting = inferredString
-                dataAsDouble = inferredString.toDoubleOrNull()
-
-                when {
-                    inferredString.matches("(\\d+\\-\\d+\\-\\d+\\ \\d+\\:\\d+\\:\\d+\\.\\d+)?".toRegex()) -> {
-                        //data is of type Timestamp
-                        val dateFormat = SimpleDateFormat("dd-MM-yyyy hh:mm:ss.SSS")
-                        val parsedDate = dateFormat.parse(inferredString)
-                        dataAsTimestamp = Timestamp(parsedDate.time)
-                        dpStatement = DataPropertyStatement(incompleteStatement.subjectAsOwlIndividual,incompleteStatement.verbAsOwlProperty,dataAsTimestamp)
-                    }
-                    inferredString in booleanList -> {
-                        //data is of type Boolean
-                        dataAsBoolean = inferredString.toBoolean()
-                        dpStatement = DataPropertyStatement(incompleteStatement.subjectAsOwlIndividual,incompleteStatement.verbAsOwlProperty,dataAsBoolean)
-                    }
-                    dataAsDouble != null -> {
-                        //data is of type Double
-                        dpStatement = DataPropertyStatement(incompleteStatement.subjectAsOwlIndividual,incompleteStatement.verbAsOwlProperty, dataAsDouble!!)
-                    }
-                    else -> {
-                        //data is of type String
-                        dpStatement = DataPropertyStatement(incompleteStatement.subjectAsOwlIndividual,incompleteStatement.verbAsOwlProperty, dataAsSting)
-                    }
-                }
             }
         } catch (e: IllegalStateException) {
-            error("The inference of IncompleteStatement is NULL. Please handle this carefully.")
+            dpStatement = DataPropertyStatement(incompleteStatement.subjectAsOwlIndividual,incompleteStatement.verbAsOwlProperty, "null")
+            //error("The inference of IncompleteStatement is NULL. Please handle this carefully.")
         }
 
         return dpStatement
@@ -269,32 +234,36 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         }
     }
     /**
-     *  Adds (if does not exist already) or Updates (if exists already), the DataPropertyStatement.
+     *  Adds (if does not exist already) or Updates (if exists already), the DataPropertyStatement. //By Tommaso: I add with replacement
      */
-    fun addOrUpdateToOnto(dpStatement: DataPropertyStatement) {
+    fun addOrUpdateToOnto(dpStatement: DataPropertyStatement) = addOrUpdateToOnto(dpStatement, true)
+    fun addOrUpdateToOnto(dpStatement: DataPropertyStatement, withReplacement: Boolean) {
 
         if (dpStatement.hasSpecialOntoRef()) {
-            val individual = MORFullIndividual(dpStatement.subjectAsOwlIndividual, dpStatement.getSpecialSubjectOntoRef())
+            val individual = MORFullIndividual(dpStatement.subject, dpStatement.getSpecialSubjectOntoRef())
             individual.apply {
                 readSemantic()
-                removeData(dpStatement.getSpecialVerbOntoRef().getOWLDataProperty(dpStatement.verbAsOwlProperty))
-                addData(dpStatement.getSpecialVerbOntoRef().getOWLDataProperty(dpStatement.verbAsOwlProperty), dpStatement.getSpecialObjectOntoRef().getOWLLiteral(dpStatement.objectAsAnyData)) // NEW STUFF for adding ANY type into the Ontology
+                removeData(dpStatement.getSpecialVerbOntoRef().getOWLDataProperty(dpStatement.verb))
+                addData(dpStatement.getSpecialVerbOntoRef().getOWLDataProperty(dpStatement.verb), dpStatement.getSpecialObjectOntoRef().getOWLLiteral(dpStatement.objectAsAnyData)) // NEW STUFF for adding ANY type into the Ontology
                 writeSemantic()
             }
         } else {
-            val individual = MORFullIndividual(dpStatement.subjectAsOwlIndividual, this.ontoRef)
-            individual.apply {
-                readSemantic()
-                removeData(dpStatement.verbAsOwlProperty)
-                addData(dpStatement.verbAsOwlProperty, dpStatement.objectAsAnyData) // NEW STUFF for adding ANY type into the Ontology
-//            when {
-////                dpStatement.hasObjectAsString()     -> addData(dpStatement.getVerb(), dpStatement.getObjectStringData())
-////                dpStatement.hasObjectAsTimestamp()  -> addData(dpStatement.getVerb(), dpStatement.getObjectTimestampData().toString())
-////                dpStatement.hasObjectAsBoolean()    -> addData(dpStatement.getVerb(), dpStatement.getObjectBooleanData(),true)
-////                dpStatement.hasObjectAsDouble()    -> addData(dpStatement.getVerb(), dpStatement.getObjectDoubleData())
-//                else -> Log.debug("==Error==> ","IncompleteStatement not correctly created or initialized.")
-//            }
-                writeSemantic()
+            if(withReplacement){
+                val individual = MORFullIndividual(dpStatement.subject, this.ontoRef)
+                individual.apply {
+                    readSemantic()
+                    addData(dpStatement.verb, dpStatement.objectAsAnyData,true) // NEW STUFF for adding ANY type into the Ontology
+                    writeSemantic()
+                }
+            }
+            else {
+                val individual = MORFullIndividual(dpStatement.subject, this.ontoRef)
+                individual.apply {
+                    readSemantic()
+                    removeData(dpStatement.verb)
+                    addData(dpStatement.verb, dpStatement.objectAsAnyData) // NEW STUFF for adding ANY type into the Ontology
+                    writeSemantic()
+                }
             }
         }
     }
@@ -322,6 +291,28 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         }
     }
 
+    /**
+     * Breaks the DataPropertyStatement.
+     * Means that the subject, verb and object still exist in the ontology but are not related to eachother.   =>BY TOMMY
+     */
+    fun breakStatementInOnto(opStatement: DataPropertyStatement) {
+        if (opStatement.hasSpecialOntoRef()) {  //Should be tested yet
+            val individual = MORFullIndividual(opStatement.subject , opStatement.getSpecialSubjectOntoRef())
+            individual.apply {
+                readSemantic()
+                removeData(opStatement.getSpecialVerbOntoRef().getOWLObjectProperty(opStatement.verb).toString(), opStatement.getSpecialObjectOntoRef().getOWLIndividual(opStatement.objectAsAnyData.toString()))
+                writeSemantic()
+            }
+        } else {
+            val individual = MORFullIndividual(opStatement.subject, this.ontoRef)
+            individual.apply {
+                readSemantic()
+                removeData(opStatement.verb) // Check
+                writeSemantic()
+            }
+        }
+    }
+
     //REMOVE parts of the statement
     /**
      * Removes subject from Ontology.
@@ -330,6 +321,14 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
 
         ontoRef.removeIndividual(name)
     }
+    /**
+     * Add (if doesn't exist yet) a subject from Ontology.
+     */
+    fun addSubjectToOnto(name: String, ontoRef: OWLReferences) {
+        ontoRef.addIndividual(name)
+    }
+
+
     /**
      * Removes subject from Ontology.
      */
@@ -347,9 +346,9 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
     fun removeSubjectFromOnto(dpStatement: DataPropertyStatement) {
 
         if (dpStatement.hasSpecialOntoRef()) {
-            dpStatement.getSpecialSubjectOntoRef().removeIndividual(dpStatement.subjectAsOwlIndividual)
+            dpStatement.getSpecialSubjectOntoRef().removeIndividual(dpStatement.subject)
         } else {
-            getOntoRef().removeIndividual(dpStatement.subjectAsOwlIndividual)
+            getOntoRef().removeIndividual(dpStatement.subject)
         }
     }
     /**
@@ -387,16 +386,9 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
      */
     fun removeObjectFromOnto(dpStatement: DataPropertyStatement) {
 
-        val individual = MORFullIndividual(dpStatement.subjectAsOwlIndividual , this.ontoRef)
+        val individual = MORFullIndividual(dpStatement.subject , this.ontoRef)
         individual.apply {
             readSemantic()
-//            when {
-//                dpStatement.hasObjectAsString()     -> removeData(getOntoRef().getOWLDataProperty(dpStatement.getVerb()), getOntoRef().getOWLLiteral(dpStatement.getObjectStringData()))
-//                dpStatement.hasObjectAsDouble()    -> removeData(getOntoRef().getOWLDataProperty(dpStatement.getVerb()), getOntoRef().getOWLLiteral(dpStatement.getObjectDoubleData()))
-//                dpStatement.hasObjectAsBoolean()    -> removeData(getOntoRef().getOWLDataProperty(dpStatement.getVerb()), getOntoRef().getOWLLiteral(dpStatement.getObjectBooleanData()))
-//                dpStatement.hasObjectAsTimestamp()  -> removeData(getOntoRef().getOWLDataProperty(dpStatement.getVerb()), getOntoRef().getOWLLiteral(dpStatement.getObjectTimestampData()))
-//                else -> Log.debug("==Error==> ","Unable to delete. Something wrong with DataPropertyStatement.")
-//            }
             writeSemantic()
         }
     }
@@ -440,5 +432,17 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
     fun getOntoFilePath(): String {
 
         return ontoFilePath
+    }
+
+
+    fun dataTypeMapper(owlLiteral: OWLLiteral): Any {
+        return when {
+            owlLiteral.isBoolean -> owlLiteral.literal!!.toBoolean()
+            owlLiteral.isDouble -> owlLiteral.literal!!.toDouble()
+            owlLiteral.isFloat -> owlLiteral.literal!!.toFloat()
+            owlLiteral.isInteger -> owlLiteral.literal!!.toBigInteger()
+            owlLiteral.isRDFPlainLiteral -> owlLiteral.literal!!
+            else -> owlLiteral.literal!!
+        }
     }
 }

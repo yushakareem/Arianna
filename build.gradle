@@ -58,7 +58,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
 
     //test
-    compile group: 'org.awaitility', name: 'awaitility-kotlin', version: '3.1.1'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
 
 }
 

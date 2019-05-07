@@ -1,3 +1,4 @@
+
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.cloud.firestore.*
 import com.google.firebase.FirebaseApp
@@ -17,6 +18,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
 
     private var realtimeDBRef: DatabaseReference
     private var firestoreDB: Firestore
+    private lateinit var ontoTaskManager: OntoTaskManager
 
     init {
         // Fetch the service account key JSON file contents
@@ -41,21 +43,40 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         realtimeDBRef = fbRealtimeDB.reference
     }
 
-    fun checkUserLocation(userNode: String, dataNode: String, ontoTaskManager: OntoTaskManager) {
+    fun checkUserNodes(onto: OntoTaskManager) {
+        ontoTaskManager = onto
 
+        val sotaLocation = DataPropertyStatement("Sota", "isRobotInLocation", checkSota())
+        ontoTaskManager.pushToOntoData(sotaLocation)
+
+        realtimeDBRef.child(pathToNode).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach{
+                    //println(it)
+                    checkUserLocation(it.key.toString(),"location")
+                    Thread.sleep(1000) //To do in a different way
+                    if(it.toString().contains("events={")){
+                        checkUserDrugReminderStatus(it.key.toString(), "events/drugReminderStatus")
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                error(error)
+            }
+        })
+    }
+
+    fun checkUserLocation(userNode: String, dataNode: String) {
         // We check the location of each user
         realtimeDBRef.child(pathToNode).child(userNode).child(dataNode).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                println("Entered into OnChange Location")
-
                 val location = ontoTaskManager.locationMapper(dataSnapshot.value.toString())
-                println("Location from FB: $location")
+                println("${userNode} is in: ${location}")
 
-                val dpStatement1 = DataPropertyStatement(userNode, "hasLocation", location)
-                val statementList: List<DataPropertyStatement> = listOf(dpStatement1)
+                val dpStatement1 = DataPropertyStatement(userNode, "isHumanInLocation", location)
 
-                ontoTaskManager.pushToOntoData(statementList)
-                ontoTaskManager.reasonWithSynchedTime("Instant_CurrentTimeStamp")
+                ontoTaskManager.pushToOntoData(dpStatement1)
+                ontoTaskManager.reasonWithSynchedTime("Instant_CurrentTime")
 
                 ontoTaskManager.pullAndManageOnto(userNode)
 
@@ -67,44 +88,26 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
             }
         })
     }
-    fun checkUserDrugReminderStatus(userNode: String, path: String, ontoTaskManager: OntoTaskManager) {
-        // We check the location of each user --------- POSSIBLE SOURCE OF DISSAPEARANCE
+    fun checkUserDrugReminderStatus(userNode: String, path: String) {
+        // We check the location of each user
         realtimeDBRef.child(pathToNode).child(userNode).child(path).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 println("Entered into OnChange DR Status")
                 val data = ontoTaskManager.statusMapper(dataSnapshot.value.toString())
-                val dpStatement1 = ObjectPropertyStatement(userNode, "drugReminderStatus", data)
-                ontoTaskManager.pushToOntoObject(dpStatement1)
+                val dpStatement1 = DataPropertyStatement(userNode, "hasCurrentStatusDrugReminder", data)
+                ontoTaskManager.pushToOntoData(dpStatement1)
 
                 if(data == "succeed"){
-                    ontoTaskManager.onto.breakStatementInOnto(ObjectPropertyStatement("DrugReminder", "hasActivationState","True"))
+                    TODO("remove all the stuff realted to drug reminder with the function above")
+                    //ontoTaskManager.onto.breakStatementInOnto(dpStatement1)
                 }
-
+                dataReadComplete = true
                 dataReadComplete = true
             }
             override fun onCancelled(error: DatabaseError) {
                 error(error)
             }
         })
-    }
-
-    fun checkUserNodes(dataNode: String, ontoTaskManager: OntoTaskManager) {
-        checkUserDrugReminderStatus("5fe6b3ba-2767-4669-ae69-6fdc402e695e", "events/drugReminderStatus", ontoTaskManager)
-        Thread.sleep(5000)
-        checkUserLocation("5fe6b3ba-2767-4669-ae69-6fdc402e695e", "location", ontoTaskManager)
-
-        // find the user
-        /*realtimeDBRef.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (oneElement in snapshot.children) {
-                    val userID = oneElement.key.toString()
-                    readNodeData(userID, dataNode, ontology)
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                error(error)
-            }
-        })*/
     }
 
     fun resetReadComplete() {
@@ -126,10 +129,35 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
             error("Error reading on Firestore: drug list doesn't present")
         }
     }
+    fun checkTimeElapse(user: String, priority: String): Long {
+        // asynchronously retrieve all users
+        val docRef = firestoreDB.collection("usersModel").document(user).collection("timeElapse").document("forPriority")
+        val future = docRef.get()
+        val document = future.get()
+        if (document.exists()) {
+            return document.get(priority)!! as Long
+        } else {
+            error("Error reading on Firestore: drug list doesn't present")
+        }
+    }
+
+    fun checkSota(): Any {
+        // asynchronously retrieve all users
+        val docRef = firestoreDB.collection("Home").document("Sota")
+        val future = docRef.get()
+        val document = future.get()
+        if (document.exists()) {
+            return ontoTaskManager.locationMapper(document.get("hasLocation").toString())
+        } else {
+            error("Error reading on Firestore: Sota position is not present")
+        }
+    }
 
     fun writeDB(path: String, value: Any) {
         realtimeDBRef.child("$pathToNode/$path").setValueAsync(value)
     }
+
 }
+
 
 

@@ -13,17 +13,17 @@ import it.emarolab.amor.owlInterface.OWLReferences
 
 data class IncompleteStatement(var subjectAsOwlIndividual: String, var verbAsOwlProperty: String) {
 
-//    protected lateinit var subjectAsOwlIndividual: String
-//    protected lateinit var verbAsOwlProperty: String
+//    protected lateinit var subject: String
+//    protected lateinit var verb: String
 
     protected lateinit var specialOntoRefForSubject: OWLReferences
     protected lateinit var specialOntoRefForVerb: OWLReferences
 
     protected var madeOfSpecialOntoRef: Boolean = false
 
-//    constructor(subjectAsOwlIndividual: String, verbAsOwlProperty: String) : this() {
-//        this.subjectAsOwlIndividual = subjectAsOwlIndividual
-//        this.verbAsOwlProperty = verbAsOwlProperty
+//    constructor(subject: String, verb: String) : this() {
+//        this.subject = subject
+//        this.verb = verb
 //    }
 
     /**
@@ -63,20 +63,20 @@ data class IncompleteStatement(var subjectAsOwlIndividual: String, var verbAsOwl
 
         return specialOntoRefForVerb
     }
-//    /**
-//     * Returns the subject in the statement.
-//     * @return String
-//     */
-//    open fun getSubject(): String {
-//
-//        return subjectAsOwlIndividual
-//    }
-//    /**
-//     * Returns the verb in the statement.
-//     * @return String
-//     */
-//    open fun getVerb(): String {
-//
-//        return verbAsOwlProperty
-//    }
+    /**
+     * Returns the subject in the statement.
+     * @return String
+     */
+    open fun getSubject(): String {
+
+        return subjectAsOwlIndividual
+    }
+    /**
+     * Returns the verb in the statement.
+     * @return String
+     */
+    open fun getVerb(): String {
+
+        return verbAsOwlProperty
+    }
 }
