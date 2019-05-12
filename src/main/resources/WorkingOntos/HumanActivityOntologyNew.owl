@@ -585,7 +585,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant_CurrentTime">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant"/>
-        <HumanActivityOntology:hasTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">951</HumanActivityOntology:hasTime>
+        <HumanActivityOntology:hasTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1050</HumanActivityOntology:hasTime>
     </owl:NamedIndividual>
     
 
@@ -718,7 +718,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e">
         <HumanActivityOntology:hasCounterDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:hasCounterDrugReminder>
         <HumanActivityOntology:hasCurrentStatusDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#string">failed</HumanActivityOntology:hasCurrentStatusDrugReminder>
-        <HumanActivityOntology:hasTimeDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">950</HumanActivityOntology:hasTimeDrugReminder>
+        <HumanActivityOntology:hasTimeDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1049</HumanActivityOntology:hasTimeDrugReminder>
         <HumanActivityOntology:hasTimeElapsedDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</HumanActivityOntology:hasTimeElapsedDrugReminder>
         <HumanActivityOntology:isActiveDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</HumanActivityOntology:isActiveDrugReminder>
         <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</HumanActivityOntology:isHumanInLocation>

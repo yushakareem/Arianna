@@ -1,6 +1,5 @@
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
-import it.emarolab.owloop.aMORDescriptor.utility.individual.MORFullIndividual
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -188,7 +187,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             val sop2 = onto.inferFromOntoToReturnDPStatement(si2)
             val number = sop2.objectAsAnyData as Float
 
-            onto.saveOnto(onto.getOntoFilePath())
+//            onto.saveOnto(onto.getOntoFilePath())
 
             //Call the timer function to pushToOntoData the current Time and menage the inference result
             thread(start = true) {
@@ -229,20 +228,31 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
 //            val isActiveDrugReminder = DataPropertyStatement(userId, "isActiveDrugReminder", true)
 //            onto.breakStatementInOnto(isActiveDrugReminder)
 
+            //REMOVAL PROCESS
 
-            val indiv = MORFullIndividual(userId, onto.getOntoRef())
-            indiv.readSemantic()
-            println(indiv)
-            indiv.removeData("hasCounterDrugReminder")
-            indiv.removeData("hasTimeElapsedDrugReminder")
-            indiv.removeData("hasTimeDrugReminder")
-            indiv.removeData("isActiveDrugReminder")
-            println(indiv)
-            indiv.writeSemantic()
-//            indiv.saveOntology(onto.getOntoFilePath())
+            Thread.sleep(2000) // With a little bit of wait, getting the correct inference for hasCurrentStatusDrugreminder as "Failed"
 
-            onto.saveOnto(onto.getOntoFilePath())
+            println("\n We are in the new system!")
+
+            val drIncStatus1 = IncompleteStatement(userId, "hasCurrentStatusDrugReminder")
+            val drDPStatus1 = onto.inferFromOntoToReturnDPStatement(drIncStatus1)
+
+            println("hasCurrentStatusDrugReminder: ${drDPStatus1.objectAsAnyData as String}")
+            println((drDPStatus1.objectAsAnyData as String).contains("Failed", ignoreCase = true))
+            if ((drDPStatus1.objectAsAnyData as String).contains("Failed", ignoreCase = true)) {
+                val verbList: MutableList<String> = mutableListOf()
+                verbList.add("hasCounterDrugReminder")
+                verbList.add("hasTimeElapsedDrugReminder")
+                verbList.add("hasTimeDrugReminder")
+                verbList.add("isActiveDrugReminder")
+                onto.addToCleaner(userId,verbList)
+            }
+                println("\n \n == !! == Reached end of thread == !! ==")
+
+            println("\n \n == !! == Reached end of ElseIf == !! ==")
         }
+
+        println("\n \n == !! == Reached end of drugReminder() == !! ==")
     }
 
     fun reasonWithSynchedTime(currentTimeIndividual: String) {

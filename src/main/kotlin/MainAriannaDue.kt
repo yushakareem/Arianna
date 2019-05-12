@@ -40,6 +40,8 @@ object MainAriannaDue {
         while (true) {
             if (fbDB2.getReadComplete()){
 
+//                Thread.sleep(5000) // acting as heavy computation
+//                println("We are here !!!!")
                 //println("Entered into while flag")
 //                // getting values from fbDB and cheking types
 //                println(fbDB2.getTimestamp().javaClass.toString() == "class java.lang.String")
@@ -48,6 +50,7 @@ object MainAriannaDue {
 //                // setting values to fbDB
 //                fbDB2.setData("PIR_TV", SensorData(fbDB2.getTimestamp(),fbDB2.getValue()))
                 //fbDB2.resetReadComplete()
+                localizationOnto.cleanWithCondition()
             }
         }
     }

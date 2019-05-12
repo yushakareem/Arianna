@@ -22,6 +22,9 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
 
     private val temporalOntoRef: OWLReferences
     private val ontoRef: OWLReferences
+    @Volatile lateinit var cleanSubject: String
+    @Volatile var cleanVerbList: MutableList<String> = mutableListOf()
+    private lateinit var cleanSubjectIndividual: MORFullIndividual
 
     init {
 
@@ -478,7 +481,6 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         return ontoFilePath
     }
 
-
     fun dataTypeMapper(owlLiteral: OWLLiteral): Any {
         return when {
             owlLiteral.isBoolean -> owlLiteral.literal!!.toBoolean()
@@ -488,5 +490,33 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
             owlLiteral.isRDFPlainLiteral -> owlLiteral.literal!!
             else -> owlLiteral.literal!!
         }
+    }
+
+    fun cleanWithCondition() {
+
+        if (cleanVerbList.isNotEmpty()) {
+            println("cleanVerbList is not empty: ${cleanVerbList.isNotEmpty()}")
+            cleanSubjectIndividual = MORFullIndividual(cleanSubject, getOntoRef())
+            cleanSubjectIndividual.readSemantic()
+            println(cleanSubjectIndividual)
+
+            cleanVerbList.forEach {
+                println("\n !! $it !! \n")
+                cleanSubjectIndividual.removeData(it)
+                println(cleanSubjectIndividual)
+            }
+
+            cleanSubjectIndividual.writeSemantic()
+            println(cleanSubjectIndividual)
+            saveOnto(getOntoRef().filePath)
+            cleanVerbList.clear()
+
+            Thread.sleep(10000)
+        }
+    }
+
+    fun addToCleaner(subject:String, verbList: MutableList<String>) {
+        cleanVerbList = verbList
+        cleanSubject = subject
     }
 }
