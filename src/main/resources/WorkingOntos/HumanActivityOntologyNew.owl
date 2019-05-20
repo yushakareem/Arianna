@@ -720,64 +720,13 @@
     
 
 
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#b3ff5507-afb7-460a-be6c-02b0dfbd9b4e -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#b3ff5507-afb7-460a-be6c-02b0dfbd9b4e">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BedRoom</HumanActivityOntology:isHumanInLocation>
-        <HumanActivityOntology:isStopped rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:isStopped>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#fbe9a4ad-3a1a-4ed4-9d03-ad0a79f1d456 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#fbe9a4ad-3a1a-4ed4-9d03-ad0a79f1d456">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BathRoom</HumanActivityOntology:isHumanInLocation>
-        <HumanActivityOntology:isStopped rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:isStopped>
-        <HumanActivityOntology:pouredAt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">630</HumanActivityOntology:pouredAt>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#test -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#test"/>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#0d84fae8-7ae5-4142-a0a4-5b32a0849def -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#0d84fae8-7ae5-4142-a0a4-5b32a0849def">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BedRoom</HumanActivityOntology:isHumanInLocation>
-        <HumanActivityOntology:isStopped rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:isStopped>
-        <HumanActivityOntology:satDownAt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">630</HumanActivityOntology:satDownAt>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#2703c909-529c-4fd1-bac8-c2ef6522fd06 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#2703c909-529c-4fd1-bac8-c2ef6522fd06">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BathRoom</HumanActivityOntology:isHumanInLocation>
-        <HumanActivityOntology:isStopped rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:isStopped>
-        <HumanActivityOntology:walkedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">630</HumanActivityOntology:walkedAt>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e -->
 
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e">
-        <HumanActivityOntology:drankAt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">631</HumanActivityOntology:drankAt>
-        <HumanActivityOntology:hasCounterDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</HumanActivityOntology:hasCounterDrugReminder>
-        <HumanActivityOntology:hasCurrentStatusDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#string">active</HumanActivityOntology:hasCurrentStatusDrugReminder>
-        <HumanActivityOntology:hasTimeDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">632</HumanActivityOntology:hasTimeDrugReminder>
+        <HumanActivityOntology:hasCounterDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:hasCounterDrugReminder>
+        <HumanActivityOntology:hasCurrentStatusDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#string">succeed</HumanActivityOntology:hasCurrentStatusDrugReminder>
+        <HumanActivityOntology:hasTimeDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">855</HumanActivityOntology:hasTimeDrugReminder>
         <HumanActivityOntology:hasTimeElapsedDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</HumanActivityOntology:hasTimeElapsedDrugReminder>
         <HumanActivityOntology:isActiveDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</HumanActivityOntology:isActiveDrugReminder>
         <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</HumanActivityOntology:isHumanInLocation>
