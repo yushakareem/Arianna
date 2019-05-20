@@ -2,23 +2,23 @@
 <rdf:RDF xmlns="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#"
      xml:base="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:LocalizationOnto1="http://www.semanticweb.org/Arianna/LocalizationOnto#"
-     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:HumanActivityOntology="http://www.semanticweb.org/Arianna/HumanActivityOntology#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:time="http://www.w3.org/2006/time#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
-     xmlns:LocalizationOnto="http://www.semanticweb.org/emaroLab/YushaKareem/LocalizationOnto#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:time1="http://www.semanticweb.org/Arianna/LocalizationOnto#time:"
      xmlns:time2="http://www.w3.org/2006/time#time:"
-     xmlns:PrototypeOntology="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:placeontology="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#"
-     xmlns:terms="http://purl.org/dc/terms/"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:time="http://www.w3.org/2006/time#">
+     xmlns:LocalizationOnto="http://www.semanticweb.org/emaroLab/YushaKareem/LocalizationOnto#"
+     xmlns:LocalizationOnto1="http://www.semanticweb.org/Arianna/LocalizationOnto#"
+     xmlns:PrototypeOntology="http://www.semanticweb.org/emaroLab/YushaKareem/PrototypeOntology#"
+     xmlns:HumanActivityOntology="http://www.semanticweb.org/Arianna/HumanActivityOntology#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology"/>
     
 
@@ -31,12 +31,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://purl.org/dc/terms/contributor -->
-
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
     
@@ -44,13 +42,11 @@
 
     <!-- http://purl.org/dc/terms/created -->
 
-
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
     
 
 
     <!-- http://purl.org/dc/terms/creator -->
-
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
     
@@ -58,13 +54,11 @@
 
     <!-- http://purl.org/dc/terms/isVersionOf -->
 
-
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
     
 
 
     <!-- http://purl.org/dc/terms/license -->
-
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
     
@@ -72,13 +66,11 @@
 
     <!-- http://purl.org/dc/terms/modified -->
 
-
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
     
 
 
     <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
-
 
     <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
     
@@ -86,13 +78,11 @@
 
     <!-- http://www.w3.org/2001/XMLSchema#pattern -->
 
-
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2001/XMLSchema#pattern"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
-
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
     
@@ -100,13 +90,11 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#definition -->
 
-
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#editorialNote -->
-
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#editorialNote"/>
     
@@ -114,13 +102,11 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#historyNote -->
 
-
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#historyNote"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#note -->
-
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
     
@@ -128,13 +114,11 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#scopeNote -->
-
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#scopeNote"/>
     
@@ -148,12 +132,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#isInInterval -->
-
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#isInInterval">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant"/>
@@ -163,7 +145,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#isNearTo -->
-
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#isNearTo">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -182,12 +163,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasCounterDrugReminder -->
-
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasCounterDrugReminder">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
@@ -197,7 +176,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasCurrentStatusDrugReminder -->
 
-
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasCurrentStatusDrugReminder">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -205,7 +183,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTime -->
-
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTime">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -215,7 +192,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeBegin -->
 
-
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeBegin">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
@@ -223,7 +199,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeDrugReminder -->
-
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeDrugReminder">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -233,7 +208,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeElapsedDrugReminder -->
 
-
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeElapsedDrugReminder">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
     </owl:DatatypeProperty>
@@ -241,7 +215,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeEnd -->
-
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeEnd">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -251,7 +224,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#isActiveDrugReminder -->
 
-
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#isActiveDrugReminder">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
@@ -260,13 +232,11 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#isActiveDrugReminderConfirmation -->
 
-
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#isActiveDrugReminderConfirmation"/>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#isDoingActivity -->
-
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#isDoingActivity">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Human"/>
@@ -277,7 +247,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#isHumanInLocation -->
 
-
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#isHumanInLocation">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Human"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -286,7 +255,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#isRobotInLocation -->
-
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#isRobotInLocation">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Robot"/>
@@ -303,12 +271,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Action -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Action">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Activity"/>
@@ -318,13 +284,11 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Activity -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Activity"/>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Ambience -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Ambience">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Space"/>
@@ -334,7 +298,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Brightness -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Brightness">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#EnvironmentalSensor"/>
     </owl:Class>
@@ -342,7 +305,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#EnvironmentalSensor -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#EnvironmentalSensor">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Sensor"/>
@@ -353,7 +315,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#EstimoteBeacon -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#EstimoteBeacon">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#EnvironmentalSensor"/>
     </owl:Class>
@@ -361,7 +322,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Furniture -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Furniture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Ambience"/>
@@ -372,7 +332,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Human -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Human">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Space"/>
     </owl:Class>
@@ -381,16 +340,14 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Because an Instant is an infinitely small Interval.</rdfs:comment>
+        <rdfs:comment>Because an Instant is an infinitely small Interval.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Time"/>
@@ -400,7 +357,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#OccupiableFurniture -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#OccupiableFurniture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#UtilizableFurniture"/>
     </owl:Class>
@@ -408,7 +364,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#PIR -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#PIR">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#EnvironmentalSensor"/>
@@ -418,7 +373,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Robot -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Robot">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Space"/>
     </owl:Class>
@@ -426,7 +380,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Room -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Room">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Ambience"/>
@@ -436,7 +389,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Sensor -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Sensor">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Space"/>
     </owl:Class>
@@ -444,7 +396,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#SmartSuit -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#SmartSuit">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#WearableSensor"/>
@@ -455,7 +406,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#SmartWatch -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#SmartWatch">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#WearableSensor"/>
     </owl:Class>
@@ -463,7 +413,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Space -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Space">
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Time"/>
@@ -473,7 +422,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Temprature -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Temprature">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#EnvironmentalSensor"/>
     </owl:Class>
@@ -482,13 +430,11 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Time -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Time"/>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#UtilizableFurniture -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#UtilizableFurniture">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Furniture"/>
@@ -497,7 +443,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#WearableSensor -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#WearableSensor">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Sensor"/>
@@ -513,12 +458,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Drinking -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Drinking">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Action"/>
@@ -528,7 +471,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Falling -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Falling">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Action"/>
     </owl:NamedIndividual>
@@ -536,7 +478,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_LyingDown -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_LyingDown">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Action"/>
@@ -546,7 +487,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Pouring -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Pouring">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Action"/>
     </owl:NamedIndividual>
@@ -554,7 +494,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_SittingDown -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_SittingDown">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Action"/>
@@ -564,7 +503,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Walking -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Gesture_Walking">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Action"/>
     </owl:NamedIndividual>
@@ -572,7 +510,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#HavingBreakfast -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#HavingBreakfast">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Activity"/>
@@ -582,16 +519,14 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant_CurrentTime -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant_CurrentTime">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant"/>
-        <HumanActivityOntology:hasTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1050</HumanActivityOntology:hasTime>
+        <HumanActivityOntology:hasTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1130</HumanActivityOntology:hasTime>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Afternoon -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Afternoon">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
@@ -604,7 +539,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Breakfast -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Breakfast">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
         <HumanActivityOntology:hasTimeBegin rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</HumanActivityOntology:hasTimeBegin>
@@ -615,7 +549,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Dinner -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Dinner">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
     </owl:NamedIndividual>
@@ -623,7 +556,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Evening -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Evening">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
@@ -636,7 +568,6 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Lunch -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Lunch">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
     </owl:NamedIndividual>
@@ -644,7 +575,6 @@
 
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Morning -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Morning">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
@@ -657,71 +587,11 @@
 
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Night -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Night">
         <rdf:type rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
         <HumanActivityOntology:hasTimeBegin rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</HumanActivityOntology:hasTimeBegin>
         <HumanActivityOntology:hasTimeEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">359</HumanActivityOntology:hasTimeEnd>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new in Nov 2018</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#Sota -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#Sota">
-        <HumanActivityOntology:isRobotInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</HumanActivityOntology:isRobotInLocation>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#b3ff5507-afb7-460a-be6c-02b0dfbd9b4e -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#b3ff5507-afb7-460a-be6c-02b0dfbd9b4e">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BedRoom</HumanActivityOntology:isHumanInLocation>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#fbe9a4ad-3a1a-4ed4-9d03-ad0a79f1d456 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#fbe9a4ad-3a1a-4ed4-9d03-ad0a79f1d456">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BathRoom</HumanActivityOntology:isHumanInLocation>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#0d84fae8-7ae5-4142-a0a4-5b32a0849def -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#0d84fae8-7ae5-4142-a0a4-5b32a0849def">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BedRoom</HumanActivityOntology:isHumanInLocation>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#2703c909-529c-4fd1-bac8-c2ef6522fd06 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#2703c909-529c-4fd1-bac8-c2ef6522fd06">
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BathRoom</HumanActivityOntology:isHumanInLocation>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#5fe6b3ba-2767-4669-ae69-6fdc402e695e">
-        <HumanActivityOntology:hasCounterDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</HumanActivityOntology:hasCounterDrugReminder>
-        <HumanActivityOntology:hasCurrentStatusDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#string">failed</HumanActivityOntology:hasCurrentStatusDrugReminder>
-        <HumanActivityOntology:hasTimeDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1049</HumanActivityOntology:hasTimeDrugReminder>
-        <HumanActivityOntology:hasTimeElapsedDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</HumanActivityOntology:hasTimeElapsedDrugReminder>
-        <HumanActivityOntology:isActiveDrugReminder rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</HumanActivityOntology:isActiveDrugReminder>
-        <HumanActivityOntology:isHumanInLocation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kitchen</HumanActivityOntology:isHumanInLocation>
     </owl:NamedIndividual>
     
 
@@ -733,7 +603,6 @@
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
-
 
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
@@ -763,17 +632,13 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#c">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#rob">
@@ -794,94 +659,14 @@
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#rloc">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#ins">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description>
-        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingBreakfast</rdfs:label>
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Human"/>
-                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isHumanInLocation"/>
-                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
-                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
-                            </rdf:Description>
-                        </rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
-                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
-                                        <swrl:arguments>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kitchen</rdf:first>
-                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                            </rdf:Description>
-                                        </swrl:arguments>
-                                    </rdf:Description>
-                                </rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isInInterval"/>
-                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant_CurrentTime"/>
-                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Breakfast"/>
-                                            </rdf:Description>
-                                        </rdf:first>
-                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isDoingActivity"/>
-                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
-                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingBreakfast</swrl:argument2>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-            </rdf:Description>
-        </swrl:head>
     </rdf:Description>
     <rdf:Description>
         <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
@@ -1118,6 +903,89 @@
     <rdf:Description>
         <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingBreakfast</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Human"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isHumanInLocation"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#loc"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kitchen</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isInInterval"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant_CurrentTime"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval_Breakfast"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isDoingActivity"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingBreakfast</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimeInterval</rdfs:label>
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
         <swrl:body>
@@ -1233,6 +1101,5 @@
 
 
 
-<!-- Generated by the OWL API (version 5.0.2.20160507-1747) https://github.com/owlcs/owlapi/ -->
-
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
 

@@ -237,15 +237,26 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             val drIncStatus1 = IncompleteStatement(userId, "hasCurrentStatusDrugReminder")
             val drDPStatus1 = onto.inferFromOntoToReturnDPStatement(drIncStatus1)
 
-            println("hasCurrentStatusDrugReminder: ${drDPStatus1.objectAsAnyData as String}")
+            println("\n\n !!! hasCurrentStatusDrugReminder: ${drDPStatus1.objectAsAnyData as String}")
             println((drDPStatus1.objectAsAnyData as String).contains("Failed", ignoreCase = true))
             if ((drDPStatus1.objectAsAnyData as String).contains("Failed", ignoreCase = true)) {
-                val verbList: MutableList<String> = mutableListOf()
-                verbList.add("hasCounterDrugReminder")
-                verbList.add("hasTimeElapsedDrugReminder")
-                verbList.add("hasTimeDrugReminder")
-                verbList.add("isActiveDrugReminder")
-                onto.addToCleaner(userId,verbList)
+
+                val removeDPStatement1 = IncompleteStatement(userId, "hasCounterDrugReminder")
+                val removeDPStatement2 = IncompleteStatement(userId, "hasTimeElapsedDrugReminder")
+                val removeDPStatement3 = IncompleteStatement(userId, "hasTimeDrugReminder")
+                val removeDPStatement4 = IncompleteStatement(userId, "isActiveDrugReminder")
+
+                onto.breakStatementInOnto(removeDPStatement1) //remove and save
+                onto.breakStatementInOnto(removeDPStatement2) //remove and save
+                onto.breakStatementInOnto(removeDPStatement3) //remove and save
+                onto.breakStatementInOnto(removeDPStatement4) //remove and save
+
+//                val verbList: MutableList<String> = mutableListOf()
+//                verbList.add("hasCounterDrugReminder")
+//                verbList.add("hasTimeElapsedDrugReminder")
+//                verbList.add("hasTimeDrugReminder")
+//                verbList.add("isActiveDrugReminder")
+//                onto.addToCleaner(userId,verbList)
             }
                 println("\n \n == !! == Reached end of thread == !! ==")
 

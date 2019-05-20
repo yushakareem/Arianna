@@ -27,7 +27,7 @@ object MainAriannaDue {
 
         /** Initialize Firebase DB and Read data from sensors*/
         //val fbDB2 = FirebaseConnector("vocalinterface","/Users/tommasaso/Documents/Tesi/IntalliJ/vocalinterface-firebase-adminsdk-3ycvz-8068c39321.json", "/installation_test_name")
-        val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json", "/installation_test_name")
+        val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-6f576dbc45.json", "/installation_test_name")
 
         /** Initialize OntoTakManager */
 
@@ -50,7 +50,8 @@ object MainAriannaDue {
 //                // setting values to fbDB
 //                fbDB2.setData("PIR_TV", SensorData(fbDB2.getTimestamp(),fbDB2.getValue()))
                 //fbDB2.resetReadComplete()
-                localizationOnto.cleanWithCondition()
+
+//                localizationOnto.cleanWithCondition()
             }
         }
     }

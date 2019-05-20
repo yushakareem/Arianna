@@ -34,13 +34,15 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         // Retrieve RealtimeDB service by passing the FirebaseApp object
         val fbRealtimeDB = FirebaseDatabase.getInstance(app)
 
+        realtimeDBRef = fbRealtimeDB.reference
+
         val optionsFirestore = FirestoreOptions
                 .newBuilder()
                 .setTimestampsInSnapshotsEnabled(true)
                 .build()
 
         firestoreDB = optionsFirestore.service
-        realtimeDBRef = fbRealtimeDB.reference
+
     }
 
     fun checkUserNodes(onto: OntoTaskManager) {

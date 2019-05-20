@@ -347,15 +347,23 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
             val individual = MORFullIndividual(icStatement.getSubject() , icStatement.getSpecialSubjectOntoRef())
             individual.apply {
                 readSemantic()
-                removeObject(icStatement.getSpecialSubjectOntoRef().getOWLObjectProperty(icStatement.getSubject()), icStatement.getSpecialVerbOntoRef().getOWLIndividual(icStatement.getVerb()))
+//                removeData(icStatement.getSpecialSubjectOntoRef().getOWLObjectProperty(icStatement.getSubject()), icStatement.getSpecialVerbOntoRef().getOWLIndividual(icStatement.getVerb()))
                 writeSemantic()
             }
         } else {
             val individual = MORFullIndividual(icStatement.getSubject(), this.ontoRef)
             individual.apply {
+
+                println("\n !! After Init:")
+                println(individual)
+
                 readSemantic()
-                removeObject(icStatement.getSubject(), icStatement.getVerb())
+                println("\n !! After readSemantic:")
+                println(individual)
+
+                removeData(icStatement.getSubject())
                 writeSemantic()
+                saveOntology(ontoFilePath)
             }
         }
     }
@@ -492,31 +500,31 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
         }
     }
 
-    fun cleanWithCondition() {
-
-        if (cleanVerbList.isNotEmpty()) {
-            println("cleanVerbList is not empty: ${cleanVerbList.isNotEmpty()}")
-            cleanSubjectIndividual = MORFullIndividual(cleanSubject, getOntoRef())
-            cleanSubjectIndividual.readSemantic()
-            println(cleanSubjectIndividual)
-
-            cleanVerbList.forEach {
-                println("\n !! $it !! \n")
-                cleanSubjectIndividual.removeData(it)
-                println(cleanSubjectIndividual)
-            }
-
-            cleanSubjectIndividual.writeSemantic()
-            println(cleanSubjectIndividual)
-            saveOnto(getOntoRef().filePath)
-            cleanVerbList.clear()
-
-            Thread.sleep(10000)
-        }
-    }
-
-    fun addToCleaner(subject:String, verbList: MutableList<String>) {
-        cleanVerbList = verbList
-        cleanSubject = subject
-    }
+//    fun cleanWithCondition() {
+//
+//        if (cleanVerbList.isNotEmpty()) {
+//            println("cleanVerbList is not empty: ${cleanVerbList.isNotEmpty()}")
+//            cleanSubjectIndividual = MORFullIndividual(cleanSubject, getOntoRef())
+//            cleanSubjectIndividual.readSemantic()
+//            println(cleanSubjectIndividual)
+//
+//            cleanVerbList.forEach {
+//                println("\n !! $it !! \n")
+//                cleanSubjectIndividual.removeData(it)
+//                println(cleanSubjectIndividual)
+//            }
+//
+//            cleanSubjectIndividual.writeSemantic()
+//            println(cleanSubjectIndividual)
+//            saveOnto(getOntoRef().filePath)
+//            cleanVerbList.clear()
+//
+//            Thread.sleep(10000)
+//        }
+//    }
+//
+//    fun addToCleaner(subject:String, verbList: MutableList<String>) {
+//        cleanVerbList = verbList
+//        cleanSubject = subject
+//    }
 }
