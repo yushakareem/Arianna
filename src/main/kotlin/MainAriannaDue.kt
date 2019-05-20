@@ -25,8 +25,8 @@ object MainAriannaDue {
         )
 
         /** Initialize Firebase DB and Read data from sensors*/
-        //val fbDB2 = FirebaseConnector("vocalinterface","/Users/tommasaso/Documents/Tesi/IntalliJ/vocalinterface-firebase-adminsdk-3ycvz-8068c39321.json", "/installation_test_name")
-        val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json", "/installation_test_name")
+        val fbDB2 = FirebaseConnector("vocalinterface","/Users/tommasaso/Documents/Tesi/IntalliJ/vocalinterface-firebase-adminsdk-3ycvz-8068c39321.json", "/installation_test_name")
+        //val fbDB2 = FirebaseConnector("vocalinterface","/home/yusha/Firebase_PrivateKey/vocalinterface-firebase-adminsdk-3ycvz-ee97916161.json", "/installation_test_name")
 
 
         /** Initialize OntoTakManager */
