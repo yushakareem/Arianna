@@ -188,6 +188,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasCurrentStatusProposingActivities -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasCurrentStatusProposingActivities"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasProposingActivitiesChangeIdea -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasProposingActivitiesChangeIdea"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasProposingActivitiesCounter -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasProposingActivitiesCounter"/>
+    
+
+
     <!-- http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTime -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTime">
@@ -697,6 +715,12 @@
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#rloc">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#paStatus">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#paCounter">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
@@ -953,121 +977,7 @@
     <rdf:Description>
         <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimeInterval</rdfs:label>
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
-                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
-                        <swrl:arguments rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t1"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t3"/>
-                        </swrl:arguments>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
-                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
-                            </rdf:Description>
-                        </rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant"/>
-                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#ins"/>
-                                    </rdf:Description>
-                                </rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeBegin"/>
-                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
-                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t2"/>
-                                            </rdf:Description>
-                                        </rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeEnd"/>
-                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
-                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t3"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                                        <rdf:first>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
-                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
-                                                                <swrl:arguments rdf:parseType="Collection">
-                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t1"/>
-                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t2"/>
-                                                                </swrl:arguments>
-                                                            </rdf:Description>
-                                                        </rdf:first>
-                                                        <rdf:rest>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                                                <rdf:first>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
-                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTime"/>
-                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#ins"/>
-                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t1"/>
-                                                                    </rdf:Description>
-                                                                </rdf:first>
-                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                            </rdf:Description>
-                                                        </rdf:rest>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isInInterval"/>
-                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#ins"/>
-                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-            </rdf:Description>
-        </swrl:head>
-    </rdf:Description>
-    <rdf:Description>
-        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S1</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingBreakfast</rdfs:label>
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
         <swrl:body>
             <rdf:Description>
@@ -1198,6 +1108,280 @@
                         <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isDoingActivity"/>
                         <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
                         <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingBreakfast</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProposingActivities</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Human"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isHumanInLocation"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#hloc"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Robot"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#rob"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isRobotInLocation"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#rob"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#rloc"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
+                                                        <swrl:arguments rdf:parseType="Collection">
+                                                            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#hloc"/>
+                                                            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#rloc"/>
+                                                        </swrl:arguments>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasCurrentStatusProposingActivities"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#paStatus"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
+                                                                        <swrl:arguments>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#paStatus"/>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">active</rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </swrl:arguments>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasProposingActivitiesCounter"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#paCounter"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                                                                        <swrl:arguments>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                <rdf:first rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#paCounter"/>
+                                                                                                <rdf:rest>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</rdf:first>
+                                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                    </rdf:Description>
+                                                                                                </rdf:rest>
+                                                                                            </rdf:Description>
+                                                                                        </swrl:arguments>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasProposingActivitiesChangeIdea"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#h"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimeInterval</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+                        <swrl:arguments rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t1"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t3"/>
+                        </swrl:arguments>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Interval"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#Instant"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#ins"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeBegin"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t2"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTimeEnd"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t3"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                                                <swrl:arguments rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t1"/>
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t2"/>
+                                                                </swrl:arguments>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#hasTime"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#ins"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#t1"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/Arianna/HumanActivityOntology#isInInterval"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#ins"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/emaroLab/YushaKareem/PlaceOntology#int"/>
                     </rdf:Description>
                 </rdf:first>
                 <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>

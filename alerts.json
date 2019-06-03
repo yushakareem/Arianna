@@ -1,0 +1,21 @@
+{
+  "installationName": "Tommaso's House",
+  "floorNumber": 2,
+  "floors": {
+    "floor1": {
+      "roomsNumer": 5,
+      "lost": 0,
+      "room1": 15,
+      "room2": 15,
+      "room3": 15,
+      "room4": 15,
+      "room5": 15
+    },
+	"floor2": {
+      "roomsNumer": 2,
+      "lost": 0,
+      "room6": 5,
+      "room7": 15
+          }
+  }
+}

@@ -3,6 +3,7 @@ import com.google.auth.oauth2.GoogleCredentials
 import com.google.cloud.firestore.*
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
+import com.google.firebase.cloud.StorageClient
 import com.google.firebase.database.*
 import java.io.FileInputStream
 
@@ -23,7 +24,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
     var realtimeDBRef: DatabaseReference
     var firestoreDB: Firestore
     private lateinit var ontoTaskManager: OntoTaskManager
-
+    var storageClient : StorageClient
     init {
         // Fetch the service account key JSON file contents
         val serviceAccount = FileInputStream(pathToPrivateKey)
@@ -32,6 +33,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
         val options = FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                 .setDatabaseUrl("https://$databaseName.firebaseio.com")
+                .setStorageBucket("$databaseName.appspot.com")
                 .build()
         // Initialize app for RealtimeDB
         val app = FirebaseApp.initializeApp(options)
@@ -45,6 +47,8 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
 
         firestoreDB = optionsFirestore.service
         realtimeDBRef = fbRealtimeDB.reference
+
+        storageClient = StorageClient.getInstance(app)
     }
 
     fun checkUserNodes(onto: OntoTaskManager) {
@@ -59,9 +63,11 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                     //println(it)
                     checkUserLocation(it.key.toString(),"location")
                     checkUserGesture(it.key.toString(),"gestureId")
-                    checkUserSedentary(it.key.toString(),"alert")
+                    checkUserSedentary(it.key.toString(),"stoppedMinutes")
                     if(it.toString().contains("events={")){
                         checkUserDrugReminderStatus(it.key.toString(), "events/drugReminderStatus")
+                        checkProposingActivityStatus(it.key.toString(), "events/proposingActivityStatus")
+                        //checkProposingActivityCounter(it.key.toString(), "events/proposingNewActivity/changeIdea")
                     }
                 }
             }
@@ -141,6 +147,41 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                     TODO("remove all the stuff realted to drug reminder with the function above")
                     //ontoTaskManager.onto.breakStatementInOnto(dpStatement1)
                 }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                error(error)
+            }
+        })
+    }
+
+    fun checkProposingActivityStatus(userNode: String, path: String) {
+        // We check the location of each user
+        realtimeDBRef.child(pathToNode).child(userNode).child(path).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                println("Entered into OnChange PA Status")
+                val data = ontoTaskManager.statusMapper(dataSnapshot.value.toString())
+                val dpStatement1 = DataPropertyStatement(userNode, "hasCurrentStatusProposingActivities", data)
+                ontoTaskManager.pushToOntoData(dpStatement1)
+
+                if(data == "succeed"){
+                    TODO("remove all the stuff realted to drug reminder with the function above")
+                    //ontoTaskManager.onto.breakStatementInOnto(dpStatement1)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                error(error)
+            }
+        })
+    }
+    fun checkProposingActivityCounter(userNode: String, path: String) {
+        // We check the location of each user
+        realtimeDBRef.child(pathToNode).child(userNode).child(path).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                println("Entered into OnChange PA Counter")
+                val data = dataSnapshot.value.toString().toInt()
+                val dpStatement1 = DataPropertyStatement(userNode, "hasProposingActivitiesCounter", data)
+                ontoTaskManager.pushToOntoData(dpStatement1)
+
             }
             override fun onCancelled(error: DatabaseError) {
                 error(error)
@@ -252,8 +293,6 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
     fun writeDB(path: String, value: Any) {
         realtimeDBRef.child("$pathToNode/$path").setValueAsync(value)
     }
-
-
 }
 
 

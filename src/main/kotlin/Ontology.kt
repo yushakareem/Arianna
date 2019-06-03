@@ -145,7 +145,6 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
 //            println("The inference of IncompleteStatement is NULL. Please handle this carefully.")
             opStatement = ObjectPropertyStatement(incompleteStatement.getSubject(),incompleteStatement.getVerb(),"null") // FUTURE: OPStatement should take ANY
         }
-
         return opStatement
     }
 
@@ -332,6 +331,7 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
                 removeData(opStatement.verb)
                 println(individual)
                 writeSemantic()
+                saveOntology(ontoFilePath)
             }
         }
     }
@@ -341,18 +341,25 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
     fun breakStatementInOnto(icStatement: IncompleteStatement) {
 
         if (icStatement.hasSpecialOntoRef()) {
+
             val individual = MORFullIndividual(icStatement.getSubject() , icStatement.getSpecialSubjectOntoRef())
             individual.apply {
                 readSemantic()
-                removeObject(icStatement.getSpecialSubjectOntoRef().getOWLObjectProperty(icStatement.getSubject()), icStatement.getSpecialVerbOntoRef().getOWLIndividual(icStatement.getVerb()))
+                //removeObject(icStatement.getSpecialSubjectOntoRef().getOWLObjectProperty(icStatement.getSubject()), icStatement.getSpecialVerbOntoRef().getOWLIndividual(icStatement.getVerb()))
                 writeSemantic()
             }
+
         } else {
             val individual = MORFullIndividual(icStatement.getSubject(), this.ontoRef)
+
             individual.apply {
+                println(individual)
                 readSemantic()
-                removeObject(icStatement.getSubject(), icStatement.getVerb())
+                println(individual)
+                removeData(icStatement.getVerb())
                 writeSemantic()
+                println(individual)
+                saveOntology(ontoFilePath)
             }
         }
     }
@@ -458,7 +465,6 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
      * Get ontology reference
      */
     fun getOntoRef(): OWLReferences {
-
         return ontoRef
     }
 
@@ -466,7 +472,6 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
      * Get temporal ontology reference
      */
     fun getTemporalOntoRef(): OWLReferences {
-
         return temporalOntoRef
     }
 
@@ -474,7 +479,6 @@ class Ontology(private val ontoRefName: String, private val ontoFilePath: String
      * Get ontology file path
      */
     fun getOntoFilePath(): String {
-
         return ontoFilePath
     }
 
