@@ -53,13 +53,13 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
                         onError = { println("onError of  drugReminder") }
                 )
         userStoppedObservable
-                .filter { isStopped.objectAsAnyData.toString() != "null" && isStopped.objectAsAnyData != 0.toFloat() && paHasStatus.objectAsAnyData.toString().contains("idle")}
+                .filter { isStopped.objectAsAnyData.toString() != "null" && isStopped.objectAsAnyData.toString().toFloat() > 30.toFloat() && paHasStatus.objectAsAnyData.toString().contains("idle")}
                 .subscribeBy(
                         onNext = { sedentary(it) },
                         onError = { println("onError of  sedentary") }
                 )
         paHasStatusObservable
-                .filter { paHasStatus.objectAsAnyData.toString().contains("active")}
+                .filter { paHasStatus.objectAsAnyData.toString().contains("active") }
                 .subscribeBy(
                         onNext = { changeIdea(it)},
                         onError = { println("onError of  sedentary") }
@@ -128,6 +128,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         /** Manage when the user remains stopped for more than... */
 
         println(">>>>>>>>>>>>>sedentary")
+        //TODO("")
 
         //Acquisition current Weather
         val actualWeather = weather.getWeather()
@@ -149,7 +150,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
             val dpStatement1 = DataPropertyStatement(dpStatement.subject.toString(), "hasCurrentStatusProposingActivities", "active")
             onto.addOrUpdateToOnto(dpStatement1)
 
-            val insistency = fbDBConnector.checkInsistency(dpStatement.subject, "low")
+            val insistency = fbDBConnector.checkInsistency(dpStatement.subject, "medium")
             println(">>>>>insistencyRead")
             // Save the counter acquired also in the Ontology
             val paCounter = DataPropertyStatement(dpStatement.subject, "hasProposingActivitiesCounter", insistency)
@@ -194,23 +195,24 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         val userLocation = onto.inferFromOntoToReturnDPStatement(userIncLocation)
 
         // We check the sedentary duration of each user
-        fbDBConnector.realtimeDBRef.child(fbDBConnector.pathToNode).child(dpStatement.subject).child("events").child("proposingActivity").addListenerForSingleValueEvent(object : ValueEventListener {
+        fbDBConnector.realtimeDBRef.child(fbDBConnector.pathToNode).child(dpStatement.subject).child("events").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val propoingActivityState = dataSnapshot.value.toString()
-                if(sotaLocation.toString() == userLocation.objectAsAnyData.toString() && propoingActivityState == ""){
+                val propoingActivityState = dataSnapshot.child("proposingActivity").value.toString()
+                val proposingActivityStatus = dataSnapshot.child("proposingActivityStatus").value.toString()
+                if(sotaLocation.toString() == userLocation.objectAsAnyData.toString() && propoingActivityState == "" && proposingActivityStatus == "active"){
                     fbDBConnector.fillProposingActivities(dpStatement.subject)
-                    val timeElapse = fbDBConnector.checkTimeElapse(dpStatement.subject, "high")      //To be changed to LOW PRIORITY
+                    val timeElapse = fbDBConnector.checkTimeElapse(dpStatement.subject, "normal")      //To be changed to LOW PRIORITY
                     thread(start = true) {
-                        println(">>>>>PA: waitint ...")
+                        println(">>>>>PA first: waitint ...")
                         Thread.sleep(timeElapse * 60000) // Minutes
-                        println(">>>>>PA: Finished to wait")
+                        println(">>>>>PA first: Finished to wait")
                         reasonWithSynchedTime("Instant_CurrentTime")
                         changeIdea(dpStatement)
                     }
                 }
-                else if(sotaLocation.toString() == userLocation.objectAsAnyData.toString()){
+                else if(sotaLocation.toString() == userLocation.objectAsAnyData.toString() && propoingActivityState != ""){
                     println(">>>>>ChengaIdea")
-                    val timeElapse = fbDBConnector.checkTimeElapse(dpStatement.subject, "high")      //To be changed to LOW PRIORITY
+                    val timeElapse = fbDBConnector.checkTimeElapse(dpStatement.subject, "normal")      //To be changed to LOW PRIORITY
                     thread(start = true) {
 
                         // Acquisition of Proposing Activity Change Idea state from Ontology
@@ -233,9 +235,9 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
                             Thread.sleep(1000)
                             fbDBConnector.writeDB("${dpStatement.subject}/events/proposingNewActivity/changeIdea", true)
 
-                            println(">>>>>PA: waitint ...")
+                            println(">>>>>PA changeIdea: waitint ...")
                             Thread.sleep( timeElapse * 60000) // Minutes
-                            println(">>>>>PA: Finished to wait")
+                            println(">>>>>PA changeIdea: Finished to wait")
 
                             reasonWithSynchedTime("Instant_CurrentTime")
                             pullAndManageOnto(dpStatement.subject)
@@ -243,6 +245,7 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
                         } else if(pacCounter.objectAsAnyData.toString().toLong() <= 0.toLong() ){
                             fbDBConnector.writeDB("${dpStatement.subject}/events/proposingActivity", "")
                             fbDBConnector.writeDB("${dpStatement.subject}/events/proposingNewActivity/outsideActivities/outsideActivities", false)
+                            fbDBConnector.writeDB("${dpStatement.subject}/events/proposingNewActivity/changeIdea", false)
                             fbDBConnector.writeDB("${dpStatement.subject}/events/proposingActivityStatus", "failed ${Timestamp(System.currentTimeMillis())}") // DeACTIVATES! VocalInterface
                         }
 
@@ -399,7 +402,8 @@ class OntoTaskManager(val onto: Ontology, private val fbDBConnector: FirebaseCon
         }
     }
 
-    fun menageLost(dpStatement: DataPropertyStatement){
+    fun handleLostLocation(dpStatement: DataPropertyStatement){
+        /** Handle when the user it is not detected in any room */
         fbDBConnector.realtimeDBRef.child(fbDBConnector.pathToNode).child(dpStatement.subject).child("events/").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val status = dataSnapshot.child("proposingActivityStatus").value

@@ -54,12 +54,9 @@ class Counter(fbDB2: FirebaseConnector) {
                     val userLoc = dataSnapshot.value
 
 
-                    timer?.apply {
-                        cancel()
-                        purge()
-                    }
+                    timer?.cancel()
+                    timer?.purge()
 
-                    //println("milliseconds: $milliseconds")
                     realtimeDBRef.child("$pathToNode/$userId/stoppedMinutes").setValueAsync(0)
 
                     val timerNew = Timer("schedule", true)
@@ -69,6 +66,7 @@ class Counter(fbDB2: FirebaseConnector) {
                         realtimeDBRef.child(pathToNode).child(userId)
                             .addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+
 
                                     val stoppedMinutes = dataSnapshot.child("stoppedMinutes").value.toString().toInt()
 
@@ -81,8 +79,7 @@ class Counter(fbDB2: FirebaseConnector) {
                                         val str = "${dataSnapshot.child("name").value} ${dataSnapshot.child("surname").value} has been in the ${locationMapper(userLoc.toString())} for over $temp minutes"
                                         realtimeDBRef.child("$pathToNode/$userId/alert").setValueAsync(str)
                                     }
-
-                                    map.put(userId, timerNew)
+                                    //println("map = "+map)
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {
@@ -92,6 +89,7 @@ class Counter(fbDB2: FirebaseConnector) {
                             })
 
                     }
+                    map.put(userId, timerNew)
 
                 }
 

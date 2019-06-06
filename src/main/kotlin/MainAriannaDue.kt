@@ -34,7 +34,7 @@ object MainAriannaDue {
 
         /** Initialize TimerLocation */
         val counteLocation = Counter(fbDB2)
-        counteLocation.start(1)
+        counteLocation.start(10)
 
         /** Begin */
         fbDB2.checkUserNodes(ontoTaskManager)

@@ -11,10 +11,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import java.lang.NumberFormatException
-import lombok.experimental.`var`
-import java.util.*
-import kotlin.math.absoluteValue
 
 
 @Volatile private var dataReadComplete: Boolean = false
@@ -37,6 +33,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                 .build()
         // Initialize app for RealtimeDB
         val app = FirebaseApp.initializeApp(options)
+
         // Retrieve RealtimeDB service by passing the FirebaseApp object
         val fbRealtimeDB = FirebaseDatabase.getInstance(app)
 
@@ -89,7 +86,7 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
                 ontoTaskManager.pullAndManageOnto(userNode)
 
                 if (location == "Lost"){
-                    ontoTaskManager.menageLost(dpStatement1)
+                    ontoTaskManager.handleLostLocation(dpStatement1)
                 }
             }
 
@@ -125,7 +122,9 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
 
                 val dpStatement1 = DataPropertyStatement(userNode, "isStopped", sedentaryDuration)
                 ontoTaskManager.pushToOntoData(dpStatement1)
-                ontoTaskManager.pullAndManageOnto(userNode)
+                if(sedentaryDuration > 0.toFloat()){
+                    ontoTaskManager.pullAndManageOnto(userNode)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -165,7 +164,6 @@ class FirebaseConnector(private val databaseName: String, private val pathToPriv
 
                 if(data == "succeed"){
                     TODO("remove all the stuff realted to drug reminder with the function above")
-                    //ontoTaskManager.onto.breakStatementInOnto(dpStatement1)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
